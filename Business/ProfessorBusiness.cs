@@ -11,12 +11,32 @@ namespace Vivencia19TardeAPI.Business
         Database.ProfessorDatabase db = new Database.ProfessorDatabase();
         public void Inserir(Models.TbProfessor prof)
         {
-            if(string.IsNullOrEmpty(prof.NmProfessor))
+            #region |NmProfessor|
+            if(string.IsNullOrWhiteSpace(prof.NmProfessor))
             throw new Exception("O Campo 'NOME' esta Invalido!");
             
-           // if(prof.NmProfessor.Contains("1") || )
-         
+            Utils.Validador.CaracteresEspeciais(prof.NmProfessor);
+            #endregion
 
+            #region |DsCelular, DsTelefone|
+            if(string.IsNullOrEmpty(prof.DsCelular))
+            throw new Exception("O Campo 'CELULAR' esta Invalido!");
+
+            if(string.IsNullOrEmpty(prof.DsTelefone))
+            throw new Exception("O Campo 'TELEFONE' esta Invalido!");
+
+            #endregion
+
+            #region |DtNascimento|
+            if(prof.DtNascimento < DateTime.Now)
+
+            #endregion
+
+
+
+            
+
+         
             db.Inserir(prof);
         }
 
