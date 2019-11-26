@@ -20,10 +20,23 @@ namespace Vivencia19TardeAPI.Database
             ();
             return filme;
         }
-        public void remover(Models.TbSala tabela)
+       
+         public void remover(Models.TbSala tabela)
         {
             Models.TbSala remove = md.TbSala.First(x=> x.IdSala == tabela.IdSala);
             md.TbSala.Remove(remove);
+            md.SaveChanges();
+        }
+        public void alterar (Models.TbSala tabela)
+        {
+            Models.TbSala alterar = md.TbSala.First(x=> x.IdSala == tabela.IdSala);
+            alterar.NmLocal = tabela.NmLocal;
+            alterar.NmSala = tabela.NmSala;
+            alterar.NrCapacidadeMaxima = tabela.NrCapacidadeMaxima;
+            alterar.TbSalaVestibular = tabela.TbSalaVestibular;
+            alterar.DtInclusao = tabela.DtInclusao;
+            alterar.DtAlteracao = tabela.DtAlteracao;
+            alterar.BtAtivo = tabela.BtAtivo;
             md.SaveChanges();
         }
 
