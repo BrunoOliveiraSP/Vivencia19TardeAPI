@@ -14,6 +14,7 @@ namespace Vivencia19TardeAPI.Business
             if(string.IsNullOrEmpty(prof.NmProfessor))
             throw new Exception("O Campo 'NOME' esta Invalido!");
             
+           // if(prof.NmProfessor.Contains("1") || )
          
 
             db.Inserir(prof);
