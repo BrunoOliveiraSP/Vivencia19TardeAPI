@@ -1,7 +1,38 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+
 namespace Vivencia19TardeAPI.Business
 {
     public class ProfessorBusiness
     {
-        
+        Database.ProfessorDatabase db = new Database.ProfessorDatabase();
+        public void Inserir(Models.TbProfessor prof)
+        {
+            db.Inserir(prof);
+        }
+
+        public List<Models.TbProfessor> ListarTodos()
+        {
+            List<Models.TbProfessor>lista = db.ListarTodos();
+            return lista;
+        }
+        public List<Models.TbProfessor> ConsultarPorNome(string nome)
+        {
+            List<Models.TbProfessor>lista = db.ConsultarPorNome(nome);
+            return lista;
+        }
+
+        public void Remover(int id)
+        {
+            db.Remover(id);
+        }
+
+        public void Alterar(Models.TbProfessor prof)
+        {
+           db.Alterar(prof);
+        }
     }
 }
