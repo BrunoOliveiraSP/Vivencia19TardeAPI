@@ -25,6 +25,7 @@ namespace Vivencia19TardeAPI.Business
             prof.Professor.IdLogin = prof.Login.IdLogin;
             db.InserirProfessor(prof.Professor);
         }
+        
 
         public List<Models.TbProfessor> ListarTodos()
         {

@@ -23,7 +23,7 @@ namespace Vivencia19TardeAPI.Utils
                        
         }
 
-        public static void ValidarNomeSobrenome(string nome)
+        public static void CaracteresEspeciais(string nome)
         {
             if (string.IsNullOrWhiteSpace(nome))
                 throw new Exception("O campo SENHA está inválido, tente novamente!");
@@ -49,13 +49,6 @@ namespace Vivencia19TardeAPI.Utils
                 || nome.Contains("{") || nome.Contains("]")
                  || nome.Contains("}"))
                 throw new Exception("O campo NOME está inválido!");
-        }
-
-        public static void ValidarCPF(string CPF)
-        {
-            if (string.IsNullOrWhiteSpace(CPF))
-                throw new Exception("O campo CPF deve ser preenchido, tente novamente!");
-
         }
     }
 }
