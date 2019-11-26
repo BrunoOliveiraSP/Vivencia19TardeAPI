@@ -11,6 +11,11 @@ namespace Vivencia19TardeAPI.Business
         Database.ProfessorDatabase db = new Database.ProfessorDatabase();
         public void Inserir(Models.TbProfessor prof)
         {
+            if(string.IsNullOrEmpty(prof.NmProfessor))
+            throw new Exception("O Campo 'NOME' esta Invalido!");
+            
+         
+
             db.Inserir(prof);
         }
 
