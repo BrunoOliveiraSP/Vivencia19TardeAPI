@@ -19,5 +19,20 @@ namespace Vivencia19TardeAPI.Controllers
         {
             db.Inserir(curso);
         }
+
+       
+        [HttpPut]
+        public void Alterar(Models.TbCurso curso) 
+        {
+            db.Alterar(curso);
+
+        }
+        [HttpDelete ("{id}")]
+        public void Remover(int id)
+        {
+            db.Remover(id);
+
+        }
+
     }
 }
