@@ -9,7 +9,7 @@ namespace Vivencia19TardeAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class InscricaoController
+    public class dotController
     {
         Business.InscricaoBusiness InscricaoBusiness = new Business.InscricaoBusiness();
         [HttpPost]
@@ -28,7 +28,7 @@ namespace Vivencia19TardeAPI.Controllers
             InscricaoBusiness.Remover(id);
         }
 
-        [HttpGet("ConsultarTodos/")]
+        [HttpGet("ConsultarTodos")]
         public List<Models.TbInscricao> ConsultarTodos()
         {
             return InscricaoBusiness.ConsultarTodos();
