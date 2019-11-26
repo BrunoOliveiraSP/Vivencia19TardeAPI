@@ -16,19 +16,20 @@ namespace Vivencia19TardeAPI.Business
         public void Inserir(Models.TbDisciplina disciplina)
         {
            bool existe = db.ConsultarExistencia(disciplina);
-
+            
 
             if(existe)
             {
                 throw new ArgumentException("Disciplina já existe");
             }
+            
 
-           // int tamanho_sigla = disciplina.NmDisciplina.Lenght;
+            string sigla = disciplina.NmDisciplina;
 
-            // if(tamanho_sigla > 30)
-            // {
-            //     throw new ArgumentException("A sigla é muito extensa");
-            // }
+             if(sigla.Length > 30)
+             {
+                 throw new ArgumentException("A sigla é muito extensa");
+             }
             
                db.Inserir(disciplina);
              
