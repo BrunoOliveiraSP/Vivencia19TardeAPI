@@ -9,16 +9,23 @@ namespace Vivencia19TardeAPI.Business
     public class ProfessorBusiness
     {
         Database.ProfessorDatabase db = new Database.ProfessorDatabase();
-        public void Inserir(Models.TbProfessor prof)
+        public void Inserir(Models.ProfessorRequest prof)
         {
-            if(string.IsNullOrEmpty(prof.NmProfessor))
-            throw new Exception("O Campo 'NOME' esta Invalido!");
+            if(string.IsNullOrEmpty(prof.Professor.NmProfessor))
+                throw new Exception("O Campo 'NOME' esta Invalido!");
             
-           // if(prof.NmProfessor.Contains("1") || )
-         
+            prof.Login.DsSenha = "1234";
+            prof.Login.BtTrocar = true;
+            prof.Login.DtInclusao = DateTime.Now;
+            prof.Login.DtUltimoLogin = DateTime.Now;
+            prof.Login.IdRole = 1;
 
-            db.Inserir(prof);
+            db.InserirLogin(prof.Login);
+
+            prof.Professor.IdLogin = prof.Login.IdLogin;
+            db.InserirProfessor(prof.Professor);
         }
+        
 
         public List<Models.TbProfessor> ListarTodos()
         {
