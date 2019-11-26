@@ -13,6 +13,7 @@ namespace Vivencia19TardeAPI.Database
         public void Inserir(Models.TbAlunoLocalizacao ModelAlunoLocalizacao)
         {
             db.Add(ModelAlunoLocalizacao);
+            db.SaveChanges();
         }
 
         public List<Models.TbAlunoLocalizacao> Consultar()

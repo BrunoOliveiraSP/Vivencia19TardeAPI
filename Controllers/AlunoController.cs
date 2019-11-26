@@ -26,6 +26,17 @@ namespace Vivencia19TardeAPI.Controllers
              List<Models.TbAluno> lista= Bus.ListarTodos();
              return lista;
          }
+         [HttpDelete]
+         public void Deletar(Models.TbAluno aluno)
+         {
+             Bus.Deletar(aluno);
+             
+         }
+         [HttpPut]
+         public void Alterar(Models.TbAluno aluno)
+         {
+             Bus.Alterar(aluno);
+         }
       
     }
 }

@@ -12,49 +12,20 @@ namespace Vivencia19TardeAPI.Business
         Database.TbAlunoFichaMedicaDatabase dt = new Database.TbAlunoFichaMedicaDatabase();
         public void Inserir(Models.TbAlunoFichaMedica ModelAlunoFichaMedica)
         {
-
-
-
-
-
-
-
             dt.Inserir(ModelAlunoFichaMedica);
-
         }
         public List<TbAlunoFichaMedica> Consultar()
         {
-
-
             List<TbAlunoFichaMedica> lista =dt.Consultar();
             return lista;
         }
         public void Alterar(int id,TbAlunoFichaMedica ficha)
         {
-            
-            
-            
-            
-            
-            
-            
-            
-            
             dt.Alterar(id,ficha);
-
         }
         public void Deletar(int id)
         {
-
-
-
-            
             dt.Deletar(id);
-
         }
-
-
-
-
     }
 }
