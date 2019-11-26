@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using System.Collections;
 
 namespace Vivencia19TardeAPI.Models
 {
