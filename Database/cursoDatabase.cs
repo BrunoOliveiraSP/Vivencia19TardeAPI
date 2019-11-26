@@ -8,7 +8,13 @@ namespace Vivencia19TardeAPI.Database
 {
     public class cursoDatabase
     {
-        Models.db_a5064d_freiContext db = new Models.db_a5064d_freiContext();
+       Models.db_a5064d_freiContext db = new Models.db_a5064d_freiContext();
+       public void Inserir(Models.TbCurso curso)
+       {
+           db.TbCurso.Add(curso);
+           db.SaveChanges();
+       } 
+
         public void Alterar(Models.TbCurso curso)
         {
             Models.TbCurso alt = db.TbCurso.FirstOrDefault(x => x.NmCurso == curso.NmCurso
@@ -30,5 +36,6 @@ namespace Vivencia19TardeAPI.Database
             db.SaveChanges();
     
         }
+
     }
 }

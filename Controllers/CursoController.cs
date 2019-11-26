@@ -7,20 +7,19 @@ using Microsoft.Extensions.Logging;
 
 namespace Vivencia19TardeAPI.Controllers
 {
-        [ApiController]
-        [Route("[controller]")]
-
-    public class CursoController : ControllerBase
-    {
-              Database.cursoDatabase db = new Database.cursoDatabase();
-
-
-        [HttpPost]
-        public void Inserir(Models.TbCurso curso)
-        {
-            
-        }
+    [ApiController]
+    [Route("[controller]")]
     
+    public class CursoController: ControllerBase
+    {
+        Business.CursoBusiness db = new Business.CursoBusiness();
+        
+        [HttpPost]
+        public void Inserir (Models.TbCurso curso)
+        {
+            db.Inserir(curso);
+        }
+
        
         [HttpPut]
         public void Alterar(Models.TbCurso curso) 

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -10,8 +12,26 @@ namespace Vivencia19TardeAPI.Business
     
     public class CursoBusiness
     {
-      Database.cursoDatabase bd = new Database.cursoDatabase();
+        Database.cursoDatabase db = new Database.cursoDatabase();
+        
+        public void Inserir (Models.TbCurso curso) 
+        {
+            if(curso.NmCurso == string.Empty)
+            throw new ArgumentException("Campo vazio.");            
 
+            if(curso.DsSigla == string.Empty)
+            throw new ArgumentException("Campo vazio.");
+
+            if(curso.NrCapacidadeMaxima == 0)
+            throw new ArgumentException("Valor inválido.");
+
+            if(curso.DsCategoria == string.Empty)
+            throw new ArgumentException("Escolha uma opção."); 
+
+            db.Inserir(curso);          
+        }
+
+        
       public void Alterar(Models.TbCurso curso)
       {
           if(curso.NmCurso == null)
@@ -27,12 +47,12 @@ namespace Vivencia19TardeAPI.Business
               throw new Exception("A sigla não pode ser vazia");
           }
 
-          bd.Alterar(curso);
+          db.Alterar(curso);
       }  
 
       public void Remover(int id)
       {
-          bd.Remover(id);
+          db.Remover(id);
 
       }
     }
