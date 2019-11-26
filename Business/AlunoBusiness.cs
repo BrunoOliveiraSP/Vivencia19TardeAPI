@@ -42,7 +42,14 @@ namespace Vivencia19TardeAPI.Business
             Models.TbAluno Individuo = DB.Carregar(aluno);
             int diferença = Convert.ToInt32(DateTime.Now.Year - aluno.DtNascimento.Year);
 
-            if (aluno.DsCpf.Length != 14 && aluno.DsCpf == null)
+
+            if (aluno.NmAluno == string.Empty)
+            throw new ArgumentException("O campo de Nome é obrigatorio");
+
+            if (aluno.NmEscola == string.Empty)
+            throw new ArgumentException("O campo Escola é obrigatorio");
+
+            else if (aluno.DsCpf.Length != 14 && aluno.DsCpf == null)
             throw new ArgumentException ("Este CPF esta invalido");
 
             else if (aluno.DsEmail.Contains("@") == false && aluno.DsEmail.Contains(".com") == false)
@@ -66,6 +73,9 @@ namespace Vivencia19TardeAPI.Business
             
             else if (diferença <=14 || diferença >=25 )
             throw new ArgumentException("O individuo não tem a idade necessária para ingressar no curso");
+
+            
+
         }
     }
 }
