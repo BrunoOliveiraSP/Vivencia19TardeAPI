@@ -16,10 +16,16 @@ namespace Vivencia19TardeAPI.Business
         
         public void Inserir (Models.TbCurso curso) 
         {
-            if(curso.NmCurso == string.Empty)
-            throw new ArgumentException("Campo vazio.");            
+            //if(curso.NmCurso == )
+            //throw new ArgumentException("Campo vazio."); 
 
-            if(curso.DsSigla == string.Empty)
+            if(curso.NmCurso == curso.NmCurso)
+            throw new ArgumentException("Curso já cadastrado.");           
+
+            //if(curso.DsSigla == )
+            //throw new ArgumentException("Sigla já cadastrada.");
+
+            if(curso.DsSigla == curso.DsSigla)
             throw new ArgumentException("Campo vazio.");
 
             if(curso.NrCapacidadeMaxima == 0)
