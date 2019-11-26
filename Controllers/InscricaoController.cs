@@ -9,7 +9,7 @@ namespace Vivencia19TardeAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class dotController
+    public class InscricaoController : ControllerBase
     {
         Business.InscricaoBusiness InscricaoBusiness = new Business.InscricaoBusiness();
         [HttpPost]
