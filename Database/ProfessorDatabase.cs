@@ -11,9 +11,15 @@ namespace Vivencia19TardeAPI.Database
     {
         Models.db_a5064d_freiContext db = new Models.db_a5064d_freiContext();
 
-        public void Inserir(Models.TbProfessor prof)
+        public void InserirProfessor(Models.TbProfessor prof)
         {
-             db.Add(prof);
+             db.TbProfessor.Add(prof);
+             db.SaveChanges();
+        }
+
+        public void InserirLogin(Models.TbLogin login)
+        {
+             db.TbLogin.Add(login);
              db.SaveChanges();
         }
 

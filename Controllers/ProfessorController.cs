@@ -14,7 +14,7 @@ namespace Vivencia19TardeAPI.Controllers
     {
         Business.ProfessorBusiness bs = new Business.ProfessorBusiness();
         [HttpPost]
-        public void Inserir(Models.TbProfessor professor)
+        public void Inserir(Models.ProfessorRequest professor)
         {
             bs.Inserir(professor);
         }
