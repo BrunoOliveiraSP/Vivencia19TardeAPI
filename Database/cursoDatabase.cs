@@ -37,5 +37,24 @@ namespace Vivencia19TardeAPI.Database
     
         }
 
+        public List<Models.TbCurso> ListarTodos()
+        {
+            List<Models.TbCurso> cursos = db.TbCurso.ToList();
+
+            return cursos;
+        }
+
+        public List<Models.TbCurso> ConsultarPorNome(String NomeCurso)
+        {
+            List<Models.TbCurso> cursos = db.TbCurso.Where(t => t.NmCurso.Contains(NomeCurso)).ToList();
+            return cursos;
+        }
+
+        public List<Models.TbCurso> ConsultarPorSigla(String Sigla)
+        {
+            List<Models.TbCurso> cursos = db.TbCurso.Where(t => t.DsSigla.Contains(Sigla)).ToList();
+            return cursos;
+        }
+
     }
 }

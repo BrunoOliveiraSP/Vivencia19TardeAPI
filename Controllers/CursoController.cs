@@ -34,5 +34,25 @@ namespace Vivencia19TardeAPI.Controllers
 
         }
 
+        [HttpGet("ListarTodos")]
+        public List<Models.TbCurso> ListarTodos()
+        {
+           List<Models.TbCurso> cursos = db.ListarTodos();
+           return cursos;
+        }
+
+        [HttpGet("curso/{NomeCurso}")]
+        public List<Models.TbCurso> ConsultarPorNome(string NomeCurso)
+        {
+            List<Models.TbCurso> cursos = db.ConsultarPorNome(NomeCurso);
+            return cursos;
+        }
+
+        [HttpGet("sigla/{Sigla}")]
+        public List<Models.TbCurso> ConsultarPorSigla(string Sigla)
+        {
+            List<Models.TbCurso> cursos = db.ConsultarPorSigla(Sigla);
+            return cursos;
+        }
     }
 }

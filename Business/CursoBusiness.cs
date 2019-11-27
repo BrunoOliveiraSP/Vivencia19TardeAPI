@@ -16,17 +16,17 @@ namespace Vivencia19TardeAPI.Business
         
         public void Inserir (Models.TbCurso curso) 
         {
-            //if(curso.NmCurso == )
-            //throw new ArgumentException("Campo vazio."); 
+            if(curso.NmCurso == "")
+            throw new ArgumentException("Campo não pode estar vazio.");  
+
+            if(curso.DsSigla == "")
+            throw new ArgumentException("Campo não pode estar vazio.");
 
             if(curso.NmCurso == curso.NmCurso)
             throw new ArgumentException("Curso já cadastrado.");           
 
-            //if(curso.DsSigla == )
-            //throw new ArgumentException("Sigla já cadastrada.");
-
             if(curso.DsSigla == curso.DsSigla)
-            throw new ArgumentException("Campo vazio.");
+            throw new ArgumentException("Campo já cadastrado.");
 
             if(curso.NrCapacidadeMaxima == 0)
             throw new ArgumentException("Valor inválido.");
@@ -61,5 +61,19 @@ namespace Vivencia19TardeAPI.Business
           db.Remover(id);
 
       }
+        public List<Models.TbCurso> ConsultarPorNome(String NomeCurso)
+        {
+             return db.ConsultarPorNome(NomeCurso);
+        }
+
+        public List<Models.TbCurso> ConsultarPorSigla(String Sigla)
+        {
+             return db.ConsultarPorSigla(Sigla);
+        }
+
+        public List<Models.TbCurso> ListarTodos()
+        {
+             return db.ListarTodos();
+        }
     }
 }
