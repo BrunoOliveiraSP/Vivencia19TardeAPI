@@ -12,6 +12,7 @@ namespace Vivencia19TardeAPI.Controllers
     public class InscricaoController : ControllerBase
     {
         Business.InscricaoBusiness InscricaoBusiness = new Business.InscricaoBusiness();
+        
         [HttpPost]
         public void Inserir(Models.TbInscricao inscricao)
         {
