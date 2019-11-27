@@ -36,5 +36,32 @@ namespace Vivencia19TardeAPI.Business
         {
             db.Remover(id);
         }
+        public void InserirModulo(Models.TbModulo modulo)
+        {
+            if(modulo.NmModulo == null)
+            throw new ArgumentException("Modulo Invalido");
+
+            if(modulo.NrModulo >= 0)
+            throw new ArgumentException("Numero Invalido");
+
+            if(modulo.DtInicio == null || modulo.DtFinal == null);
+             throw new ArgumentException("Datas Invalidas Invalido");
+
+             if(modulo.BtAberto == null)
+             throw new ArgumentException("Invalidos");
+        }
+        public List<Models.TbModulo> ConsultarModulo()
+        {
+         List<Models.TbModulo> lista = db.ModuloConsultar();
+         return lista;
+        }
+        public void AlterarModulo(Models.TbModulo modulo)
+        {
+            db.ModuloALterar(modulo);
+        }
+        public void RemoverModulo (int id)
+        {
+db.ModuloRemover(id);
+        }
     }
 }
