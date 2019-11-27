@@ -292,6 +292,7 @@ namespace Vivencia19TardeAPI.Business
             return db.ConsultarTodos();
         }
 
+        //Direciona para sua respectiva função a partir da função abaixo
         public List<Models.TbInscricao> ConsultarPorNomeEAno(string nome, int ano)
         {
             if(string.IsNullOrWhiteSpace(nome))
