@@ -34,7 +34,7 @@ namespace Vivencia19TardeAPI.Controllers
             return InscricaoBusiness.ConsultarTodos();
         }
 
-        [HttpGet("ConsultarPorNomeEAno{nome/ano}")]
+        [HttpGet("ConsultarPorNomeEAno/{nome}/{ano}")]
         public List<Models.TbInscricao> ConsultarPorNomeEAno(string nome, int ano)
         {
             return InscricaoBusiness.ConsultarPorNomeEAno(nome, ano);

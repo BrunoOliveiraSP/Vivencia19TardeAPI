@@ -296,11 +296,11 @@ namespace Vivencia19TardeAPI.Business
         {
             if(string.IsNullOrWhiteSpace(nome))
             {
-              return db.ConsultarPorNome(nome); 
+              return db.ConsultarPorAno(ano);
             }
             else if(ano == 0000 || ano == null)
             {
-              return db.ConsultarPorAno(ano);
+              return db.ConsultarPorNome(nome); 
             }
             else
             {
