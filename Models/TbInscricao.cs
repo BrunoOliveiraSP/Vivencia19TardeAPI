@@ -125,13 +125,13 @@ namespace Vivencia19TardeAPI.Models
         [Column("ds_cor_pele", TypeName = "varchar(50)")]
         public string DsCorPele { get; set; }
         [Column("bt_pendente_rg", TypeName = "bit(1)")]
-        public ulong BtPendenteRg { get; set; }
+        public bool BtPendenteRg { get; set; }
         [Column("bt_pendente_cpf", TypeName = "bit(1)")]
-        public ulong BtPendenteCpf { get; set; }
+        public bool BtPendenteCpf { get; set; }
         [Column("bt_pendente_escolaridade", TypeName = "bit(1)")]
-        public ulong BtPendenteEscolaridade { get; set; }
+        public bool BtPendenteEscolaridade { get; set; }
         [Column("bt_pendente_pagamento", TypeName = "bit(1)")]
-        public ulong BtPendentePagamento { get; set; }
+        public bool BtPendentePagamento { get; set; }
         [Required]
         [Column("ds_observacao", TypeName = "varchar(300)")]
         public string DsObservacao { get; set; }
@@ -149,9 +149,9 @@ namespace Vivencia19TardeAPI.Models
         [Column("ds_situacao", TypeName = "varchar(50)")]
         public string DsSituacao { get; set; }
         [Column("bt_matriculado", TypeName = "bit(1)")]
-        public ulong BtMatriculado { get; set; }
+        public bool BtMatriculado { get; set; }
         [Column("bt_pendente_comprovresid", TypeName = "bit(1)")]
-        public ulong BtPendenteComprovresid { get; set; }
+        public bool BtPendenteComprovresid { get; set; }
         [Required]
         [Column("ds_responsavel_cpf", TypeName = "varchar(50)")]
         public string DsResponsavelCpf { get; set; }
