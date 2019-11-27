@@ -12,7 +12,7 @@ namespace Vivencia19TardeAPI.Business
     
     public class CursoBusiness
     {
-        Database.cursoDatabase db = new Database.cursoDatabase();
+        Database.CursoDatabase db = new Database.CursoDatabase();
         
         public void Inserir (Models.TbCurso curso) 
         {
