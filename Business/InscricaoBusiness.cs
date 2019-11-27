@@ -291,5 +291,21 @@ namespace Vivencia19TardeAPI.Business
         {
             return db.ConsultarTodos();
         }
+
+        public List<Models.TbInscricao> ConsultarPorNomeEAno(string nome, int ano)
+        {
+            if(string.IsNullOrWhiteSpace(nome))
+            {
+              return db.ConsultarPorNome(nome); 
+            }
+            else if(ano == 0000 || ano == null)
+            {
+              return db.ConsultarPorAno(ano);
+            }
+            else
+            {
+              return db.ConsultarPorNomeEAno(nome, ano);
+            }
+        }
     }
 }
