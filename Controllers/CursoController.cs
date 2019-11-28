@@ -41,14 +41,14 @@ namespace Vivencia19TardeAPI.Controllers
            return cursos;
         }
 
-        [HttpGet("curso/{NomeCurso}")]
+        [HttpGet("NmCurso/{NmCurso}")]
         public List<Models.TbCurso> ConsultarPorNome(string NomeCurso)
         {
             List<Models.TbCurso> cursos = db.ConsultarPorNome(NomeCurso);
             return cursos;
         }
 
-        [HttpGet("sigla/{Sigla}")]
+        [HttpGet("Sigla/{Sigla}")]
         public List<Models.TbCurso> ConsultarPorSigla(string Sigla)
         {
             List<Models.TbCurso> cursos = db.ConsultarPorSigla(Sigla);
