@@ -37,9 +37,12 @@ namespace Vivencia19TardeAPI.Business
 
           public  void Alterar (Models.TbDisciplina disciplina)
           {
-         
-            string disci = disciplina.NmDisciplina;
+              
+           bool existe = db.ConsultarExistencia(disciplina);
+           bool existeDS = db.ConsultarExistenciaDS(disciplina);
+           string disci = disciplina.NmDisciplina;
 
+         
              if(disci.Length > 30)
              {
                  throw new ArgumentException("O nome da Disciplina é muito extensa");
@@ -50,14 +53,26 @@ namespace Vivencia19TardeAPI.Business
                  throw new ArgumentException("A sigla é muito extensa");
              }
              
+            if(disciplina.DsSigla == string.Empty )
+             {
+                 throw new ArgumentException("Informe uma sigla");
+             }
+             
+            if(disciplina.NmDisciplina == string.Empty )
+             {
+                 throw new ArgumentException("Informe o nome da disciplina");
+             }
 
-            // string exists = disciplina.NmDisciplina;
-            // List<Models.TbDisciplina> vali = db.ConsultarDisciplina(exists);
+            if(existe)
+            {
+                throw new ArgumentException("Esta alteração não pode ser feita, a Disciplina já existe");
+            }
 
-            // if ( vali.Exists(t => t.NmDisciplina.Equals(exists)))
-            // {
-            //     throw new ArgumentException("Está Alteração não pode ser feita. A Disciplina já existe.");
-            // }
+            if(existeDS)
+            {
+                throw new ArgumentException("Esta alteração não pode ser feita, a Sigla já existe");
+            }
+             
              
             db.Alterar(disciplina);
 
