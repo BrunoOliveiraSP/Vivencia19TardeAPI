@@ -24,13 +24,13 @@ namespace Vivencia19TardeAPI.Database
            return existe ;
        }
 
-        public List<Models.TbDisciplina> ConsultarDisciplina(string disci)
-        {
-            List<Models.TbDisciplina> exists =
-            db.TbDisciplina.Where(t => t.NmDisciplina == disci).ToList();
+        // public List<Models.TbDisciplina> ConsultarDisciplina(string disci)
+        // {
+        //     List<Models.TbDisciplina> exists =
+        //     db.TbDisciplina.Where(t => t.NmDisciplina == disci).ToList();
 
-            return exists;
-        }
+        //     return exists;
+        // }
           public  void Alterar (Models.TbDisciplina disciplina)
         {
           Models.TbDisciplina alterar = db.TbDisciplina.FirstOrDefault(d => d.IdDisciplina == d.IdDisciplina);
@@ -41,6 +41,8 @@ namespace Vivencia19TardeAPI.Database
           alterar.DtInclusao= disciplina.DtInclusao;
           alterar.BtAtivo= disciplina.BtAtivo;
           alterar.DtUltimaAlteracao = disciplina.DtUltimaAlteracao;
+      
+      
           db.SaveChanges();
           
         }
