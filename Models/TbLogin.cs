@@ -26,12 +26,16 @@ namespace Vivencia19TardeAPI.Models
         [Required]
         [Column("ds_senha", TypeName = "varchar(50)")]
         public string DsSenha { get; set; }
+
         [Column("bt_trocar", TypeName = "bit(1)")]
         public bool BtTrocar { get; set; }
+
         [Column("dt_inclusao", TypeName = "datetime")]
         public DateTime DtInclusao { get; set; }
+
         [Column("dt_ultimo_login", TypeName = "datetime")]
         public DateTime DtUltimoLogin { get; set; }
+        
         [Column("bt_ativo", TypeName = "bit(1)")]
         public bool BtAtivo { get; set; }
 
