@@ -51,14 +51,15 @@ namespace Vivencia19TardeAPI.Business
              }
              
 
-            string exists = disciplina.NmDisciplina;
-            List<Models.TbDisciplina> vali = db.ConsultarDisciplina(exists);
+            // string exists = disciplina.NmDisciplina;
+            // List<Models.TbDisciplina> vali = db.ConsultarDisciplina(exists);
 
-            if ( vali.Exists(t => t.NmDisciplina.Equals(exists)))
-            {
-                throw new ArgumentException("Está Alteração não pode ser feita. A Disciplina já existe.");
-            }
-
+            // if ( vali.Exists(t => t.NmDisciplina.Equals(exists)))
+            // {
+            //     throw new ArgumentException("Está Alteração não pode ser feita. A Disciplina já existe.");
+            // }
+             
+            db.Alterar(disciplina);
 
           }
     }
