@@ -44,7 +44,7 @@ namespace Vivencia19TardeAPI.Business
             if(modulo.NrModulo >= 0)
             throw new ArgumentException("Numero Invalido");
 
-            if(modulo.DtInicio == null || modulo.DtFinal == null);
+            if(modulo.DtInicio == null || modulo.DtFinal == null)
              throw new ArgumentException("Datas Invalidas Invalido");
 
              if(modulo.BtAberto == null)
