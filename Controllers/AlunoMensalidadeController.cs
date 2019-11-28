@@ -1,5 +1,9 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Vivencia19TardeAPI.Models;
 
 namespace Vivencia19TardeAPI.Controllers
@@ -8,7 +12,7 @@ namespace Vivencia19TardeAPI.Controllers
     [Route("[controller]")]
     public class AlunoMensalidadeController
     {
-      Business.AlunoMensalidadeBusiness Bus = new Business.AlunoMensalidadeBusiness();
+        Business.AlunoMensalidadeBusiness Bus = new Business.AlunoMensalidadeBusiness();
         
         [HttpPost]
         public void Inserir(TbAlunoMensalidade mensalidade)
@@ -19,20 +23,21 @@ namespace Vivencia19TardeAPI.Controllers
          [HttpGet]
          public List<TbAlunoMensalidade> Consultar()
          {
-             List<TbAlunoMensalidade> lista= Bus.Consultar();
+             List<TbAlunoMensalidade> lista = Bus.Consultar();
              return lista;
          }
+         
          [HttpDelete]
          public void Deletar(int id)
          {
              Bus.Deletar(id);
              
          }
+
          [HttpPut]
          public void Alterar(int id,TbAlunoMensalidade mensalidade)
          {
              Bus.Alterar(id, mensalidade);
          }
-      
     }
 }
