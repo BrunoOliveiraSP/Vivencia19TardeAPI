@@ -6,7 +6,7 @@ namespace Vivencia19TardeAPI.Controllers
 {
     public class AlunoFichaMedicaController
     {
-        Business.TbAlunoFichaMedicaBusiness Bus = new Business.TbAlunoFichaMedicaBusiness();
+        Business.AlunoFichaMedicaBusiness Bus = new Business.AlunoFichaMedicaBusiness();
         
         [HttpPost]
         public void Inserir(TbAlunoFichaMedica fichaMedica)

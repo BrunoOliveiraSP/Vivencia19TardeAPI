@@ -4,9 +4,9 @@ using System;
 
 namespace Vivencia19TardeAPI.Business
 {
-    public class TbAlunoLocalizacaoBusiness
+    public class AlunoLocalizacaoBusiness
     {
-        Database.TbAlunoLocalizacaoDatabase dt = new Database.TbAlunoLocalizacaoDatabase();
+        Database.AlunoLocalizacaoDatabase dt = new Database.AlunoLocalizacaoDatabase();
 
         public void Inserir(Models.TbAlunoLocalizacao ModelAlunoLocalizacao)
         {

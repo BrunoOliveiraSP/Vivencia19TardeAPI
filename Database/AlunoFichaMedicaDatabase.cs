@@ -7,7 +7,7 @@ using Vivencia19TardeAPI.Models;
 
 namespace Vivencia19TardeAPI.Database
 {
-    public class TbAlunoFichaMedicaDatabase
+    public class AlunoFichaMedicaDatabase
     {
         Models.db_a5064d_freiContext db = new Models.db_a5064d_freiContext();
         public void Inserir(Models.TbAlunoFichaMedica ModelAlunoFichaMedica)

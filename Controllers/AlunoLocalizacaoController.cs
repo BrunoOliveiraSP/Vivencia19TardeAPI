@@ -12,7 +12,7 @@ namespace Vivencia19TardeAPI.Controllers
     public class AlunoLocalizacaoController
     {
         
-         Business.TbAlunoLocalizacaoBusiness Bus = new Business.TbAlunoLocalizacaoBusiness();
+         Business.AlunoLocalizacaoBusiness Bus = new Business.AlunoLocalizacaoBusiness();
         
         [HttpPost]
         public void Inserir(Models.TbAlunoLocalizacao localizacao)

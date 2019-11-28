@@ -8,7 +8,7 @@ namespace Vivencia19TardeAPI.Controllers
     [Route("[controller]")]
     public class AlunoMensalidadeController
     {
-      Business.TbAlunoMensalidadeBusiness Bus = new Business.TbAlunoMensalidadeBusiness();
+      Business.AlunoMensalidadeBusiness Bus = new Business.AlunoMensalidadeBusiness();
         
         [HttpPost]
         public void Inserir(TbAlunoMensalidade mensalidade)
