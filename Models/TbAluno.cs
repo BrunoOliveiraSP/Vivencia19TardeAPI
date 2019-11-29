@@ -15,6 +15,7 @@ namespace Vivencia19TardeAPI.Models
             TbAlunoFichaMedica = new HashSet<TbAlunoFichaMedica>();
             TbAlunoLocalizacao = new HashSet<TbAlunoLocalizacao>();
             TbAlunoMensalidade = new HashSet<TbAlunoMensalidade>();
+            TbAlunoResponsavel = new HashSet<TbAlunoResponsavel>();
             TbDiarioAvaliacaoGeral = new HashSet<TbDiarioAvaliacaoGeral>();
             TbDiarioFrequenciaGeral = new HashSet<TbDiarioFrequenciaGeral>();
             TbTurmaAluno = new HashSet<TbTurmaAluno>();
@@ -90,6 +91,8 @@ namespace Vivencia19TardeAPI.Models
         public virtual ICollection<TbAlunoLocalizacao> TbAlunoLocalizacao { get; set; }
         [InverseProperty("IdAlunoNavigation")]
         public virtual ICollection<TbAlunoMensalidade> TbAlunoMensalidade { get; set; }
+        [InverseProperty("IdAlunoNavigation")]
+        public virtual ICollection<TbAlunoResponsavel> TbAlunoResponsavel { get; set; }
         [InverseProperty("IdAlunoNavigation")]
         public virtual ICollection<TbDiarioAvaliacaoGeral> TbDiarioAvaliacaoGeral { get; set; }
         [InverseProperty("IdAlunoNavigation")]
