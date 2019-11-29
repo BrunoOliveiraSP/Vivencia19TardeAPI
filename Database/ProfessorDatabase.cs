@@ -38,7 +38,8 @@ namespace Vivencia19TardeAPI.Database
 
         public void Remover(int id)
         {
-             db.Remove(id);
+            Models.TbProfessor delete = db.TbProfessor.FirstOrDefault(x => x.IdProfessor == id);
+             db.TbProfessor.Remove(delete);
              db.SaveChanges();
         }
 

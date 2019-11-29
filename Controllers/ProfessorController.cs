@@ -40,7 +40,7 @@ namespace Vivencia19TardeAPI.Controllers
 
         }
  
-        [HttpGet("{nome}")]
+        [HttpGet("Nome/{nome}")]
         public List<Models.TbProfessor> ConsultarNome (string nome)
         {
             List<Models.TbProfessor> professor = bs.ConsultarPorNome(nome);

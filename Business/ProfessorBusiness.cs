@@ -32,6 +32,7 @@ namespace Vivencia19TardeAPI.Business
             List<Models.TbProfessor>lista = db.ListarTodos();
             return lista;
         }
+        
         public List<Models.TbProfessor> ConsultarPorNome(string nome)
         {
             List<Models.TbProfessor>lista = db.ConsultarPorNome(nome);

@@ -16,17 +16,20 @@ namespace Vivencia19TardeAPI.Business
         
         public void Inserir (Models.TbCurso curso) 
         {
-            if(curso.NmCurso == "")
+            bool contemCurso = db.ContemSigla(curso.NmCurso);
+            bool contemSigla = db.ContemSigla(curso.DsSigla);
+
+            if(curso.NmCurso == string.Empty)
             throw new ArgumentException("Campo não pode estar vazio.");  
 
-            if(curso.DsSigla == "")
+            if(curso.DsSigla == string.Empty)
             throw new ArgumentException("Campo não pode estar vazio.");
 
-            if(curso.NmCurso == curso.NmCurso)
+            if(contemCurso == true)
             throw new ArgumentException("Curso já cadastrado.");           
 
-            if(curso.DsSigla == curso.DsSigla)
-            throw new ArgumentException("Campo já cadastrado.");
+            if(contemSigla == true)
+            throw new ArgumentException("Sigla já cadastrado.");
 
             if(curso.NrCapacidadeMaxima == 0)
             throw new ArgumentException("Valor inválido.");
@@ -40,18 +43,26 @@ namespace Vivencia19TardeAPI.Business
         
       public void Alterar(Models.TbCurso curso)
       {
-          if(curso.NmCurso == null)
-          {
-              throw new Exception("O nome do curso não pode ser vazio");
-          }
-          if(curso.NrCapacidadeMaxima == 0)
-          {
-              throw new Exception("O numero maximo não pode ser 0");
-          }
-          if(curso.DsSigla ==null)
-          {
-              throw new Exception("A sigla não pode ser vazia");
-          }
+          bool contemCurso = db.ContemSigla(curso.NmCurso);
+            bool contemSigla = db.ContemSigla(curso.DsSigla);
+
+            if(curso.NmCurso == string.Empty)
+            throw new ArgumentException("Campo não pode estar vazio.");  
+
+            if(curso.DsSigla == string.Empty)
+            throw new ArgumentException("Campo não pode estar vazio.");
+
+            if(contemCurso == true)
+            throw new ArgumentException("Curso já cadastrado.");           
+
+            if(contemSigla == true)
+            throw new ArgumentException("Sigla já cadastrado.");
+
+            if(curso.NrCapacidadeMaxima == 0)
+            throw new ArgumentException("Valor inválido.");
+
+            if(curso.DsCategoria == string.Empty)
+            throw new ArgumentException("Escolha uma opção."); 
 
           db.Alterar(curso);
       }  

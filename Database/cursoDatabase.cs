@@ -56,5 +56,17 @@ namespace Vivencia19TardeAPI.Database
             return cursos;
         }
 
+        public bool ContemCurso(string curso)
+        {
+            bool contemCurso = db.TbCurso.Any(x=> x.NmCurso == curso);
+            return contemCurso;
+        }
+
+        public bool ContemSigla(string sigla)
+        {
+            bool contemSigla = db.TbCurso.Any(x=> x.DsSigla == sigla);
+            return contemSigla;
+        }
+
     }
 }
