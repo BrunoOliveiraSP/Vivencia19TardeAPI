@@ -4,6 +4,7 @@ using System.Collections;
 using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.AspNetCore.Mvc;
+using Models;
 
 namespace Vivencia19TardeAPI.Controllers
 {
@@ -14,31 +15,74 @@ namespace Vivencia19TardeAPI.Controllers
         Business.InscricaoBusiness InscricaoBusiness = new Business.InscricaoBusiness();
         
         [HttpPost]
-        public void Inserir(Models.TbInscricao inscricao)
+        public ActionResult Inserir(Models.TbInscricao inscricao)
         {
-            InscricaoBusiness.Inserir(inscricao);
+            try
+            {
+                InscricaoBusiness.Inserir(inscricao);
+                return Ok();
+            }
+            catch (System.Exception ex)
+            {
+                ErrorModel erro = new ErrorModel(500, ex.Message);
+                return StatusCode(500, erro);
+            }
         } 
         [HttpPut]
-        public void Alterar(Models.TbInscricao inscricao)
+        public ActionResult Alterar(Models.TbInscricao inscricao)
         {
-            InscricaoBusiness.Alterar(inscricao);
+            try
+            {
+                InscricaoBusiness.Alterar(inscricao);
+                return Ok();
+            }
+            catch (System.Exception ex)
+            {
+                ErrorModel erro = new ErrorModel(500, ex.Message);
+                return StatusCode(500, erro);
+            }
         }
         [HttpDelete("{id}")]
-        public void Remover(int id)
+        public ActionResult Remover(int id)
         {
-            InscricaoBusiness.Remover(id);
+            try
+            {
+                InscricaoBusiness.Remover(id);
+                return Ok();
+            }
+            catch (System.Exception ex)
+            {
+                ErrorModel erro = new ErrorModel(500, ex.Message);
+                return StatusCode(500, erro);
+            }
         }
 
         [HttpGet("ConsultarTodos")]
-        public List<Models.TbInscricao> ConsultarTodos()
+        public ActionResult<List<Models.TbInscricao>> ConsultarTodos()
         {
-            return InscricaoBusiness.ConsultarTodos();
+            try
+            {
+                return InscricaoBusiness.ConsultarTodos();
+            }
+            catch (System.Exception ex)
+            {
+                ErrorModel erro = new ErrorModel(500, ex.Message);
+                return StatusCode(500, erro);
+            }
         }
 
         [HttpGet("ConsultarPorNomeEAno/{nome}/{ano}")]
-        public List<Models.TbInscricao> ConsultarPorNomeEAno(string nome, int ano)
+        public ActionResult<List<Models.TbInscricao>> ConsultarPorNomeEAno(string nome, int ano)
         {
-            return InscricaoBusiness.ConsultarPorNomeEAno(nome, ano);
+            try
+            {
+                return InscricaoBusiness.ConsultarPorNomeEAno(nome, ano);
+            }
+            catch (System.Exception ex)
+            {
+                ErrorModel erro = new ErrorModel(500, ex.Message);
+                return StatusCode(500, erro);
+            }
         }
     }
 }
