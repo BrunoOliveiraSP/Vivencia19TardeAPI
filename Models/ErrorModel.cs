@@ -8,8 +8,8 @@ namespace Vivencia19TardeAPI.Models
 
         public ErrorModel(int codigo, string mensagem)
         {
-            CodigoErro = codigo;
-            Mensagem = mensagem;
+            this.CodigoErro = codigo;
+            this.Mensagem = mensagem;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Vivencia19TardeAPI.Business
         {
             if (string.IsNullOrWhiteSpace(inscricao.NmInscrito))
             {
-                throw new ArgumentException("Você esqueceu de colocar o nome do concorrente!"); 
+                throw new ArgumentException("Informe o nome do candidato!"); 
             }
             if (string.IsNullOrWhiteSpace(inscricao.DsSexo))
             {
