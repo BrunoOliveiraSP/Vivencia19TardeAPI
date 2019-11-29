@@ -77,5 +77,14 @@ namespace Vivencia19TardeAPI.Business
             db.Alterar(disciplina);
 
           }
-    }
+
+          public List<Models.TbDisciplina> ListarTodos()
+          {
+             return db.ListaTodos();
+          }
+          public void Deletar(int id)
+          {
+              db.Deletar(id);
+          }
+    }          
 }

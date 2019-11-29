@@ -44,5 +44,16 @@ namespace Vivencia19TardeAPI.Database
           db.SaveChanges();
           
         }
+        public void Deletar(int id)
+        {
+            Models.TbDisciplina delete = db.TbDisciplina.FirstOrDefault(x => x.IdDisciplina == id);
+            db.TbDisciplina.Remove(delete);
+            db.SaveChanges();
+        }
+        public List<Models.TbDisciplina> ListaTodos()
+        {
+          List<Models.TbDisciplina> lista = db.TbDisciplina.ToList();
+          return lista;
+        }
     }
 }
