@@ -20,30 +20,22 @@ namespace Vivencia19TardeAPI.Models
         [Key]
         [Column("id_curso", TypeName = "int(11)")]
         public int IdCurso { get; set; }
-        
         [Required]
         [Column("nm_curso", TypeName = "varchar(50)")]
         public string NmCurso { get; set; }
-        
         [Required]
         [Column("ds_sigla", TypeName = "varchar(50)")]
         public string DsSigla { get; set; }
-        
         [Column("nr_capacidade_maxima", TypeName = "int(11)")]
         public int NrCapacidadeMaxima { get; set; }
-        
         [Column("bt_ativo", TypeName = "bit(1)")]
-        public bool BtAtivo { get; set; }
-        
+        public ulong BtAtivo { get; set; }
         [Column("dt_criacao", TypeName = "datetime")]
         public DateTime DtCriacao { get; set; }
-        
         [Column("dt_ultima_alteracao", TypeName = "datetime")]
         public DateTime DtUltimaAlteracao { get; set; }
-        
         [Column("id_funcionario_alteracao", TypeName = "int(11)")]
         public int IdFuncionarioAlteracao { get; set; }
-        
         [Required]
         [Column("ds_categoria", TypeName = "varchar(50)")]
         public string DsCategoria { get; set; }

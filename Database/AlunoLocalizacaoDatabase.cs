@@ -7,7 +7,7 @@ using Vivencia19TardeAPI.Models;
 
 namespace Vivencia19TardeAPI.Database
 {
-    public class TbAlunoLocalizacaoDatabase
+    public class AlunoLocalizacaoDatabase
     {
         Models.db_a5064d_freiContext db = new Models.db_a5064d_freiContext();
         public void Inserir(Models.TbAlunoLocalizacao ModelAlunoLocalizacao)

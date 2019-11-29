@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Vivencia19TardeAPI.Models;
 
 namespace Vivencia19TardeAPI.Controllers
 {
@@ -11,8 +12,7 @@ namespace Vivencia19TardeAPI.Controllers
     [Route("[controller]")]
     public class AlunoLocalizacaoController
     {
-        
-         Business.TbAlunoLocalizacaoBusiness Bus = new Business.TbAlunoLocalizacaoBusiness();
+        Business.AlunoLocalizacaoBusiness Bus = new Business.AlunoLocalizacaoBusiness();
         
         [HttpPost]
         public void Inserir(Models.TbAlunoLocalizacao localizacao)
@@ -23,21 +23,22 @@ namespace Vivencia19TardeAPI.Controllers
          [HttpGet]
          public List<Models.TbAlunoLocalizacao> Consultar()
          {
-             List<Models.TbAlunoLocalizacao> lista= Bus.Consultar();
+             List<Models.TbAlunoLocalizacao> lista = Bus.Consultar();
              return lista;
          }
+
          [HttpDelete]
          public void Deletar(int id)
          {
              Bus.Deletar(id);
              
          }
+
          [HttpPut]
          public void Alterar(int id,Models.TbAlunoLocalizacao localizacao)
          {
              Bus.Alterar(id, localizacao);
          }
-      
     }
 }
     

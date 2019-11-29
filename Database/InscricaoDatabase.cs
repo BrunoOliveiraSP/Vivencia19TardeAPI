@@ -92,5 +92,24 @@ namespace Vivencia19TardeAPI.Database
             
             db.SaveChanges();
         }
+
+        public List<Models.TbInscricao> ConsultarPorNome(string nome)
+        {
+            return db.TbInscricao.Where(x => x.NmInscrito.Contains(nome))
+                                 .ToList();
+        }
+
+        public List<Models.TbInscricao> ConsultarPorAno(int ano)
+        {
+            return db.TbInscricao.Where(x => x.IdAnoLetivoNavigation.NrAno == ano)
+                                 .ToList();
+        }
+
+        public List<Models.TbInscricao> ConsultarPorNomeEAno(string nome, int ano)
+        {
+            return db.TbInscricao.Where(x => x.IdAnoLetivoNavigation.NrAno == ano && 
+                                             x.NmInscrito.Contains(nome))
+                                 .ToList();
+        }
     }
 }

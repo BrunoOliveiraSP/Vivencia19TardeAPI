@@ -19,5 +19,19 @@ namespace Vivencia19TardeAPI.Controllers
         {
             bu.Inserir(disc);
         }
+
+
+         [HttpPut]
+
+         public void AlterarDisciplina (Models.TbDisciplina disciplina)
+         {
+             bu.Alterar(disciplina);
+         } 
+         
+
     }
+
+
+
+
 }

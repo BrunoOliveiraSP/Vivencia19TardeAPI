@@ -7,7 +7,7 @@ using Vivencia19TardeAPI.Models;
 
 namespace Vivencia19TardeAPI.Database
 {
-    public class TbAlunoMensalidadeDatabase
+    public class AlunoMensalidadeDatabase
     {
         Models.db_a5064d_freiContext db = new Models.db_a5064d_freiContext();
         public void Inserir(Models.TbAlunoMensalidade ModelAlunoMensalidade)

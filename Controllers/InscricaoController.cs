@@ -12,6 +12,7 @@ namespace Vivencia19TardeAPI.Controllers
     public class InscricaoController : ControllerBase
     {
         Business.InscricaoBusiness InscricaoBusiness = new Business.InscricaoBusiness();
+        
         [HttpPost]
         public void Inserir(Models.TbInscricao inscricao)
         {
@@ -32,6 +33,12 @@ namespace Vivencia19TardeAPI.Controllers
         public List<Models.TbInscricao> ConsultarTodos()
         {
             return InscricaoBusiness.ConsultarTodos();
+        }
+
+        [HttpGet("ConsultarPorNomeEAno/{nome}/{ano}")]
+        public List<Models.TbInscricao> ConsultarPorNomeEAno(string nome, int ano)
+        {
+            return InscricaoBusiness.ConsultarPorNomeEAno(nome, ano);
         }
     }
 }
