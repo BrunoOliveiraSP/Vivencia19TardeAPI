@@ -86,5 +86,11 @@ namespace Vivencia19TardeAPI.Business
           {
               db.Deletar(id);
           }
+          public List<Models.TbDisciplina> ListarNomeSigla(string nome, string sigla)
+          {
+
+              
+             return db.ListarNomeSigla(nome, sigla);
+          }
     }          
 }
