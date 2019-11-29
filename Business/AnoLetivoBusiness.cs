@@ -44,11 +44,10 @@ namespace Vivencia19TardeAPI.Business
             if(modulo.NrModulo >= 0)
             throw new ArgumentException("Numero Invalido");
 
-            if(modulo.DtInicio == null || modulo.DtFinal == null);
+            if(modulo.DtInicio == null || modulo.DtFinal == null)
              throw new ArgumentException("Datas Invalidas Invalido");
 
-             if(modulo.BtAberto == null)
-             throw new ArgumentException("Invalidos");
+             
         }
         public List<Models.TbModulo> ConsultarModulo()
         {
@@ -57,11 +56,11 @@ namespace Vivencia19TardeAPI.Business
         }
         public void AlterarModulo(Models.TbModulo modulo)
         {
-            db.ModuloALterar(modulo);
+           db.ModuloALterar(modulo);
         }
         public void RemoverModulo (int id)
         {
-db.ModuloRemover(id);
+           db.ModuloRemover(id);
         }
     }
 }
