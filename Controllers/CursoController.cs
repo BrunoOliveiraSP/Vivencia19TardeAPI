@@ -34,7 +34,7 @@ namespace Vivencia19TardeAPI.Controllers
 
         }
 
-        [HttpGet("ListarTodos")]
+        [HttpGet]
         public List<Models.TbCurso> ListarTodos()
         {
            List<Models.TbCurso> cursos = db.ListarTodos();
@@ -42,9 +42,9 @@ namespace Vivencia19TardeAPI.Controllers
         }
 
         [HttpGet("NmCurso/{NmCurso}")]
-        public List<Models.TbCurso> ConsultarPorNome(string NomeCurso)
+        public List<Models.TbCurso> ConsultarPorNome(string NmCurso)
         {
-            List<Models.TbCurso> cursos = db.ConsultarPorNome(NomeCurso);
+            List<Models.TbCurso> cursos = db.ConsultarPorNome(NmCurso);
             return cursos;
         }
 

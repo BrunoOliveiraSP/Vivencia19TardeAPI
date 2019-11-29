@@ -28,6 +28,11 @@ namespace Vivencia19TardeAPI.Business
         {
             db.alterar(sala);
         }
+        public List<Models.TbSala> ConsultarPorInstituicao(string instituicao)
+        {
+            List<Models.TbSala> consultar = db.ConsultarPorInstituicao(instituicao);
+            return consultar;
+        }
         
     }
 }

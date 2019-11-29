@@ -21,6 +21,7 @@ namespace Vivencia19TardeAPI.Models
         public virtual DbSet<TbAlunoFichaMedica> TbAlunoFichaMedica { get; set; }
         public virtual DbSet<TbAlunoLocalizacao> TbAlunoLocalizacao { get; set; }
         public virtual DbSet<TbAlunoMensalidade> TbAlunoMensalidade { get; set; }
+        public virtual DbSet<TbAlunoResponsavel> TbAlunoResponsavel { get; set; }
         public virtual DbSet<TbAnoLetivo> TbAnoLetivo { get; set; }
         public virtual DbSet<TbCalendario> TbCalendario { get; set; }
         public virtual DbSet<TbCalendarioEvento> TbCalendarioEvento { get; set; }
@@ -301,6 +302,44 @@ namespace Vivencia19TardeAPI.Models
                     .HasForeignKey(d => d.IdAnoLetivo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_tb_aluno_mensalidade_tb_ano_letivo1");
+            });
+
+            modelBuilder.Entity<TbAlunoResponsavel>(entity =>
+            {
+                entity.HasKey(e => e.IdAlunoResponsavel)
+                    .HasName("PRIMARY");
+
+                entity.HasIndex(e => e.IdAluno)
+                    .HasName("id_aluno");
+
+                entity.Property(e => e.DsEmail)
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.DsParentesco)
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.DsRg)
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.DsTelefone1)
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.DsTelefone2)
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.NmResponsavel)
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.HasOne(d => d.IdAlunoNavigation)
+                    .WithMany(p => p.TbAlunoResponsavel)
+                    .HasForeignKey(d => d.IdAluno)
+                    .HasConstraintName("tb_aluno_responsavel_ibfk_1");
             });
 
             modelBuilder.Entity<TbAnoLetivo>(entity =>
