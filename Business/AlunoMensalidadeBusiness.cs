@@ -4,9 +4,9 @@ using Vivencia19TardeAPI.Models;
 
 namespace Vivencia19TardeAPI.Business
 {
-    public class TbAlunoMensalidadeBusiness
+    public class AlunoMensalidadeBusiness
     {
-        Database.TbAlunoMensalidadeDatabase dt = new Database.TbAlunoMensalidadeDatabase();
+        Database.AlunoMensalidadeDatabase dt = new Database.AlunoMensalidadeDatabase();
        public void Inserir(Models.TbAlunoMensalidade Mensalidade)
        {
            if(Mensalidade.DsEmail.Contains("@") == false && Mensalidade.DsEmail.Contains(".com") == false && Mensalidade.DsEmail == string.Empty )

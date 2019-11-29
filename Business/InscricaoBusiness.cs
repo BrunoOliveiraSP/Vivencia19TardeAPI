@@ -299,7 +299,7 @@ namespace Vivencia19TardeAPI.Business
             {
               return db.ConsultarPorAno(ano);
             }
-            else if(ano == 0000 || ano == null)
+            else if(ano == 0000)
             {
               return db.ConsultarPorNome(nome); 
             }

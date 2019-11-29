@@ -7,9 +7,9 @@ using Vivencia19TardeAPI.Models;
 
 namespace Vivencia19TardeAPI.Business
 {
-    public class TbAlunoFichaMedicaBusiness
+    public class AlunoFichaMedicaBusiness
     {
-        Database.TbAlunoFichaMedicaDatabase dt = new Database.TbAlunoFichaMedicaDatabase();
+        Database.AlunoFichaMedicaDatabase dt = new Database.AlunoFichaMedicaDatabase();
         public void Inserir(Models.TbAlunoFichaMedica ModelAlunoFichaMedica)
         {
             dt.Inserir(ModelAlunoFichaMedica);
