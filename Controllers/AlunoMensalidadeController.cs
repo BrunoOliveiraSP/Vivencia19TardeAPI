@@ -10,7 +10,7 @@ namespace Vivencia19TardeAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AlunoMensalidadeController
+    public class AlunoMensalidadeController:ControllerBase
     {
         Business.AlunoMensalidadeBusiness Bus = new Business.AlunoMensalidadeBusiness();
         

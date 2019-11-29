@@ -10,7 +10,7 @@ namespace Vivencia19TardeAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AlunoFichaMedicaController
+    public class AlunoFichaMedicaController: ControllerBase
     {
         Business.AlunoFichaMedicaBusiness Bus = new Business.AlunoFichaMedicaBusiness();
         
