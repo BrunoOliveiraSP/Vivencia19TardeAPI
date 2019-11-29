@@ -37,12 +37,14 @@ namespace Vivencia19TardeAPI.Controllers
         {
             business.Alterar(sala);
         }
+       
+       [HttpGet("ListarNome/{instituicao}")]
+        public List<Models.TbSala> ConsultarPorInstituicao(string instituicao)
+        {
+            List<Models.TbSala> consultar = business.ConsultarPorInstituicao(instituicao);
+            return consultar;
 
-        
-    
-        
-
-        
+        }       
                 
     }
 }

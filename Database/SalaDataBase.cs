@@ -39,6 +39,11 @@ namespace Vivencia19TardeAPI.Database
             alterar.BtAtivo = tabela.BtAtivo;
             md.SaveChanges();
         }
+        public List<Models.TbSala> ConsultarPorInstituicao(string instituicao)
+        {            
+            List<Models.TbSala> consulta = md.TbSala.Where(x => x.NmLocal.Contains(instituicao)).ToList();
+            return consulta;
+        }
 
 
 
