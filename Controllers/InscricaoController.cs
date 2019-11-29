@@ -4,7 +4,7 @@ using System.Collections;
 using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.AspNetCore.Mvc;
-using Models;
+using Vivencia19TardeAPI.Models;
 
 namespace Vivencia19TardeAPI.Controllers
 {
