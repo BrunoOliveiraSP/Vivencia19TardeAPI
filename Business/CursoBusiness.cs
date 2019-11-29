@@ -62,7 +62,7 @@ namespace Vivencia19TardeAPI.Business
             throw new ArgumentException("Valor inválido.");
 
             if(curso.DsCategoria == string.Empty)
-            throw new ArgumentException("Escolha uma opção.") ; 
+            throw new ArgumentException("Escolha uma opção."); 
 
           db.Alterar(curso);
       }  
