@@ -21,9 +21,9 @@ namespace Vivencia19TardeAPI.Database
             return filme;
         }
        
-         public void remover(Models.TbSala tabela)
+         public void remover(int id)
         {
-            Models.TbSala remove = md.TbSala.First(x=> x.IdSala == tabela.IdSala);
+            Models.TbSala remove = md.TbSala.First(x=> x.IdSala == id);
             md.TbSala.Remove(remove);
             md.SaveChanges();
         }

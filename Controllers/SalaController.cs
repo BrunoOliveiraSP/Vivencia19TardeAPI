@@ -27,6 +27,20 @@ namespace Vivencia19TardeAPI.Controllers
             return sala;
 
         }
+        [HttpDelete("Remover/{id}")]
+        public void Remover(int id)
+        {
+            business.Remover(id);
+        }
+        [HttpPut("Alterar")]
+        public void Alterar(Models.TbSala sala)
+        {
+            business.Alterar(sala);
+        }
+
+        
+    
+        
 
         
                 

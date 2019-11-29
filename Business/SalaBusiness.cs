@@ -20,6 +20,14 @@ namespace Vivencia19TardeAPI.Business
             return sala;
 
         }
+        public void Remover(int id)
+        {
+            db.remover(id);
+        }
+        public void Alterar(Models.TbSala sala)
+        {
+            db.alterar(sala);
+        }
         
     }
 }
