@@ -55,5 +55,12 @@ namespace Vivencia19TardeAPI.Database
           List<Models.TbDisciplina> lista = db.TbDisciplina.ToList();
           return lista;
         }
+        public List<Models.TbDisciplina> ListarNomeSigla(string nome, string sigla)
+        {
+            List<Models.TbDisciplina> lista = db.TbDisciplina.Where(x => 
+                      x.NmDisciplina.Contains(nome) || x.NmDisciplina.Contains(sigla)).ToList();
+
+             return  lista;
+        }
     }
 }

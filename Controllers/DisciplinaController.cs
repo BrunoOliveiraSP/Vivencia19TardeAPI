@@ -28,22 +28,33 @@ namespace Vivencia19TardeAPI.Controllers
              bu.Alterar(disciplina);
          } 
          
-         [HttpGet]
+        [HttpGet("ListarTodos")]
+        
+        
           public List<Models.TbDisciplina> ListarTodos()
           {
              return bu.ListarTodos();
+        
           }
 
+
+
           [HttpDelete("{id}")]
+        
           public void Deletar(int id)
           {
               bu.Deletar(id);
           }
-         
 
+
+
+          [HttpGet("ListarNomeSigla/{Nome}/{Sigla}")]
+        
+          public List<Models.TbDisciplina> ListarNomeSigla(string Nome, string Sigla)
+          {
+             return bu.ListarNomeSigla(Nome, Sigla);
+          }
+        
     }
-
-
-
 
 }

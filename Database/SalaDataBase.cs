@@ -16,8 +16,7 @@ namespace Vivencia19TardeAPI.Database
         }
         public List<Models.TbSala> Listar()
         {
-            List<Models.TbSala> filme = md.TbSala.ToList
-            ();
+            List<Models.TbSala> filme = md.TbSala.ToList();          
             return filme;
         }
        
