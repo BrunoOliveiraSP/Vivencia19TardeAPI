@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 namespace Vivencia19TardeAPI.Database
 {
     
-    public class ResponsavelDatabase
+    public class AlunoResponsavelDatabase
     {
         Models.db_a5064d_freiContext DB = new Models.db_a5064d_freiContext();
 

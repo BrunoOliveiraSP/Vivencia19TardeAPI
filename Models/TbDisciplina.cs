@@ -29,7 +29,7 @@ namespace Vivencia19TardeAPI.Models
         [Column("ds_sigla", TypeName = "varchar(50)")]
         public string DsSigla { get; set; }
         [Column("bt_ativo", TypeName = "bit(1)")]
-        public ulong BtAtivo { get; set; }
+        public bool BtAtivo { get; set; }
         [Column("dt_ultima_alteracao", TypeName = "datetime")]
         public DateTime DtUltimaAlteracao { get; set; }
         [Column("dt_inclusao", TypeName = "datetime")]

@@ -262,32 +262,24 @@ namespace Vivencia19TardeAPI.Models
                     .HasName("PRIMARY");
 
                 entity.HasIndex(e => e.IdAluno)
-                    .HasName("fk_tb_aluno_mensalidade_tb_aluno1_idx");
+                    .HasName("id_aluno");
 
                 entity.HasIndex(e => e.IdAnoLetivo)
-                    .HasName("fk_tb_aluno_mensalidade_tb_ano_letivo1_idx");
+                    .HasName("id_ano_letivo");
 
-                entity.Property(e => e.DsEmail)
+                entity.Property(e => e.DsMesref)
                     .HasCharSet("latin1")
                     .HasCollation("latin1_swedish_ci");
 
-                entity.Property(e => e.DsParentesco)
+                entity.Property(e => e.DsObservacao)
                     .HasCharSet("latin1")
                     .HasCollation("latin1_swedish_ci");
 
-                entity.Property(e => e.DsRg)
+                entity.Property(e => e.NrFolhaCarne)
                     .HasCharSet("latin1")
                     .HasCollation("latin1_swedish_ci");
 
-                entity.Property(e => e.DsTelefone1)
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
-
-                entity.Property(e => e.DsTelefone2)
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
-
-                entity.Property(e => e.NmResponsavel)
+                entity.Property(e => e.TpPagamento)
                     .HasCharSet("latin1")
                     .HasCollation("latin1_swedish_ci");
 
@@ -295,13 +287,13 @@ namespace Vivencia19TardeAPI.Models
                     .WithMany(p => p.TbAlunoMensalidade)
                     .HasForeignKey(d => d.IdAluno)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_tb_aluno_mensalidade_tb_aluno1");
+                    .HasConstraintName("tb_aluno_mensalidade_ibfk_1");
 
                 entity.HasOne(d => d.IdAnoLetivoNavigation)
                     .WithMany(p => p.TbAlunoMensalidade)
                     .HasForeignKey(d => d.IdAnoLetivo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_tb_aluno_mensalidade_tb_ano_letivo1");
+                    .HasConstraintName("tb_aluno_mensalidade_ibfk_2");
             });
 
             modelBuilder.Entity<TbAlunoResponsavel>(entity =>

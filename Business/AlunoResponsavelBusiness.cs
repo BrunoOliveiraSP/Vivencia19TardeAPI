@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Vivencia19TardeAPI.Business
+namespace Vivencia19TardeAPI.Business 
 {
-    public class ResponsavelBusiness
+    public class AlunoResponsavelBusiness
     {
         
-        Database.ResponsavelDatabase db = new Database.ResponsavelDatabase();
+        Database.AlunoResponsavelDatabase db = new Database.AlunoResponsavelDatabase();
 
         public void Inserir(Models.TbAlunoResponsavel responsavel)
         {
