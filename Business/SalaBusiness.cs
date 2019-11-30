@@ -11,7 +11,22 @@ namespace Vivencia19TardeAPI.Business
         Database.SalaDataBase db = new Database.SalaDataBase();
         public void Inserir(Models.TbSala sala)
         {
+
+            this.Validacao(sala);
+
             db.inserir(sala);           
+        }
+        public void Validacao(Models.TbSala sala)
+        {
+            if(sala.NmLocal == string.Empty)
+            {
+                throw new ArgumentException("Local obrigatório");
+            }
+            if(sala.NmSala == string.Empty)
+            {
+                throw new ArgumentException("Sala obrigatório");
+            }         
+
         }
         public List<Models.TbSala> ListarTudo()
         {
@@ -25,6 +40,11 @@ namespace Vivencia19TardeAPI.Business
         }
         public void Alterar(Models.TbSala sala)
         {
+            if(sala.IdSala == 0)
+            {
+                throw new ArgumentException("ID inválido");
+            }
+
             db.alterar(sala);
         }
         public List<Models.TbSala> ConsultarPorInstituicao(string instituicao)
