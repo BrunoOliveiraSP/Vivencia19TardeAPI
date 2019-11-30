@@ -12,7 +12,7 @@ namespace Vivencia19TardeAPI.Business
         {
             if(tb.IdCurso <= 0 || tb.IdDisciplina <= 0 || tb.IdModulo <= 0 )
             {
-
+                
             }
             db.Inserir(tb);
         }
