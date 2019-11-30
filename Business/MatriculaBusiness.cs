@@ -8,7 +8,7 @@ namespace Vivencia19TardeAPI.Business
     public class MatriculaBusiness
     {
         AlunoBusiness alunoBusiness = new AlunoBusiness();
-        DocumentosBusiness documentosBusiness = new DocumentosBusiness();
+        AlunoDocumentosBusiness documentosBusiness = new AlunoDocumentosBusiness();
 
 
         public void Inserir(MatriculaRequest request)
