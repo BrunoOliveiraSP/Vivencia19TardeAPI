@@ -22,8 +22,25 @@ namespace Vivencia19TardeAPI.Database
             return Lista;
         } 
 
-        
+        public void alterar (Models.TbAlunoMensalidade mensalidade)
+        {
+            Models.TbAlunoMensalidade Novo = db.TbAlunoMensalidade.FirstOrDefault(x=> x.IdAluno == mensalidade.IdAluno);
 
+            Novo.BtIsento = mensalidade.BtIsento;
+            Novo.BtPago = mensalidade.BtPago;
+            Novo.DsMesref = mensalidade.DsMesref;
+            Novo.DsObservacao = mensalidade.DsObservacao;
+            Novo.DtInclusao = mensalidade.DtInclusao;
+            Novo.DtPagamento = mensalidade.DtPagamento;
+            Novo.DtUltimaAlteracao = mensalidade.DtUltimaAlteracao;
+            Novo.NrFolhaCarne = mensalidade.NrFolhaCarne;
+            Novo.NrOrdem = mensalidade.NrOrdem;
+            Novo.NrParcela = mensalidade.NrParcela;
+            Novo.TpPagamento = mensalidade.TpPagamento;
+            Novo.VlMensalidade = mensalidade.VlMensalidade;
+
+            db.SaveChanges();      
+        }
         public void Deletar(int id)
         {
             Models.TbAlunoMensalidade remover = db.TbAlunoMensalidade.FirstOrDefault(a => a.IdAluno == id);
