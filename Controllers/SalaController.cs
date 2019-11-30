@@ -16,8 +16,9 @@ namespace Vivencia19TardeAPI.Controllers
 
         [HttpPost("Inserir")]       
          public void Inserir(Models.TbSala sala)
-        {
-            business.Inserir(sala);
+        {        
+                business.Inserir(sala);
+            
         }
 
         [HttpGet("ListarTudo")]      
