@@ -77,8 +77,6 @@ namespace Vivencia19TardeAPI.Database
              Models.TbLogin alterado = db.TbLogin.FirstOrDefault(t => t.IdLogin == login.IdLogin);
 
              alterado.DsLogin = login.DsLogin;
-
-             db.SaveChanges();
         }
 
 
