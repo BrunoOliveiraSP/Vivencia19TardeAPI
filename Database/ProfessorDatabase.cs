@@ -43,7 +43,7 @@ namespace Vivencia19TardeAPI.Database
              db.SaveChanges();
         }
 
-        public void Alterar(Models.TbProfessor prof)
+        public void AlterarProfessor(Models.TbProfessor prof)
         {
             Models.TbProfessor alterado = db.TbProfessor.FirstOrDefault(t => t.IdProfessor == prof.IdProfessor);
             
@@ -70,6 +70,15 @@ namespace Vivencia19TardeAPI.Database
             alterado.DtFaculdadeFim = prof.DtFaculdadeFim;
 
             db.SaveChanges();
+        }
+
+        public void AlterarLogin(Models.TbLogin login)
+        {
+             Models.TbLogin alterado = db.TbLogin.FirstOrDefault(t => t.IdLogin == login.IdLogin);
+
+             alterado.DsLogin = login.DsLogin;
+
+             db.SaveChanges();
         }
 
 

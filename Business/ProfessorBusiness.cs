@@ -44,9 +44,10 @@ namespace Vivencia19TardeAPI.Business
             db.Remover(id);
         }
 
-        public void Alterar(Models.TbProfessor prof)
+        public void Alterar(Models.ProfessorRequest prof)
         {
-            db.Alterar(prof);
+            db.AlterarProfessor(prof.Professor);
+            db.AlterarLogin(prof.Login);
         }
 
         
