@@ -20,13 +20,16 @@ namespace Vivencia19TardeAPI.Business
 
        public void alterar (Models.TbAlunoMensalidade mensalidade)
        {
-           
+           dt.alterar(mensalidade);
        }
         public void Deletar(int id)
         {
             dt.Deletar(id);
         }
 
-        
+        public void validacao(Models.TbAlunoMensalidade mensalidade)
+        {
+
+        }
     }
 }
