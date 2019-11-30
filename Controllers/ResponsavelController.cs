@@ -10,7 +10,7 @@ namespace Vivencia19TardeAPI.Controllers
     [Route("[controller]")]
     public class ResponsavelController
     {
-        Business.ResponsavelBusiness business = new Business.ResponsavelBusiness();
+        Business.AlunoResponsavelBusiness business = new Business.AlunoResponsavelBusiness();
         [HttpPost]
         public void Inserir(Models.TbAlunoResponsavel responsavel)
         {
