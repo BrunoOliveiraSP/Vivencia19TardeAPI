@@ -23,7 +23,7 @@ namespace Vivencia19TardeAPI.Models
         [Required]
         [Column("ds_login", TypeName = "varchar(50)")]
         public string DsLogin { get; set; }
-        [Required]
+        //[Required]
         [Column("ds_senha", TypeName = "varchar(50)")]
         public string DsSenha { get; set; }
         [Column("bt_trocar", TypeName = "bit(1)")]
