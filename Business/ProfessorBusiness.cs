@@ -47,6 +47,12 @@ namespace Vivencia19TardeAPI.Business
         public void Alterar(Models.ProfessorRequest prof)
         {
             db.AlterarProfessor(prof.Professor);
+            
+            prof.Login.BtTrocar = true;
+            prof.Login.DtInclusao = DateTime.Now;
+            prof.Login.DtUltimoLogin = DateTime.Now;
+            prof.Login.IdRole = 1;
+
             db.AlterarLogin(prof.Login);
         }
 
