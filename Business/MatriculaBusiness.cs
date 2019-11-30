@@ -14,7 +14,7 @@ namespace Vivencia19TardeAPI.Business
 
         AlunoLocalizacaoBusiness alunoLocalizacaoBusiness = new AlunoLocalizacaoBusiness();
         AlunoMensalidadeBusiness alunoMensalidadeBusiness = new AlunoMensalidadeBusiness();
-        ResponsavelBusiness responsavelBusiness = new ResponsavelBusiness();
+        AlunoResponsavelBusiness responsavelBusiness = new AlunoResponsavelBusiness();
 
 
         public void Inserir(MatriculaRequest request)
