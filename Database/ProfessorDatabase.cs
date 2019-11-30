@@ -36,13 +36,20 @@ namespace Vivencia19TardeAPI.Database
             return professor;
         }
 
-        public void Remover(int id)
+        public void RemoverProfessor(int id)
         {
             Models.TbProfessor delete = db.TbProfessor.FirstOrDefault(x => x.IdProfessor == id);
              db.TbProfessor.Remove(delete);
              db.SaveChanges();
         }
-
+ 
+        public void RemoverLogin(int id)
+        {
+            Models.TbLogin delete = db.TbLogin.FirstOrDefault(x => x.IdLogin == id);
+            db.TbLogin.Remove(delete);
+            db.SaveChanges();
+        }
+        
         public void AlterarProfessor(Models.TbProfessor prof)
         {
             Models.TbProfessor alterado = db.TbProfessor.FirstOrDefault(t => t.IdProfessor == prof.IdProfessor);

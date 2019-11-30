@@ -26,11 +26,12 @@ namespace Vivencia19TardeAPI.Controllers
 
         }
 
-        [HttpDelete("{id}")]
-        public void Remover(int id)
+         [HttpDelete("{idProfessor}/{idLogin}")]
+        public void Remover(int idProfessor, int idLogin)
         {
-            bs.Remover(id);
+            bs.Remover(idProfessor, idLogin);
         }
+
 
         [HttpGet]
         public List<Models.TbProfessor> ListarTodos ()
