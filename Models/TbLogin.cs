@@ -33,7 +33,7 @@ namespace Vivencia19TardeAPI.Models
         [Column("dt_ultimo_login", TypeName = "datetime")]
         public DateTime DtUltimoLogin { get; set; }
         [Column("bt_ativo", TypeName = "bit(1)")]
-        public ulong BtAtivo { get; set; }
+        public bool BtAtivo { get; set; }
 
         [ForeignKey(nameof(IdRole))]
         [InverseProperty(nameof(TbRole.TbLogin))]
