@@ -13,6 +13,7 @@ namespace Vivencia19TardeAPI.Business
         {
             db.Inserir(sala);
         }
+            
         public List<Models.TbSalaVestibular> ListarTudo()
         {
             List<Models.TbSalaVestibular> sala = db.Listar();
