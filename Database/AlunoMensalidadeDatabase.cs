@@ -15,7 +15,7 @@ namespace Vivencia19TardeAPI.Database
             db.Add(ModelAlunoMensalidade);
         }
 
-        public List<Models.TbAlunoMensalidade> Consultar()
+        public List<Models.TbAlunoMensalidade> ListarTodos()
         {
             List<Models.TbAlunoMensalidade> Lista = db.TbAlunoMensalidade.ToList();
 
