@@ -25,7 +25,7 @@ namespace Vivencia19TardeAPI.Models
         [Column("nr_capacidade_maxima", TypeName = "int(11)")]
         public int NrCapacidadeMaxima { get; set; }
         [Column("bt_ativo", TypeName = "bit(1)")]
-        public bool BtAtivo { get; set; }
+        public ulong BtAtivo { get; set; }
         [Column("dt_inclusao", TypeName = "datetime")]
         public DateTime DtInclusao { get; set; }
         [Column("dt_alteracao", TypeName = "datetime")]
