@@ -9,9 +9,8 @@ namespace Vivencia19TardeAPI.Models
         public TbAlunoLocalizacao Localizacao{get;set;}
         public TbAlunoMensalidade Mensalidade{get;set;}
         public TbAlunoResponsavel Responsavel {get;set;}
-        public TbDiarioAvaliacao Avaliacao{get;set;}
-        public TbDiarioFrequencia Frequencia{get;set;}
-        
+        public TbTurmaAluno TurmaAluno {get;set;}
+
 
     }
 }
