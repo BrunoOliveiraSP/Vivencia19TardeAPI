@@ -20,12 +20,20 @@ namespace Vivencia19TardeAPI.Controllers
             Bus.Inserir(mensalidade);
         }
 
-         [HttpGet]
-         public List<TbAlunoMensalidade> Consultar()
-         {
-             List<TbAlunoMensalidade> lista = Bus.Consultar();
-             return lista;
-         }
+        [HttpGet]
+
+        public List<Models.TbAlunoMensalidade> ListarTodos()
+        {
+            List<Models.TbAlunoMensalidade> lista = Bus.ListarTodos();
+            return lista;
+        }
+
+        [HttpPut]
+        public void alterar (TbAlunoMensalidade mensalidade)
+        {
+            Bus.alterar(mensalidade);
+        } 
+         
          
          [HttpDelete]
          public void Deletar(int id)
@@ -34,10 +42,7 @@ namespace Vivencia19TardeAPI.Controllers
              
          }
 
-         [HttpPut]
-         public void Alterar(int id,TbAlunoMensalidade mensalidade)
-         {
-             Bus.Alterar(id, mensalidade);
-         }
+      
+        
     }
 }

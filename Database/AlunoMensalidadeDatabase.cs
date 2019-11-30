@@ -15,29 +15,32 @@ namespace Vivencia19TardeAPI.Database
             db.Add(ModelAlunoMensalidade);
         }
 
-        public List<Models.TbAlunoMensalidade> Consultar()
+        public List<Models.TbAlunoMensalidade> ListarTodos()
         {
             List<Models.TbAlunoMensalidade> Lista = db.TbAlunoMensalidade.ToList();
 
             return Lista;
         } 
 
-        public void Alterar(int id,TbAlunoMensalidade mensalidade)
+        public void alterar (Models.TbAlunoMensalidade mensalidade)
         {
-            Models.TbAlunoMensalidade alterar = db.TbAlunoMensalidade.FirstOrDefault(t => t.IdAluno == id);
+            Models.TbAlunoMensalidade Novo = db.TbAlunoMensalidade.FirstOrDefault(x=> x.IdAluno == mensalidade.IdAluno);
 
-            alterar.DsEmail = mensalidade.DsEmail;
-            alterar.DsParentesco = mensalidade.DsParentesco;
-            alterar.DsRg = mensalidade.DsRg;
-            alterar.DsTelefone1 = mensalidade.DsTelefone1;
-            alterar.DsTelefone2 = mensalidade.DsTelefone2;
-            alterar.DtInclusao = mensalidade.DtInclusao;
-            alterar.DtUltimaAlteracao = mensalidade.DtUltimaAlteracao;
-            alterar.NmResponsavel = mensalidade.NmResponsavel;
+            Novo.BtIsento = mensalidade.BtIsento;
+            Novo.BtPago = mensalidade.BtPago;
+            Novo.DsMesref = mensalidade.DsMesref;
+            Novo.DsObservacao = mensalidade.DsObservacao;
+            Novo.DtInclusao = mensalidade.DtInclusao;
+            Novo.DtPagamento = mensalidade.DtPagamento;
+            Novo.DtUltimaAlteracao = mensalidade.DtUltimaAlteracao;
+            Novo.NrFolhaCarne = mensalidade.NrFolhaCarne;
+            Novo.NrOrdem = mensalidade.NrOrdem;
+            Novo.NrParcela = mensalidade.NrParcela;
+            Novo.TpPagamento = mensalidade.TpPagamento;
+            Novo.VlMensalidade = mensalidade.VlMensalidade;
 
-            db.SaveChanges();
+            db.SaveChanges();      
         }
-
         public void Deletar(int id)
         {
             Models.TbAlunoMensalidade remover = db.TbAlunoMensalidade.FirstOrDefault(a => a.IdAluno == id);

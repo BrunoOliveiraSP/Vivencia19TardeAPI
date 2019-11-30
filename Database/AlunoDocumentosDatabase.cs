@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 namespace Vivencia19TardeAPI.Database
 {
     
-    public class DocumentosDatabase
+    public class AlunoDocumentosDatabase
     {
         Models.db_a5064d_freiContext DB = new Models.db_a5064d_freiContext();
 

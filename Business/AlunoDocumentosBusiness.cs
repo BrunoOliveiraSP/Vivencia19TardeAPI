@@ -4,9 +4,9 @@ using System;
 
 namespace Vivencia19TardeAPI.Business
 {
-    public class DocumentosBusiness
+    public class AlunoDocumentosBusiness
     {
-        Database.DocumentosDatabase db = new Database.DocumentosDatabase();
+        Database.AlunoDocumentosDatabase db = new Database.AlunoDocumentosDatabase();
         public void Inserir(Models.TbAlunoDocumentos documentos)
         {
             if(documentos.NmDocumento == string.Empty)

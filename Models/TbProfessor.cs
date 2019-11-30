@@ -63,7 +63,7 @@ namespace Vivencia19TardeAPI.Models
         [Column("tp_contratacao", TypeName = "varchar(50)")]
         public string TpContratacao { get; set; }
         [Column("bt_ativo", TypeName = "bit(1)")]
-        public bool BtAtivo { get; set; }
+        public ulong BtAtivo { get; set; }
         [Required]
         [Column("ds_faculdade", TypeName = "varchar(50)")]
         public string DsFaculdade { get; set; }
