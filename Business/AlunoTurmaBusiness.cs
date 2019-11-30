@@ -6,6 +6,7 @@ namespace Vivencia19TardeAPI.Business
 
         public void Inserir(Models.TbTurmaAluno turmaAluno)
         {
+
             DB.Inserir(turmaAluno);
         }
     }
