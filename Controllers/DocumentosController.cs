@@ -13,7 +13,7 @@ namespace Vivencia19TardeAPI.Controllers
     public class DocumentosController:ControllerBase
     {
         
-        Business.DocumentosBusiness business = new Business.DocumentosBusiness();
+        Business.AlunoDocumentosBusiness business = new Business.AlunoDocumentosBusiness();
         [HttpPost]
         public void Inserir (TbAlunoDocumentos documentos)
         {

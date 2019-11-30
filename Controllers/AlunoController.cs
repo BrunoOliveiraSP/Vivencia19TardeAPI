@@ -29,8 +29,8 @@ namespace Vivencia19TardeAPI.Controllers
          [HttpDelete]
          public void Deletar(Models.TbAluno aluno)
          {
-             Bus.Deletar(aluno);
-             
+             Models.TbAluno consulta = Bus.consular(aluno);
+             Bus.Deletar(consulta.IdAluno); 
          }
          [HttpPut]
          public void Alterar(Models.TbAluno aluno)

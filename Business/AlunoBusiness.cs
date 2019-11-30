@@ -31,9 +31,14 @@ namespace Vivencia19TardeAPI.Business
            DB.Alterar(nova);
         }
 
-        public void Deletar(Models.TbAluno Aluno)
+        public void Deletar(int id)
         {
-            DB.Deletar(Aluno);
+            DB.Deletar(id);
+        }
+
+        public Models.TbAluno consular (Models.TbAluno aluno)
+        {
+            return DB.consultar(aluno);
         }
 
         private void validacao (Models.TbAluno aluno)

@@ -50,14 +50,21 @@ namespace Vivencia19TardeAPI.Database
             DB.SaveChanges();
         }
 
-        public void Deletar(Models.TbAluno Aluno)
+        public void Deletar(int id)
         {
-            Models.TbAluno Deletado = DB.TbAluno.FirstOrDefault(t=> t.IdAluno == Aluno.IdAluno);
+            Models.TbAluno Deletado = DB.TbAluno.FirstOrDefault(t=> t.IdAluno == id);
 
             DB.Remove(Deletado);
             DB.SaveChanges();
         }
     
+        public Models.TbAluno consultar (Models.TbAluno aluno)
+        {
+            Models.TbAluno consulta = DB.TbAluno.FirstOrDefault(x=> x.DsCpf == aluno.DsCpf 
+                                                             && x.NmAluno == aluno.NmAluno);
 
+
+            return consulta;
+        }
     }
 }

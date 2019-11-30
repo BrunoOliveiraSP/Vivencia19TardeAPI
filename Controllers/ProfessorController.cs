@@ -20,7 +20,7 @@ namespace Vivencia19TardeAPI.Controllers
         }
 
         [HttpPut]
-        public void Alterar(Models.TbProfessor professor)
+        public void Alterar(Models.ProfessorRequest professor)
         {
             bs.Alterar(professor);
 
