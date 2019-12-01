@@ -1,31 +1,50 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using Vivencia19TardeAPI.Models;
 
 namespace Vivencia19TardeAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
 
-    public class DisciplinaController
+    public class DisciplinaController : ControllerBase
     {
         Business.DisciplinaBusiness bu = new Business.DisciplinaBusiness();
+        
 
         [HttpPost]
-        public void Inserir(Models.TbDisciplina disc)
+        public ActionResult Inserir(Models.TbDisciplina disc)
         {
-            bu.Inserir(disc);
+            try
+            {
+              bu.Inserir(disc);
+              return Ok();
+            }
+            catch(System.Exception ex)
+            {
+              ErrorModel error = new ErrorModel(500, ex.Message);
+              return StatusCode(500, error);
+            }
+            
         }
-
-
+        
          [HttpPut]
-
-         public void AlterarDisciplina (Models.TbDisciplina disciplina)
+         public ActionResult AlterarDisciplina (Models.TbDisciplina disciplina)
          {
-             bu.Alterar(disciplina);
+             try
+            {
+              bu.Alterar(disciplina);
+              return Ok();
+            }
+            catch(System.Exception ex)
+            {
+              ErrorModel error = new ErrorModel(500, ex.Message);
+              return StatusCode(500, error);
+            }
          } 
          
         [HttpGet("ListarTodos")]
@@ -34,25 +53,26 @@ namespace Vivencia19TardeAPI.Controllers
           public List<Models.TbDisciplina> ListarTodos()
           {
              return bu.ListarTodos();
-        
           }
 
-
-
           [HttpDelete("{id}")]
-        
           public void Deletar(int id)
           {
               bu.Deletar(id);
           }
 
-
-
           [HttpGet("ListarNomeSigla/{Nome}/{Sigla}")]
-        
-          public List<Models.TbDisciplina> ListarNomeSigla(string Nome, string Sigla)
+          public ActionResult<List<Models.TbDisciplina>> ListarNomeSigla(string Nome, string Sigla)
           {
+               try
+            {
              return bu.ListarNomeSigla(Nome, Sigla);
+            }
+            catch(System.Exception ex)
+            {
+              ErrorModel error = new ErrorModel(500, ex.Message);
+              return StatusCode(500, error);
+            }
           }
         
     }
