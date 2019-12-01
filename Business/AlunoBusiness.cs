@@ -47,7 +47,6 @@ namespace Vivencia19TardeAPI.Business
             Models.TbAluno Individuo = DB.Carregar(aluno);
             int diferença = Convert.ToInt32(DateTime.Now.Year - aluno.DtNascimento.Year);
 
-
             if (aluno.NmAluno == string.Empty)
             throw new ArgumentException("O campo de Nome é obrigatorio");
 
@@ -75,12 +74,8 @@ namespace Vivencia19TardeAPI.Business
             else if (aluno.DtNascimento == null)
             throw new ArgumentException("O campo de Data de Nascimento é obrigatorio");
 
-            
             else if (diferença <=14 || diferença >=25 )
             throw new ArgumentException("O individuo não tem a idade necessária para ingressar no curso");
-
-            
-
         }
     }
 }
