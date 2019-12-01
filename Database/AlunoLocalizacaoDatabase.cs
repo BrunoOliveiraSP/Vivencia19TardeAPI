@@ -23,9 +23,9 @@ namespace Vivencia19TardeAPI.Database
             return Lista;
         } 
 
-        public void Alterar(int id,TbAlunoLocalizacao local)
+        public void Alterar(TbAlunoLocalizacao local)
         {
-            Models.TbAlunoLocalizacao alterar = db.TbAlunoLocalizacao.FirstOrDefault(t => t.IdAluno == id);
+            Models.TbAlunoLocalizacao alterar = db.TbAlunoLocalizacao.FirstOrDefault(t => t.IdAluno == local.IdAluno);
 
             alterar.DsNascimentoEstado = local.DsNascimentoEstado;
             alterar.DsNascimentoPais = local.DsNascimentoPais;

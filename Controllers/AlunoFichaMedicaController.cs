@@ -37,7 +37,7 @@ namespace Vivencia19TardeAPI.Controllers
          [HttpPut]
          public void Alterar(int id,TbAlunoFichaMedica fichaMedica)
          {
-             Bus.Alterar(id, fichaMedica);
+             Bus.Alterar(fichaMedica);
          }
     }
 }

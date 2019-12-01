@@ -62,7 +62,7 @@ namespace Vivencia19TardeAPI.Business
            List<Models.TbAlunoLocalizacao> lista = dt.Consultar();
            return lista;
         }
-        public void Alterar(int id,TbAlunoLocalizacao ModelAlunoLocalizacao)
+        public void Alterar(TbAlunoLocalizacao ModelAlunoLocalizacao)
         {
             if(ModelAlunoLocalizacao.DsNascimentoCidade == string.Empty)
            {
@@ -109,7 +109,7 @@ namespace Vivencia19TardeAPI.Business
                 throw new ArgumentException("Número da casa é obrigatório");
            }
 
-            dt.Alterar(id, ModelAlunoLocalizacao);
+            dt.Alterar( ModelAlunoLocalizacao);
         }
         public void Deletar(int id)
         {

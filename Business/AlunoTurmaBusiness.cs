@@ -8,5 +8,10 @@ namespace Vivencia19TardeAPI.Business
         {
             DB.Inserir(turmaAluno);
         }
+
+        public void Alterar (Models.TbTurmaAluno turmaAluno)
+        {
+            DB.alterar(turmaAluno);
+        }
     }
 }

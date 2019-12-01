@@ -1,3 +1,8 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 namespace Vivencia19TardeAPI.Database
 {
     public class AlunoTurmaDatabase
@@ -8,5 +13,18 @@ namespace Vivencia19TardeAPI.Database
             DB.TbTurmaAluno.Add(turmaAluno);
             DB.SaveChanges();
         }
+
+        public void alterar(Models.TbTurmaAluno turmaAluno)
+        {
+            Models.TbTurmaAluno novo = DB.TbTurmaAluno.FirstOrDefault(x=> x.IdAluno == turmaAluno.IdAluno);
+
+            novo.NrChamada = turmaAluno.NrChamada;
+            novo.BtAtivo = turmaAluno.BtAtivo;
+            novo.BtPermissaoAtraso = turmaAluno.BtPermissaoAtraso;
+            novo.CdRa = turmaAluno.CdRa;
+            novo.DsObservacao = turmaAluno.DsObservacao;
+
+            DB.SaveChanges();
+        } 
     }
 }
