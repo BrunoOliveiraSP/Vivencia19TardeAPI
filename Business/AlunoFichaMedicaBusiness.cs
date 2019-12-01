@@ -19,9 +19,9 @@ namespace Vivencia19TardeAPI.Business
             List<TbAlunoFichaMedica> lista =dt.Consultar();
             return lista;
         }
-        public void Alterar(int id,TbAlunoFichaMedica ficha)
+        public void Alterar(TbAlunoFichaMedica ficha)
         {
-            dt.Alterar(id,ficha);
+            dt.Alterar(ficha);
         }
         public void Deletar(int id)
         {

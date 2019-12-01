@@ -22,9 +22,9 @@ namespace Vivencia19TardeAPI.Database
             return Lista;
         } 
 
-        public void Alterar(int id,TbAlunoFichaMedica ficha)
+        public void Alterar(TbAlunoFichaMedica ficha)
         {
-            Models.TbAlunoFichaMedica alterar = db.TbAlunoFichaMedica.FirstOrDefault(t => t.IdAluno == id);
+            Models.TbAlunoFichaMedica alterar = db.TbAlunoFichaMedica.FirstOrDefault(t => t.IdAluno == ficha.IdAluno);
 
             alterar.DsAcompanhamento = ficha.DsAcompanhamento;
             alterar.DsAlergias = ficha.DsAlergias;

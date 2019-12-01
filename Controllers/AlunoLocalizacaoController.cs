@@ -37,7 +37,7 @@ namespace Vivencia19TardeAPI.Controllers
          [HttpPut]
          public void Alterar(int id,Models.TbAlunoLocalizacao localizacao)
          {
-             Bus.Alterar(id, localizacao);
+             Bus.Alterar(localizacao);
          }
     }
 }
