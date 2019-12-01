@@ -15,20 +15,34 @@ namespace Vivencia19TardeAPI.Business
 
         public void Inserir(Models.TbDisciplina disciplina)
         {
-           bool existe = db.ConsultarExistencia(disciplina);
-            
+           bool existe = db.ConsultarExistenciaNome(disciplina);
+           bool existesigla = db.ConsultarExistenciaDS(disciplina);
+           string sigla = disciplina.DsSigla;
+           
 
             if(existe)
             {
-                throw new ArgumentException("Disciplina já existe");
+                throw new ArgumentException(" Essa disciplina já existe");
             }
-            
-
-            string sigla = disciplina.NmDisciplina;
-
-             if(sigla.Length > 30)
+            if(disciplina.NmDisciplina.Length > 30)
+            {
+                 throw new ArgumentException("Nome Da disciplina é muito extensa");
+            }
+             if(disciplina.DsSigla.Length > 30)
              {
                  throw new ArgumentException("A sigla é muito extensa");
+             }
+             if(disciplina.NmDisciplina.Length < 5)
+             {
+                 throw new ArgumentException("Nome é obrigatório");
+             }
+             if(disciplina.DsSigla.Length < 2)
+             {
+                 throw new ArgumentException("Sigla obrigatória");
+             }
+             if(existesigla)
+             {
+               throw new ArgumentException(" Essa sigla já existe");
              }
             
                db.Inserir(disciplina);
@@ -38,7 +52,7 @@ namespace Vivencia19TardeAPI.Business
           public  void Alterar (Models.TbDisciplina disciplina)
           {
               
-           bool existe = db.ConsultarExistencia(disciplina);
+           bool existe = db.ConsultarExistenciaNome(disciplina);
            bool existeDS = db.ConsultarExistenciaDS(disciplina);
            string disci = disciplina.NmDisciplina;
 
@@ -72,6 +86,14 @@ namespace Vivencia19TardeAPI.Business
             {
                 throw new ArgumentException("Esta alteração não pode ser feita, a Sigla já existe");
             }
+            if(disciplina.NmDisciplina.Length < 5)
+             {
+                 throw new ArgumentException("Nome é obrigatório");
+             }
+             if(disciplina.DsSigla.Length < 2)
+             {
+                 throw new ArgumentException("Sigla obrigatória");
+             }
              
              
             db.Alterar(disciplina);

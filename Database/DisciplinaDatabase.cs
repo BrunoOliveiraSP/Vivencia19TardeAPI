@@ -17,7 +17,7 @@ namespace Vivencia19TardeAPI.Database
            db.Add(disciplina);
            db.SaveChanges();
        }
-       public bool ConsultarExistencia(Models.TbDisciplina disciplina)
+       public bool ConsultarExistenciaNome(Models.TbDisciplina disciplina)
        {
            bool existe = db.TbDisciplina.Any(x => x.NmDisciplina == disciplina.NmDisciplina);
 
