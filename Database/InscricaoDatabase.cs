@@ -111,5 +111,26 @@ namespace Vivencia19TardeAPI.Database
                                              x.NmInscrito.Contains(nome))
                                  .ToList();
         }
+
+        public bool ExisteCandidato(string candidato, int idAno)
+        {
+            return db.TbInscricao.Any(x => x.NmInscrito == candidato &&
+                                      x.IdAnoLetivo == idAno);
+        }
+
+        public bool ExisteCodigoInscrição(int codigo)
+        {
+            return  db.TbInscricao.Any(x => x.CdInscricao == codigo);
+        }
+
+        public bool ExisteRG(string rg)
+        {
+            return db.TbInscricao.Any(x => x.DsRg == rg);
+        }
+
+        public bool ExisteCpf(string cpf)
+        {
+            return db.TbInscricao.Any(x => x.DsCpf == cpf);
+        }
     }
 }
