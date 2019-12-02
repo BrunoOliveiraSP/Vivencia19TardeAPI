@@ -34,6 +34,18 @@ namespace Vivencia19TardeAPI.Business
             return sala;
 
         }
+        public void Verificacao(Models.TbSala sala)
+        {
+            if(sala.IdSala == 0)
+            {
+                this.Inserir(sala);
+            }
+            if(sala.IdSala >= 1)
+            {
+                this.Alterar(sala);
+            }
+            
+        }
         public void Remover(int id)
         {
             db.remover(id);

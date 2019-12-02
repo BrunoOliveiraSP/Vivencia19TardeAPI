@@ -12,7 +12,7 @@ namespace Vivencia19TardeAPI.Database
         public void inserir(Models.TbSala sala)
         {
             md.TbSala.Add(sala);
-             md.SaveChanges();
+            md.SaveChanges();
         }
         public List<Models.TbSala> Listar()
         {

@@ -17,7 +17,7 @@ namespace Vivencia19TardeAPI.Controllers
         [HttpPost("Inserir")]       
          public void Inserir(Models.TbSala sala)
         {        
-                business.Inserir(sala);
+                business.Verificacao(sala);
             
         }
 
@@ -36,7 +36,7 @@ namespace Vivencia19TardeAPI.Controllers
         [HttpPut("Alterar")]
         public void Alterar(Models.TbSala sala)
         {
-            business.Alterar(sala);
+            business.Verificacao(sala);
         }
        
        [HttpGet("ListarNome/{instituicao}")]
