@@ -78,9 +78,6 @@ namespace Vivencia19TardeAPI.Business
            }
 
 
-            dt.Alterar( ModelAlunoLocalizacao);
-
-
         }
     }
 }
