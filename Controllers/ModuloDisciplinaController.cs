@@ -29,12 +29,32 @@ namespace Vivencia19TardeAPI.Controllers
                 return StatusCode(500, error);
             }
         }
-
         [HttpGet]
         public List<Models.TbModuloDisciplina> ListarTodos()
         {
            List<Models.TbModuloDisciplina> tb = bs.ListaTodos();
            return tb;
+        }
+
+        [HttpPut]
+        public void Alterar(Models.TbModuloDisciplina tb)
+        {
+            bs.Alterar(tb);
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult Deletar(int id)
+        {
+            try
+            {
+                bs.Deletar(id);
+                return Ok();
+            }
+            catch (System.Exception ex)
+            {
+                ErrorModel error = new ErrorModel(500, ex.Message);
+                return StatusCode(500, error);
+            } 
         }
     }
 }

@@ -18,5 +18,22 @@ namespace Vivencia19TardeAPI.Database
         {
             return db.TbModuloDisciplina.ToList();
         }
+        public void Alterar(Models.TbModuloDisciplina tb)
+        {
+            Models.TbModuloDisciplina alt = db.TbModuloDisciplina.FirstOrDefault(x => x.id_modulo_disciplina == tb.id_modulo_disciplina);
+
+            alt.id_disciplina = tb.id_disciplina;
+            alt.id_curso = tb.id_curso;
+            alt.id_modulo = tb.id_modulo;
+
+            db.SaveChanges();
+        }
+        public void Remover(int id)
+        {
+            Models.TbModuloDisciplina del = db.TbModuloDisciplina.FirstOrDefault(x => x.id_modulo_disciplina == id);
+
+            db.Remove(del);
+            db.SaveChanges();
+        }
     }
 }

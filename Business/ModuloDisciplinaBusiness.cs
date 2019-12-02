@@ -20,5 +20,17 @@ namespace Vivencia19TardeAPI.Business
         {
             return db.ConsultarTodos();
         }
+        public void Alterar(Models.TbModuloDisciplina tb)
+        {
+            return db.Alterar(tb);
+        }
+        public void Deletar(int id)
+        {
+            if (id <= 0)
+            {
+                throw new ArgumentException("ID Ivalido.");
+            }
+            db.Deletar(id);
+        }
     }
 }
