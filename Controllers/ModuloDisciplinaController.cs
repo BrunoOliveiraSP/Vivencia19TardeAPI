@@ -11,16 +11,25 @@ namespace Vivencia19TardeAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ModuloDisciplina : ControllerBase
+    public class ModuloDisciplinaController : ControllerBase
     {
         Business.ModuloDisciplinaBusiness bs = new Business.ModuloDisciplinaBusiness();
 
         [HttpPost]
-        public void Inserir(Models.TbModuloDisciplina tb)
+        public ActionResult Inserir(Models.TbModuloDisciplina tb)
         {
-            bs.Inserir(tb);
+            try
+            {
+                bs.Inserir(tb);
+                return Ok();
+            }
+            catch (System.Exception ex)
+            {
+                ErrorModel error = new ErrorModel(500, ex.Message);
+                return StatusCode(500, error);
+            }
         }
-        
+
         [HttpGet]
         public List<Models.TbModuloDisciplina> ListarTodos()
         {

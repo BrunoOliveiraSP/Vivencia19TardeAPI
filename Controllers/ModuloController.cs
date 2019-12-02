@@ -14,20 +14,38 @@ namespace Vivencia19TardeAPI.Controllers
        Business.ModuloBusiness db = new Business.ModuloBusiness();
         
         [HttpPost]
-        public void Inserir(Models.TbModulo modulo)
+        public ActionResult Inserir(Models.TbModulo modulo)
         {
-            db.Inserir(modulo);
+            try
+            {
+                db.Inserir(modulo);
+                return Ok();
+            }
+            catch (ExceSystem.Exception ex)
+            {
+                ErrorModel error = new ErrorModel(500, ex.Message);
+                return StatusCode(500, error);
+            }
         }
-         [HttpGet]
+        [HttpGet]
          public List<Models.TbModulo> ListarTodos()
          {
              List<Models.TbModulo> lista = db.ConsultarTodos();
              return lista;
          }
          [HttpPut]
-        public void Alterar(Models.TbModulo modulo) 
+        public ActionResult Alterar(Models.TbModulo modulo) 
         {
-            db.Alterar(modulo);
+            try
+            {
+                db.Alterar(modulo);
+                return Ok();
+            }
+            catch (ExceSystem.Exception ex)
+            {
+                ErrorModel error = new ErrorModel(500, ex.Message);
+                return StatusCode(500, error);
+            }
         }
         [HttpDelete ("{id}")]
         public void Remover(int id)
