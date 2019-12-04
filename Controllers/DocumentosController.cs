@@ -42,7 +42,7 @@ namespace Vivencia19TardeAPI.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            business.Remover(id);
+            business.Deletar(id);
         } 
 
 

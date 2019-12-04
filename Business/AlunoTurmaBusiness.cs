@@ -1,3 +1,10 @@
+using Vivencia19TardeAPI.Models;
+using System;
+using System.Collections;
+using System.Linq;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using Microsoft.Extensions.Logging;
 namespace Vivencia19TardeAPI.Business
 {
     public class AlunoTurmaBusiness
@@ -12,7 +19,18 @@ namespace Vivencia19TardeAPI.Business
 
         public void Alterar (Models.TbTurmaAluno turmaAluno)
         {
-            DB.alterar(turmaAluno);
+            DB.Alterar(turmaAluno);
+        }
+
+        public List<Models.TbTurmaAluno> ListarTodos()
+        {
+            List<Models.TbTurmaAluno> lista = DB.Litar();
+            return lista;
+        }
+
+        public void Deletar (int id)
+        {
+            DB.Deletar(id);
         }
     }
 }

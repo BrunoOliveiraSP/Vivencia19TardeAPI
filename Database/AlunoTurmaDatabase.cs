@@ -1,8 +1,9 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Linq.Expressions;
+
 namespace Vivencia19TardeAPI.Database
 {
     public class AlunoTurmaDatabase
@@ -14,7 +15,7 @@ namespace Vivencia19TardeAPI.Database
             DB.SaveChanges();
         }
 
-        public void alterar(Models.TbTurmaAluno turmaAluno)
+        public void Alterar(Models.TbTurmaAluno turmaAluno)
         {
             Models.TbTurmaAluno novo = DB.TbTurmaAluno.FirstOrDefault(x=> x.IdAluno == turmaAluno.IdAluno);
 
@@ -26,5 +27,20 @@ namespace Vivencia19TardeAPI.Database
 
             DB.SaveChanges();
         } 
+
+        public List<Models.TbTurmaAluno> Listar (Models.TbTurmaAluno turmaAluno)
+        {
+            List<Models.TbTurmaAluno> lista = DB.TbTurmaAluno();
+            return lista;
+        }
+
+        public void Deletar (int id)
+        {
+            Models.TbTurmaAluno Deletar = DB.TbTurmaAluno.FirstOrDefault(x=> x.IdAluno == id);
+
+            DB.Remove(Deletar);
+            DB.SaveChanges();
+        }
+    
     }
 }

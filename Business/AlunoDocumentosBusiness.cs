@@ -30,7 +30,7 @@ namespace Vivencia19TardeAPI.Business
         {
             db.Alterar(documentos);
         }
-        public void Remover (int id)
+        public void Deletar (int id)
         {
             db.Deletar(id);
         }

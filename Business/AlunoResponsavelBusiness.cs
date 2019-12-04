@@ -29,7 +29,7 @@ namespace Vivencia19TardeAPI.Business
 
             db.Alterar(responsavel);
         }
-        public void Remover(int id)
+        public void Deletar(int id)
         {
             db.Remove(id);
         }

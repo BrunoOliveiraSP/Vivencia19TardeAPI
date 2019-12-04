@@ -72,5 +72,31 @@ namespace Vivencia19TardeAPI.Business
             AlunoCarometroBusiness.Alterar(request.Carometro);
         }
 
+        public void Deletar (MatriculaRequest request)
+        {
+             AlunoBusiness.Deletar(request.Aluno.IdAluno);
+
+            request.Documentos.IdAluno = request.Aluno.IdAluno;
+            AlunoDocumentosBusiness.Deletar(request.Documentos.IdAluno);
+
+            request.FichaMedica.IdAluno = request.Aluno.IdAluno;
+            AlunoFichaMedicaBusiness.Deletar(request.FichaMedica.IdAluno);
+
+            request.Localizacao.IdAluno = request.Aluno.IdAluno;
+            AlunoLocalizacaoBusiness.Deletar(request.Localizacao.IdAluno);
+
+            request.Mensalidade.IdAluno = request.Aluno.IdAluno;
+            AlunoMensalidadeBusiness.Deletar(request.Mensalidade.IdAluno);
+
+            request.Responsavel.IdAluno = request.Aluno.IdAluno;
+            AlunoResponsavelBusiness.Deletar(request.Responsavel.IdAluno);
+
+            request.TurmaAluno.IdAluno = request.Aluno.IdAluno;
+            AlunoTurmaBusiness.Deletar(request.TurmaAluno.IdAluno);
+
+            request.Carometro.IdAluno = request.Aluno.IdAluno;
+            AlunoCarometroBusiness.Deletar(request.Carometro.IdAluno);
+        }
+
     }
 }
