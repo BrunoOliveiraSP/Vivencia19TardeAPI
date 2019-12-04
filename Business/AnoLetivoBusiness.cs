@@ -28,12 +28,29 @@ namespace Vivencia19TardeAPI.Business
             List<Models.TbAnoLetivo> lista = db.ListarTodos();
             return lista;
         }
-        public void Alterar(Models.TbAnoLetivo ano)
+
+         
+        public void Alterar(Models.TbAnoLetivo anoLetivo)
         {
-            db.Alterar(ano);
+            if(anoLetivo.IdAnoLetivo == 0)
+            throw new ArgumentException("ID Inválido");
+
+            if(anoLetivo.NrAno == 0)
+            throw new ArgumentException("Ano Obrigatório");
+
+            if(anoLetivo.DtFim <= anoLetivo.DtInicio)
+            throw new ArgumentException("Data Final Inválida");
+
+            if(anoLetivo.TpStatus == string.Empty)
+            throw new ArgumentException("Status Obrigatório");
+
+            db.Alterar(anoLetivo);
         }
         public void Remover (int id)
         {
+            if(id == 0)
+            throw new ArgumentException("ID Inválido");
+
             db.Remover(id);
         }
         public void InserirModulo(Models.TbModulo modulo)
@@ -46,8 +63,8 @@ namespace Vivencia19TardeAPI.Business
 
             if(modulo.DtInicio == null || modulo.DtFinal == null)
              throw new ArgumentException("Datas Invalidas Invalido");
-
              
+                      
         }
         public List<Models.TbModulo> ConsultarModulo()
         {
