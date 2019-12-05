@@ -12,7 +12,7 @@ namespace Vivencia19TardeAPI.Business
         {
             if(tb.IdCurso <= 0 || tb.IdDisciplina <= 0 || tb.IdModulo <= 0 )
             {
-                throw new ArgumentException("Informações Ivalidas.");
+                throw new ArgumentException("Informaï¿½ï¿½es Ivalidas.");
             }
             db.Inserir(tb);
         }
@@ -22,7 +22,7 @@ namespace Vivencia19TardeAPI.Business
         }
         public void Alterar(Models.TbModuloDisciplina tb)
         {
-            return db.Alterar(tb);
+            db.Alterar(tb);
         }
         public void Deletar(int id)
         {
@@ -30,7 +30,7 @@ namespace Vivencia19TardeAPI.Business
             {
                 throw new ArgumentException("ID Ivalido.");
             }
-            db.Deletar(id);
+            db.Remover(id);
         }
     }
 }
