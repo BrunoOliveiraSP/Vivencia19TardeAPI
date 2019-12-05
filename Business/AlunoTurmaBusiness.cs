@@ -24,7 +24,7 @@ namespace Vivencia19TardeAPI.Business
 
         public List<Models.TbTurmaAluno> ListarTodos()
         {
-            List<Models.TbTurmaAluno> lista = DB.Litar();
+            List<Models.TbTurmaAluno> lista = DB.Listar();
             return lista;
         }
 

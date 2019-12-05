@@ -29,9 +29,9 @@ namespace Vivencia19TardeAPI.Controllers
             business.Alterar(responsavel);
         }
         [HttpDelete("{id}")]
-        public void Remover(int id)
+        public void Deletar(int id)
         {
-            business.Remover(id);
+            business.Deletar(id);
         }
     }
 }

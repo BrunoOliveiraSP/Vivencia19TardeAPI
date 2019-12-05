@@ -28,9 +28,9 @@ namespace Vivencia19TardeAPI.Database
             DB.SaveChanges();
         } 
 
-        public List<Models.TbTurmaAluno> Listar (Models.TbTurmaAluno turmaAluno)
+        public List<Models.TbTurmaAluno> Listar ()
         {
-            List<Models.TbTurmaAluno> lista = DB.TbTurmaAluno();
+            List<Models.TbTurmaAluno> lista = DB.TbTurmaAluno.ToList();
             return lista;
         }
 

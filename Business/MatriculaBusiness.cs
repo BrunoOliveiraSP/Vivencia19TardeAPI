@@ -89,7 +89,7 @@ namespace Vivencia19TardeAPI.Business
             AlunoMensalidadeBusiness.Deletar(request.Mensalidade.IdAluno);
 
             request.Responsavel.IdAluno = request.Aluno.IdAluno;
-            AlunoResponsavelBusiness.Deletar(request.Responsavel.IdAluno);
+            AlunoResponsavelBusiness.Deletar(Convert.ToInt32(request.Responsavel.IdAluno));
 
             request.TurmaAluno.IdAluno = request.Aluno.IdAluno;
             AlunoTurmaBusiness.Deletar(request.TurmaAluno.IdAluno);

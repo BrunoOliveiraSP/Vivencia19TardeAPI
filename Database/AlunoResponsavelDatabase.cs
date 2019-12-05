@@ -42,7 +42,6 @@ namespace Vivencia19TardeAPI.Database
         {
             Models.TbAlunoResponsavel remover =DB.TbAlunoResponsavel.FirstOrDefault(r => r.IdAluno == id);
             DB.Remove(remover);
-
             DB.SaveChanges();
         }
     }
