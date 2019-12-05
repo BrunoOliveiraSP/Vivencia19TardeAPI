@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using System.Linq.Expressions;
+using Vivencia19TardeAPI.Models;
+
 namespace Vivencia19TardeAPI.Database
 {
     public class ModuloDisciplinaDataBase
@@ -20,17 +22,18 @@ namespace Vivencia19TardeAPI.Database
         }
         public void Alterar(Models.TbModuloDisciplina tb)
         {
-            Models.TbModuloDisciplina alt = db.TbModuloDisciplina.FirstOrDefault(x => x.id_modulo_disciplina == tb.id_modulo_disciplina);
+            TbModuloDisciplina alt = db.TbModuloDisciplina.FirstOrDefault(x => x.IdModuloDisciplina ==
+                                                                              tb.IdModuloDisciplina);
 
-            alt.id_disciplina = tb.id_disciplina;
-            alt.id_curso = tb.id_curso;
-            alt.id_modulo = tb.id_modulo;
+            alt.IdDisciplina = tb.IdDisciplina;
+            alt.IdCurso = tb.IdCurso;
+            alt.IdModulo = tb.IdModulo;
 
             db.SaveChanges();
         }
         public void Remover(int id)
         {
-            Models.TbModuloDisciplina del = db.TbModuloDisciplina.FirstOrDefault(x => x.id_modulo_disciplina == id);
+            Models.TbModuloDisciplina del = db.TbModuloDisciplina.FirstOrDefault(x => x.IdModuloDisciplina == id);
 
             db.Remove(del);
             db.SaveChanges();

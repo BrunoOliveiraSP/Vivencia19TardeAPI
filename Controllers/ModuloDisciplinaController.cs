@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-
+using Vivencia19TardeAPI.Models;
 
 namespace Vivencia19TardeAPI.Controllers
 
@@ -25,7 +25,7 @@ namespace Vivencia19TardeAPI.Controllers
             }
             catch (System.Exception ex)
             {
-                ErrorModel error = new ErrorModel(500, ex.Message);
+               ErrorModel error = new ErrorModel(500, ex.Message);
                 return StatusCode(500, error);
             }
         }

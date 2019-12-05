@@ -4,27 +4,27 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Vivencia19TardeAPI.Models;
 
 namespace Vivencia19TardeAPI.Controllers
 {
-     [ApiController]
+    [ApiController]
     [Route("[controller]")]
     public class ModuloController
     {
        Business.ModuloBusiness db = new Business.ModuloBusiness();
-        
+      
         [HttpPost]
         public ActionResult Inserir(Models.TbModulo modulo)
         {
             try
             {
                 db.Inserir(modulo);
-                return Ok();
             }
-            catch (ExceSystem.Exception ex)
+            catch (System.Exception ex)
             {
-                ErrorModel error = new ErrorModel(500, ex.Message);
-                return StatusCode(500, error);
+                 ErrorModel erro = new ErrorModel(500, ex.Message);
+                 return StatusCode(500, erro);
             }
         }
         [HttpGet]
@@ -39,12 +39,11 @@ namespace Vivencia19TardeAPI.Controllers
             try
             {
                 db.Alterar(modulo);
-                return Ok();
             }
-            catch (ExceSystem.Exception ex)
+            catch (System.Exception ex)
             {
-                ErrorModel error = new ErrorModel(500, ex.Message);
-                return StatusCode(500, error);
+               ErrorModel erro = new ErrorModel(500, ex.Message);
+                return StatusCode(500, erro);
             }
         }
         [HttpDelete ("{id}")]
