@@ -60,8 +60,7 @@ namespace Vivencia19TardeAPI.Database
     
         public Models.TbAluno consultar (Models.TbAluno aluno)
         {
-            Models.TbAluno consulta = DB.TbAluno.FirstOrDefault(x=> x.DsCpf == aluno.DsCpf 
-                                                             && x.NmAluno == aluno.NmAluno);
+            Models.TbAluno consulta = DB.TbAluno.FirstOrDefault(x=> x.NmAluno == aluno.NmAluno);
 
 
             return consulta;

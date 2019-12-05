@@ -15,18 +15,18 @@ namespace Vivencia19TardeAPI.Controllers
        Business.ModuloBusiness db = new Business.ModuloBusiness();
       
         [HttpPost]
-        public ActionResult Inserir(Models.TbModulo modulo)
-        {
-            try
-            {
-                db.Inserir(modulo);
-            }
-            catch (System.Exception ex)
-            {
-                 ErrorModel erro = new ErrorModel(500, ex.Message);
-                 return StatusCode(500, erro);
-            }
-        }
+        // public ActionResult Inserir(Models.TbModulo modulo)
+        // {
+        //     try
+        //     {
+        //         db.Inserir(modulo);
+        //     }
+        //     catch (System.Exception ex)
+        //     {
+        //          ErrorModel erro = new ErrorModel(500, ex.Message);
+        //          return StatusCode(500, erro);
+        //     }
+        // }
         [HttpGet]
          public List<Models.TbModulo> ListarTodos()
          {
@@ -34,18 +34,18 @@ namespace Vivencia19TardeAPI.Controllers
              return lista;
          }
          [HttpPut]
-        public ActionResult Alterar(Models.TbModulo modulo) 
-        {
-            try
-            {
-                db.Alterar(modulo);
-            }
-            catch (System.Exception ex)
-            {
-               ErrorModel erro = new ErrorModel(500, ex.Message);
-                return StatusCode(500, erro);
-            }
-        }
+        // public ActionResult Alterar(Models.TbModulo modulo) 
+        // {
+        //     try
+        //     {
+        //         db.Alterar(modulo);
+        //     }
+        //     catch (System.Exception ex)
+        //     {
+        //        ErrorModel erro = new ErrorModel(500, ex.Message);
+        //         return StatusCode(500, erro);
+        //     }
+        // }
         [HttpDelete ("{id}")]
         public void Remover(int id)
         {
