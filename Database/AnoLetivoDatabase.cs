@@ -15,6 +15,8 @@ namespace Vivencia19TardeAPI.Database
         {
             db.TbAnoLetivo.Add(anoLetivo);
             db.SaveChanges();
+            Models.ModelIDAnoLetivo t = new Models.ModelIDAnoLetivo();
+            t.IdAnoLetivo = anoLetivo.IdAnoLetivo;
         }
 
         public List<Vivencia19TardeAPI.Models.TbAnoLetivo> ListarTodos()

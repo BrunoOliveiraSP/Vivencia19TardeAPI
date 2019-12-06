@@ -50,5 +50,7 @@ namespace Vivencia19TardeAPI.Utils
                  || nome.Contains("}"))
                 throw new Exception("O campo NOME está inválido!");
         }
+
     }
+
 }
