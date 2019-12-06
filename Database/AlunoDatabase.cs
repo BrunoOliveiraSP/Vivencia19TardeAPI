@@ -15,6 +15,12 @@ namespace Vivencia19TardeAPI.Database
             DB.Add(aluno);
             DB.SaveChanges();
         }
+
+        public List<Models.TbAluno> ListarTodos ()
+        {
+            List<Models.TbAluno> Lista = DB.TbAluno.ToList();
+            return Lista;
+        }
         public List<Models.TbAluno> ConsultarPorNome(string Nome)
         {
             List<Models.TbAluno> alunos = DB.TbAluno.Include(x=> x.TbTurmaAluno)
