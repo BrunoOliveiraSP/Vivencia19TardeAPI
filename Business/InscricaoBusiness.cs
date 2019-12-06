@@ -23,7 +23,7 @@ namespace Vivencia19TardeAPI.Business
             }
             if(candidato == true)
             {
-                throw new ArgumentException("Esse candidato já foi cadastrado esse ano");
+                throw new ArgumentException("Esse candidato já foi cadastrado esse ano.");
             }
             if (string.IsNullOrWhiteSpace(inscricao.DsSexo))
             {
@@ -31,11 +31,11 @@ namespace Vivencia19TardeAPI.Business
             }
             if (string.IsNullOrWhiteSpace(inscricao.DsCpf.Replace("-", "").Replace("-", "")))
             {
-                throw new ArgumentException("Você esqueceu de colocar o CPF do candidato!");
+                throw new ArgumentException("Você esqueceu de colocar o cpf do candidato!");
             }
             if(cpf == true)
             {
-                throw new ArgumentException("Cpf já está em uso");
+                throw new ArgumentException("Cpf já está em uso.");
             }
             if(string.IsNullOrWhiteSpace(inscricao.DsCorPele))
             {
@@ -43,19 +43,19 @@ namespace Vivencia19TardeAPI.Business
             }
             if (string.IsNullOrWhiteSpace(inscricao.DsRg.Replace("-", "").Replace("-", "")))
             {
-                throw new ArgumentException("Você esqueceu de colocar o RG do candidato!");
+                throw new ArgumentException("Você esqueceu de colocar o rg do candidato!");
             }
             if(rg == true)
             {
-                throw new ArgumentException("RG em uso");
+                throw new ArgumentException("Rg em uso.");
             }
             if (string.IsNullOrWhiteSpace(inscricao.DsOrgao))
             {
-                throw new ArgumentException("Você esqueceu de colocar o Orgão!");
+                throw new ArgumentException("Você esqueceu de colocar o Oorgão!");
             }
             if (string.IsNullOrWhiteSpace(inscricao.DsEmail))
             {
-                throw new ArgumentException("Você esqueceu de colocar o Email do candidato!");
+                throw new ArgumentException("Você esqueceu de colocar o e-mail do candidato!");
             }
             if (string.IsNullOrWhiteSpace(inscricao.DsResidenciaCidade))
             {
@@ -71,11 +71,11 @@ namespace Vivencia19TardeAPI.Business
             }
             if (inscricao.NrResidenciaEndereco == 0)
             {
-                throw new ArgumentException ("Você esqueceu de colocar o numero da residencial do candidato");
+                throw new ArgumentException ("Você esqueceu de colocar o numero da residencial do candidato!");
             }
             if (string.IsNullOrWhiteSpace(inscricao.DsResidenciaBairro))
             {
-                throw new ArgumentException("Você esqueceu de colocar o Bairro do candidato ");
+                throw new ArgumentException("Você esqueceu de colocar o bairro do candidato! ");
             }
             if (string.IsNullOrWhiteSpace(inscricao.DsResidenciaEndereco))
             {
@@ -87,11 +87,11 @@ namespace Vivencia19TardeAPI.Business
            }
            if (string.IsNullOrWhiteSpace(inscricao.DsNascimentoCidade))
            {
-               throw new ArgumentException("Você esqueceu de colocar a Cidade em que nasceu o candidato!");
+               throw new ArgumentException("Você esqueceu de colocar a cidade em que nasceu o candidato!");
            }
            if (string.IsNullOrWhiteSpace(inscricao.DsNascimentoPais))
            {
-               throw new ArgumentException("Você esqueceu de colocar o País de nascimento do candidato!");
+               throw new ArgumentException("Você esqueceu de colocar o país de nascimento do candidato!");
            }
            if (string.IsNullOrWhiteSpace(inscricao.DsResponsavelNome))
            {
@@ -99,19 +99,19 @@ namespace Vivencia19TardeAPI.Business
            }
            if (string.IsNullOrWhiteSpace(inscricao.DsResponsavelTelefone.Replace("(", "").Replace(")", "").Replace("-", "")))
            {
-               throw new ArgumentException("Você esqueceu de colocar o Telefone 1 do responsável do candidato!");
+               throw new ArgumentException("Você esqueceu de colocar o telefone 1 do responsável do candidato!");
            }
            if (string.IsNullOrWhiteSpace(inscricao.DsResponsavelTelefone2.Replace("(", "").Replace(")", "").Replace("-", "")))
            {
-               throw new ArgumentException("Você esqueceu de colocar o Telefone 2 do responsável do candidato!");
+               throw new ArgumentException("Você esqueceu de colocar o telefone 2 do responsável do candidato!");
            }
            if (string.IsNullOrWhiteSpace(inscricao.DsResponsavelEmail))
            {
-               throw new ArgumentException("Você esqueceu de colocar o Email do Responsavel do candidato!");
+               throw new ArgumentException("Você esqueceu de colocar o e-mail do Responsavel do candidato!");
            }
            if (string.IsNullOrWhiteSpace(inscricao.NmContato))
            {
-               throw new ArgumentException("Você esqueceu de colocar o Nome do contato do responsável!");
+               throw new ArgumentException("Você esqueceu de colocar o nome do contato do responsável!");
            }
            if (string.IsNullOrWhiteSpace(inscricao.DsTelefone.Replace("(", "").Replace(")", "").Replace("-", "")))
            {
@@ -147,7 +147,7 @@ namespace Vivencia19TardeAPI.Business
            }
            if (string.IsNullOrWhiteSpace(inscricao.DsComoConheceu))
            {
-               throw new ArgumentException("Você esqueceu de colocar como o candidato conheceu o Instituto!");
+               throw new ArgumentException("Você esqueceu de colocar como o candidato conheceu o instituto!");
            }
            if (inscricao.VlRenda == 0 || inscricao.VlRenda == 0.00m)
            {
@@ -167,19 +167,19 @@ namespace Vivencia19TardeAPI.Business
            }
            if(codigo == true)
            {
-               throw new ArgumentException("Código já está em uso");
+               throw new ArgumentException("Código de inscrição já está em uso!");
            }
            if(inscricao.VlNota == 0 || inscricao.VlNota == 0.00m)
            {
-               throw new ArgumentException("Nota inválida");
+               throw new ArgumentException("Nota inválida!");
            }
            if(string.IsNullOrWhiteSpace(inscricao.DsObservacao))
            {
-               throw new ArgumentException("Informe uma observação");
+               throw new ArgumentException("Informe uma observação!");
            }
            if(string.IsNullOrWhiteSpace(inscricao.DsSituacao))
            {
-               throw new ArgumentException("Informe uma situação");
+               throw new ArgumentException("Informe uma situação!");
            }
            
            if(inscricao.IdSalaVestibular == 0)
@@ -189,55 +189,55 @@ namespace Vivencia19TardeAPI.Business
            
            if(string.IsNullOrWhiteSpace(inscricao.DsResponsavelCpf.Replace("-", "").Replace("-", "")))
            {
-               throw new ArgumentException("Informe um Cpf");
+               throw new ArgumentException("Informe um cpf!");
            }
            
            if(string.IsNullOrWhiteSpace(inscricao.DsResponsavelRg.Replace("-", "").Replace("-", "")))
            {
-               throw new ArgumentException("Informe um RG");
+               throw new ArgumentException("Informe um rg!");
            }
            
            if(string.IsNullOrWhiteSpace(inscricao.DsSituacao))
            {
-               throw new ArgumentException("Informe uma situação");
+               throw new ArgumentException("Informe uma situação!");
            }
            
            if(string.IsNullOrWhiteSpace(inscricao.DsEmailInscrito) || inscricao.DsEmailInscrito.Contains("@") == false)
            {
-               throw new ArgumentException("Informe o E-mail do inscrito");
+               throw new ArgumentException("Informe o e-mail do inscrito!");
            }
            
            if(string.IsNullOrWhiteSpace(inscricao.DsSituacao))
            {
-               throw new ArgumentException("Informe uma situação");
+               throw new ArgumentException("Informe uma situação!");
            }
            
            if(string.IsNullOrWhiteSpace(inscricao.TpEscola))
            {
-               throw new ArgumentException("Informe o tipo da escola do candidato");
+               throw new ArgumentException("Informe o tipo da escola do candidato!");
            }
            
            if(string.IsNullOrWhiteSpace(inscricao.DsResidenciaEstado))
            {
-               throw new ArgumentException("Informe o Estado da Residência");
+               throw new ArgumentException("Informe o estado da residência!");
            }
            
            if(string.IsNullOrWhiteSpace(inscricao.DsResidenciaComplelemento))
            {
-               throw new ArgumentException("Informe um Complemento sobre a residencia");
+               throw new ArgumentException("Informe um complemento sobre a residencia!");
            }
            
            if(inscricao.IdCurso == 0)
            {
-               throw new ArgumentException("Informe um curso");
+               throw new ArgumentException("Informe um curso!");
            }
            if(inscricao.IdCurso2 == 0)
            {
-               throw new ArgumentException("Informe um curso como segunda opção");
+               throw new ArgumentException("Informe um curso como segunda opção!");
            }
            if(inscricao.IdAnoLetivo == 0)
            {
-               throw new ArgumentException("Informe um ano letivo");
+               throw new ArgumentException("Informe um ano letivo!");
            }
            if(inscricao.IdInscricao > 0)
            {
@@ -297,7 +297,7 @@ namespace Vivencia19TardeAPI.Business
            // }
             if (string.IsNullOrWhiteSpace(inscricao.DsOrgao))
             {
-                throw new ArgumentException("Você esqueceu de colocar o Orgão!");
+                throw new ArgumentException("Você esqueceu de colocar o orgão!");
             }
             if (string.IsNullOrWhiteSpace(inscricao.DsEmail))
             {

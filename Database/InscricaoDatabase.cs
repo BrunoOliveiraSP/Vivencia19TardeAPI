@@ -96,7 +96,7 @@ namespace Vivencia19TardeAPI.Database
 
         public List<Models.TbInscricao> ConsultarPorNome(string nome)
         {
-            return db.TbInscricao.Where(x => x.NmInscrito.Contains(nome))
+            return db.TbInscricao.Where(x => x.NmInscrito.Contains(nome.ToUpper()) || x.NmInscrito.Contains(nome.ToLower()))
                                  .ToList();
         }
 
@@ -109,7 +109,9 @@ namespace Vivencia19TardeAPI.Database
         public List<Models.TbInscricao> ConsultarPorNomeEAno(string nome, int ano)
         {
             return db.TbInscricao.Where(x => x.IdAnoLetivoNavigation.NrAno == ano && 
-                                             x.NmInscrito.Contains(nome))
+                                             x.NmInscrito.Contains(nome.ToLower()) ||
+                                             x.IdAnoLetivoNavigation.NrAno == ano && 
+                                             x.NmInscrito.Contains(nome.ToUpper()))
                                  .ToList();
         }
 
