@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using System.Linq.Expressions;
+
 namespace Vivencia19TardeAPI.Database
 {
     public class InscricaoDatabase 
@@ -131,6 +132,16 @@ namespace Vivencia19TardeAPI.Database
         public bool ExisteCpf(string cpf)
         {
             return db.TbInscricao.Any(x => x.DsCpf == cpf);
+        }
+
+        public Models.TbAnoLetivo ConsultarAnoLetivo(int id)
+        {
+            return db.TbAnoLetivo.First(x => x.IdAnoLetivo == id);
+        }
+
+        public Models.TbCurso ConsultarCurso(int id)
+        {
+            return db.TbCurso.First(x => x.IdCurso == id);
         }
     }
 }

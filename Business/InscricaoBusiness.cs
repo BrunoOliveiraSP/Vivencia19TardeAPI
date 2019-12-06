@@ -512,5 +512,21 @@ namespace Vivencia19TardeAPI.Business
               return db.ConsultarPorNomeEAno(nome, ano);
             }
         }
+
+        public Models.TbAnoLetivo ConsultarAnoLetivo(int id)
+        {
+            if(id == 0)
+               throw new ArgumentException("Informe o ano letivo");
+
+            return db.ConsultarAnoLetivo(id);
+        }
+
+        public Models.TbCurso ConsultarCurso(int id)
+        {
+            if(id == 0)
+               throw new ArgumentException("Informe o curso");
+
+            return db.ConsultarCurso(id);   
+        }
     }
 }
