@@ -41,6 +41,8 @@ namespace Vivencia19TardeAPI.Database
             DB.Remove(Deletar);
             DB.SaveChanges();
         }
+
+        
     
     }
 }

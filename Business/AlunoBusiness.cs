@@ -14,9 +14,9 @@ namespace Vivencia19TardeAPI.Business
            this.validacao(aluno);
            DB.inserir(aluno);
         }
-        public List<Models.TbAluno> ListarTodos()
+        public List<Models.TbAluno> ConsultarPorNome(string nome)
         {
-           List<Models.TbAluno> lista = DB.ListarTodos();
+           List<Models.TbAluno> lista = DB.ConsultarPorNome(nome);
 
            return lista;
         }

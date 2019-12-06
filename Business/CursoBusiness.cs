@@ -86,5 +86,10 @@ namespace Vivencia19TardeAPI.Business
         {
              return db.ListarTodos();
         }
+
+        public Models.TbCurso ConsultarPorID(int id)
+        {
+            return db.ConsultarPorID(id);
+        }
     }
 }

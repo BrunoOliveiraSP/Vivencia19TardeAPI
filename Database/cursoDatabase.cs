@@ -69,5 +69,12 @@ namespace Vivencia19TardeAPI.Database
             return contemSigla;
         }
 
+        // Pessoal de Matricula 
+        public Models.TbCurso ConsultarPorID (int id)
+        {
+            Models.TbCurso Curso = db.TbCurso.FirstOrDefault(x=> x.IdCurso == id);
+            return Curso;
+        }
+
     }
 }

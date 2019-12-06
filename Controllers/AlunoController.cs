@@ -21,11 +21,11 @@ namespace Vivencia19TardeAPI.Controllers
         }
 
          [HttpGet]
-         public List<Models.TbAluno> ListarTodos()
-         {
-             List<Models.TbAluno> lista= Bus.ListarTodos();
-             return lista;
-         }
+        //  public List<Models.TbAluno> ListarTodos()
+        //  {
+        //      List<Models.TbAluno> lista= Bus.Listar();
+        //      return lista;
+        //  }
          [HttpDelete]
          public void Deletar(Models.TbAluno aluno)
          {

@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
+
 namespace Vivencia19TardeAPI.Database
 {
     public class AlunoDatabase
@@ -13,9 +15,12 @@ namespace Vivencia19TardeAPI.Database
             DB.Add(aluno);
             DB.SaveChanges();
         }
-        public List<Models.TbAluno> ListarTodos()
+        public List<Models.TbAluno> ConsultarPorNome(string Nome)
         {
-            List<Models.TbAluno> alunos = DB.TbAluno.ToList();
+            List<Models.TbAluno> alunos = DB.TbAluno.Include(x=> x.TbTurmaAluno)
+                                                                            
+                                                    .Where(x=> x.NmAluno.Contains(Nome))
+                                                    .ToList();
             return alunos;
         }
         public Models.TbAluno Carregar(Models.TbAluno aluno)

@@ -50,5 +50,12 @@ namespace Vivencia19TardeAPI.Business
             
             db.Remover(id);
         }
+
+        // Pessoal Matricula 
+
+        public Models.TbTurma ConsultarPorID (int id)
+        {
+            return db.ConsultarPorID(id);
+        }
     }
 }
