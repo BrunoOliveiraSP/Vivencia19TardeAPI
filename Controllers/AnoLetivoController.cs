@@ -5,6 +5,7 @@ using System.Collections;
 using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.AspNetCore.Mvc;
+using Vivencia19TardeAPI.Models;
 
 
 namespace Vivencia19TardeAPI_1.Controllers
@@ -15,30 +16,68 @@ namespace Vivencia19TardeAPI_1.Controllers
     {
         Vivencia19TardeAPI.Business.AnoLetivoBusiness db = new  Vivencia19TardeAPI.Business.AnoLetivoBusiness();
 
-        [HttpPost]
-        public void Inserir(Vivencia19TardeAPI.Models.TbAnoLetivo ano)
+       [HttpPost]
+        public ActionResult Inserir(Vivencia19TardeAPI.Models.TbAnoLetivo ano)
         {
+            try
+            {
+
             db.Inserir(ano);
+            return Ok();
+
+            }
+            catch(System.Exception ex)
+            {
+             ErrorModel error = new ErrorModel(500, ex.Message);
+              return StatusCode(500, error);
+            }
         }
 
         [HttpPut]
-        public void Alterar(Vivencia19TardeAPI.Models.TbAnoLetivo ano)
+        public ActionResult Alterar(Vivencia19TardeAPI.Models.TbAnoLetivo ano)
         {
+            try
+            {
             db.Alterar(ano);
+            return Ok();
+            }
+            catch(System.Exception ex)
+            {
+              ErrorModel error = new ErrorModel(500, ex.Message);
+              return StatusCode(500, error);
+            }
 
         }
 
         [HttpDelete("{id}")]
-        public void Remover(int id)
+        public ActionResult Remover(int id)
         {
+            try
+            {
             db.Remover(id);
+            return Ok();
+            }
+            catch(System.Exception ex)
+            {
+              ErrorModel error = new ErrorModel(500, ex.Message);
+              return StatusCode(500, error);
+            }
+            
         }
 
         [HttpGet]
-        public List<Vivencia19TardeAPI.Models.TbAnoLetivo> ListarTodos ()
+        public ActionResult <List<Vivencia19TardeAPI.Models.TbAnoLetivo>> ListarTodos ()
         {
+            try
+            {
             List<Vivencia19TardeAPI.Models.TbAnoLetivo> ano = db.ListarTodos();
             return ano;
+            }
+            catch(System.Exception ex)
+            {
+              ErrorModel error = new ErrorModel(500, ex.Message);
+              return StatusCode(500, error);
+            }
 
         }
  

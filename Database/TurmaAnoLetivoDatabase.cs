@@ -38,7 +38,7 @@ namespace Vivencia19TardeAPI.Database
             turmas.TpPeriodo = turma.TpPeriodo;
             turmas.NrCapacidadeMax = turma.NrCapacidadeMax;
             
-            
+            db.SaveChanges();
         }
 
         // Pessoal Matricula 

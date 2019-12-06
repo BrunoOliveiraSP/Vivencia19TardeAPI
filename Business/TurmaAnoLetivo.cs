@@ -13,10 +13,19 @@ namespace Vivencia19TardeAPI.Business
         public void Inserir (Models.TbTurma turma)
         {
             if(turma.NmTurma == string.Empty)
-            throw new ArgumentException("Nome da Turma invalido");
+            throw new ArgumentException("Nome da Turma invalido.");
 
             if(turma.TpPeriodo == string.Empty)
-            throw new ArgumentException("unidade de tempo invalido");
+            throw new ArgumentException("unidade de tempo invalido.");
+
+            if(turma.IdAnoLetivo == 0)
+            throw new ArgumentException("Id inválido.");
+
+            if(turma.NrCapacidadeMax == 0)
+            throw new ArgumentException("Cpacidade máxima não pode ser zero.");
+
+            if(turma.IdAnoLetivo == 0)
+            throw new ArgumentException("Id inválido.");
 
            db.CadastrarTurma(turma);
         }
@@ -29,18 +38,20 @@ namespace Vivencia19TardeAPI.Business
 
         public void Alterar(Models.TbTurma turma)
         {
-            if(turma.IdTurma == 0)
-            throw new ArgumentException("Id invalido");
-
-            if(turma.NmTurma == string.Empty)
-            throw new ArgumentException("Nome da Turma invalido");
+             if(turma.NmTurma == string.Empty)
+            throw new ArgumentException("Nome da Turma invalido.");
 
             if(turma.TpPeriodo == string.Empty)
-            throw new ArgumentException("unidade de tempo invalido");
+            throw new ArgumentException("Unidade de tempo invalido.");
+
+            if(turma.IdAnoLetivo == 0)
+            throw new ArgumentException("Id inválido.");
 
             if(turma.NrCapacidadeMax == 0)
-            throw new ArgumentException("Id invalido");
+            throw new ArgumentException("Cpacidade máxima não pode ser zero.");
 
+            if(turma.IdAnoLetivo == 0)
+            throw new ArgumentException("Id inválido.");
             db.Alterar(turma);
         }
         public void Remover(int id)

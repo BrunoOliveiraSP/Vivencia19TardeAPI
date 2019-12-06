@@ -5,6 +5,7 @@ using System.Collections;
 using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.AspNetCore.Mvc;
+using Vivencia19TardeAPI.Models;
 
 namespace Vivencia19TardeAPI.Controllers
 {
@@ -16,29 +17,65 @@ namespace Vivencia19TardeAPI.Controllers
         Business.TurmaAnoLetivo business = new Business.TurmaAnoLetivo();
         
         [HttpPost]
-        public void Inserir(Models.TbTurma turma)
+        public ActionResult Inserir(Models.TbTurma turma)
         {
+            try
+            {
             business.Inserir(turma);
+            return Ok();
+            }
+            catch(System.Exception ex)
+            {
+              ErrorModel error = new ErrorModel(500, ex.Message);
+              return StatusCode(500, error);
+            }
         }
 
+
         [HttpPut]
-        public void Alterar(Models.TbTurma turma)
+        public ActionResult Alterar(Models.TbTurma turma)
         {
+            try
+            {
             business.Alterar(turma);
+            return Ok();
+            }
+            catch(System.Exception ex)
+            {
+              ErrorModel error = new ErrorModel(500, ex.Message);
+              return StatusCode(500, error);
+            }
 
         }
 
         [HttpDelete("{id}")]
-        public void Remover(int id)
+        public ActionResult Remover(int id)
         {
+            try
+            {
             business.Remover(id);
+            return Ok();
+            }
+            catch(System.Exception ex)
+            {
+              ErrorModel error = new ErrorModel(500, ex.Message);
+              return StatusCode(500, error);
+            }
         }
 
         [HttpGet]
-        public List<Models.TbTurma> ListarTodos ()
+        public ActionResult <List<Models.TbTurma>> ListarTodos ()
         {
+            try
+            {
             List<Models.TbTurma> lista = business.ListarTodos();
             return lista;
+            }
+            catch(System.Exception ex)
+            {
+              ErrorModel error = new ErrorModel(500, ex.Message);
+              return StatusCode(500, error);
+            }
 
         }
  
