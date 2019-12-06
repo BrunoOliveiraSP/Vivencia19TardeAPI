@@ -84,5 +84,33 @@ namespace Vivencia19TardeAPI.Controllers
                 return StatusCode(500, erro);
             }
         }
+
+        [HttpGet("ConsultarAnoLetivo/{id}")]
+        public ActionResult<Models.TbAnoLetivo> ConsultarAnoLetivo(int id)
+        {
+            try
+            {
+                return InscricaoBusiness.ConsultarAnoLetivo(id);
+            }
+            catch (System.Exception ex)
+            {
+                ErrorModel erro = new ErrorModel(500, ex.Message);
+                return StatusCode(500, erro);
+            }
+        }
+
+        [HttpGet("ConsultarCurso/{id}")]
+        public ActionResult<Models.TbCurso> ConsultarCurso(int id)
+        {
+            try
+            {
+                return InscricaoBusiness.ConsultarCurso(id);
+            }
+            catch (System.Exception ex)
+            {
+                ErrorModel erro = new ErrorModel(500, ex.Message);
+                return StatusCode(500, erro);
+            }
+        }
     }
 }
