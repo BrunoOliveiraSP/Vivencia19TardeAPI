@@ -30,7 +30,7 @@ namespace Vivencia19TardeAPI.Business
             {
                 throw new ArgumentException("Data de nascimento inválida.");
             }
-            if (string.IsNullOrWhiteSpace(inscricao.DsSexo))
+            if (string.IsNullOrWhiteSpace(inscricao.DsSexo) || inscricao.DsSexo == "Selecione")
             {
                 throw new ArgumentException("Você esqueceu de colocar o sexo do candidato!");
             }
@@ -86,7 +86,7 @@ namespace Vivencia19TardeAPI.Business
             {
                 throw new ArgumentException("Você esqueceu de colocar o estado do candidato!");
             }
-           if (string.IsNullOrWhiteSpace(inscricao.DsNascimentoEstado))
+           if (string.IsNullOrWhiteSpace(inscricao.DsNascimentoEstado) || inscricao.DsNascimentoEstado == "Selecione")
            {
                throw new ArgumentException("Você esqueceu de colocar o estado em que nasceu o candidato!");
            }
@@ -130,11 +130,11 @@ namespace Vivencia19TardeAPI.Business
            {
                throw new ArgumentException("Você esqueceu de colocar o email do segundo candidato!");
            }
-           if (string.IsNullOrWhiteSpace(inscricao.DsResponsavelParentesco))
+           if (string.IsNullOrWhiteSpace(inscricao.DsResponsavelParentesco) || inscricao.DsResponsavelParentesco == "Selecione")
            {
                throw new ArgumentException("Você esqueceu de colocar o parentesco do candidato!");
            }
-           if (string.IsNullOrWhiteSpace(inscricao.DsEscolaridade))
+           if (string.IsNullOrWhiteSpace(inscricao.DsEscolaridade) || inscricao.DsEscolaridade == "Selecione")
            {
                throw new ArgumentException("Você esqueceu de colocar a escolaridade do candidato!");
            }
@@ -150,7 +150,7 @@ namespace Vivencia19TardeAPI.Business
            {
                throw new ArgumentException("Você esqueceu de colocar o periodo do segundo curso escolhido pelo o candidato");
            }
-           if (string.IsNullOrWhiteSpace(inscricao.DsComoConheceu))
+           if (string.IsNullOrWhiteSpace(inscricao.DsComoConheceu) || inscricao.DsComoConheceu == "Selecione" )
            {
                throw new ArgumentException("Você esqueceu de colocar como o candidato conheceu o instituto!");
            }
@@ -222,7 +222,7 @@ namespace Vivencia19TardeAPI.Business
                throw new ArgumentException("Informe o tipo da escola do candidato!");
            }
            
-           if(string.IsNullOrWhiteSpace(inscricao.DsResidenciaEstado))
+           if(string.IsNullOrWhiteSpace(inscricao.DsResidenciaEstado) || inscricao.DsResidenciaEstado == "Selecione")
            {
                throw new ArgumentException("Informe o estado da residência!");
            }
