@@ -37,7 +37,9 @@ namespace Vivencia19TardeAPI.Business
             if(curso.DsCategoria == string.Empty)
             throw new ArgumentException("Escolha uma opção."); 
 
-            db.Inserir(curso);          
+            db.Inserir(curso);    
+
+                  
         }
 
         

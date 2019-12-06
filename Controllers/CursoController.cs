@@ -13,14 +13,19 @@ namespace Vivencia19TardeAPI.Controllers
     public class CursoController: ControllerBase
     {
         Business.CursoBusiness db = new Business.CursoBusiness();
+        Business.DisciplinaBusiness bu = new Business.DisciplinaBusiness();
         
         [HttpPost]
-        public ActionResult Inserir (Models.TbCurso curso)
+        public ActionResult<int> Inserir (Models.TbCurso curso)
         {
             try
             {
-                db.Inserir(curso);
-                 return Ok();
+                 db.Inserir(curso);
+                 
+                 int id = curso.IdCurso;
+                 return id;
+                
+                
             }               
             catch(System.Exception ex)
             {

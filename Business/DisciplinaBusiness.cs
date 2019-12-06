@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using System.Linq.Expressions;
+using System.ComponentModel;
 
 
 namespace Vivencia19TardeAPI.Business
@@ -76,12 +77,6 @@ namespace Vivencia19TardeAPI.Business
              {
                  throw new ArgumentException("Informe o nome da disciplina");
              }
-
-            if(existe)
-            {
-                throw new ArgumentException("Esta alteração não pode ser feita, a Disciplina já existe");
-            }
-
             if(existeDS)
             {
                 throw new ArgumentException("Esta alteração não pode ser feita, a Sigla já existe");
@@ -113,6 +108,18 @@ namespace Vivencia19TardeAPI.Business
 
               
              return db.ListarNomeSigla(nome, sigla);
+          }
+          public BindingList<Models.TbDisciplina> ListarCursoDisciplina(int id)
+          {
+              return db.ListarDiciplinasDeCursos(id);
+          }
+          public void InserirDisciplinasCurso(int idcurso, int iddisciplina)
+          {
+              db.InserirDisciplinasCurso(idcurso, iddisciplina);
+          }
+          public void RemoverCursoDisciplina(int idcurso)
+          {
+              db.RemoverCursoDisciplinaCurso(idcurso);
           }
     }          
 }

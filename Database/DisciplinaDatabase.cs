@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using System.Linq.Expressions;
+using System.ComponentModel;
 
 
 namespace Vivencia19TardeAPI.Database
@@ -62,6 +63,44 @@ namespace Vivencia19TardeAPI.Database
                       x.DsSigla.Contains(sigla)).ToList();
 
              return  lista;
+        }
+        public BindingList<Models.TbDisciplina> ListarDiciplinasDeCursos(int idcurso)
+        {
+            List<Models.TbCursoDisciplina> ids = db.TbCursoDisciplina.Where( x =>
+                                                  x.IdCurso == idcurso).ToList();
+
+            BindingList<Models.TbDisciplina> disciplinas = new BindingList<Models.TbDisciplina>();
+
+             foreach (var item in ids)
+            {
+                Models.TbDisciplina disciplinalista = db.TbDisciplina.FirstOrDefault(x => x.IdDisciplina == item.IdDisciplina);
+
+                disciplinas.Add(disciplinalista);
+            }                                 
+            
+            return disciplinas;
+        }
+        public void InserirDisciplinasCurso(int idcurso, int iddisciplina)
+        {
+           Models.TbCursoDisciplina mod = new Models.TbCursoDisciplina();
+
+           mod.IdDisciplina = iddisciplina;
+           mod.IdCursoDisciplina = idcurso;
+
+           db.TbCursoDisciplina.Add(mod);
+           db.SaveChanges();
+        }
+        public void RemoverCursoDisciplinaCurso(int idcurso)
+        {
+          List<Models.TbCursoDisciplina> cd = db.TbCursoDisciplina.Where(x => x.IdCurso == idcurso).ToList();
+             
+              foreach (var item in cd)
+            {
+             db.TbCursoDisciplina.Remove(item);
+            }     
+
+               
+
         }
     }
 }

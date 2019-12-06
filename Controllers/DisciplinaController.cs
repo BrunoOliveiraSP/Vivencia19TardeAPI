@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.AspNetCore.Mvc;
 using Vivencia19TardeAPI.Models;
+using System.ComponentModel;
 
 namespace Vivencia19TardeAPI.Controllers
 {
@@ -73,6 +74,33 @@ namespace Vivencia19TardeAPI.Controllers
               ErrorModel error = new ErrorModel(500, ex.Message);
               return StatusCode(500, error);
             }
+          }
+           [HttpGet("ListarCursoDisciplina/{id}")]
+          public ActionResult<BindingList<Models.TbDisciplina>> ListarNomeSigla(int id)
+          {
+               try
+            {
+             return bu.ListarCursoDisciplina(id);
+            }
+            catch(System.Exception ex)
+            {
+              ErrorModel error = new ErrorModel(500, ex.Message);
+              return StatusCode(500, error);
+            }
+          }
+
+          [HttpPost("InserirCursoDisciplina")]
+          public void InserirDisciplinasCurso(Models.TbCursoDisciplina cd)
+          {
+              bu.InserirDisciplinasCurso(cd.IdCurso, cd.IdDisciplina);
+          }
+
+
+          [HttpPost("AlterarCursoDisciplina")]
+          public void AlterarDisciplinasCurso(Models.TbCursoDisciplina cd)
+          {
+             bu.RemoverCursoDisciplina(cd.IdCurso);
+             bu.InserirDisciplinasCurso(cd.IdCurso, cd.IdDisciplina);
           }
         
     }
