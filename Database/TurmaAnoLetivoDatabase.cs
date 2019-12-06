@@ -40,5 +40,13 @@ namespace Vivencia19TardeAPI.Database
             
             
         }
+
+        // Pessoal Matricula 
+
+        public Models.TbTurma ConsultarPorID (int id)
+        {
+            Models.TbTurma Turma = db.TbTurma.FirstOrDefault(x=> x.IdTurma == id);
+            return Turma;
+        }
     }
 }
