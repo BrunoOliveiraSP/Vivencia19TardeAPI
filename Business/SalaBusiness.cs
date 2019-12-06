@@ -13,7 +13,7 @@ namespace Vivencia19TardeAPI.Business
         {
 
             this.Validacao(sala);
-
+            this.Verificacao(sala);
             db.inserir(sala);           
         }
         public void Validacao(Models.TbSala sala)
@@ -57,6 +57,7 @@ namespace Vivencia19TardeAPI.Business
                 throw new ArgumentException("ID inválido");
             }
 
+            this.Verificacao(sala);
             db.alterar(sala);
         }
         public List<Models.TbSala> ConsultarPorInstituicao(string instituicao)
