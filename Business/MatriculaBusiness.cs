@@ -153,6 +153,13 @@ namespace Vivencia19TardeAPI.Business
             Response.CdRa = Aluno.TbTurmaAluno.FirstOrDefault().CdRa;
             Response.DsStatus = Aluno.TbTurmaAluno.FirstOrDefault().TpStatus;
 
+
+            Response.Aluno = Aluno;
+            Response.Documentos = Aluno.TbAlunoDocumentos.ToList();
+            Response.Localizacao = Aluno.TbAlunoLocalizacao.ToList();
+            //
+            //
+
             return Response;
         }
 

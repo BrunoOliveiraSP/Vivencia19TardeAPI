@@ -34,6 +34,12 @@ namespace Vivencia19TardeAPI.Controllers
             Bus.Deletar(request);
         }
 
+        [HttpGet("{nome}")]
+        public List<Models.MatriculaResponse> Listar(string nome)
+        {
+            return Bus.Lista(nome, string.Empty, string.Empty, string.Empty);
+        }
+
 
         
     }

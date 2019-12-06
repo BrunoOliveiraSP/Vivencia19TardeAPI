@@ -23,10 +23,13 @@ namespace Vivencia19TardeAPI.Database
         }
         public List<Models.TbAluno> ConsultarPorNome(string Nome)
         {
-            List<Models.TbAluno> alunos = DB.TbAluno.Include(x=> x.TbTurmaAluno)
-                                                                            
-                                                    .Where(x=> x.NmAluno.Contains(Nome))
-                                                    .ToList();
+            List<Models.TbAluno> alunos = DB.TbAluno
+                                            .Include(x=> x.TbTurmaAluno)
+                                                .ThenInclude(x=> x.IdTurmaNavigation)
+                                                .ThenInclude(x=> x.IdCursoNavigation)
+                                            .Where(x=> x.NmAluno.Contains(Nome))
+                                                    //&& x.TbTurmaAluno.Any(ta => ta.IdTurmaNavigation.IdCursoNavigation.NmCurso.Contains("a")))
+                                            .ToList();
             return alunos;
         }
         public Models.TbAluno Carregar(Models.TbAluno aluno)

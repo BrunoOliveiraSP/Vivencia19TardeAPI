@@ -8,8 +8,8 @@ namespace Vivencia19TardeAPI.Models
 {
     public class MatriculaResponse
     {
-
         //tb_Aluno
+        public string IdAluno { get; set; }
         public string NmAluno { get; set; }
         public string DsRg { get; set; }
         
@@ -23,5 +23,15 @@ namespace Vivencia19TardeAPI.Models
         //Tb_Turma_Aluno
         public string CdRa { get; set; }
         public string DsStatus { get; set; }
+
+
+
+        public Models.TbAluno Aluno { get; set; }
+        public Models.TbTurmaAluno TurmaAluno { get; set; }
+        public List<Models.TbAlunoDocumentos> Documentos { get; set; }
+        public List<Models.TbAlunoFichaMedica> FichaMedica { get; set; }
+        public List<Models.TbAlunoLocalizacao> Localizacao { get; set; }
+        public List<Models.TbAlunoResponsavel> Responsavel { get; set; }
+
     }
 }
