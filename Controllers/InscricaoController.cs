@@ -15,12 +15,12 @@ namespace Vivencia19TardeAPI.Controllers
         Business.InscricaoBusiness InscricaoBusiness = new Business.InscricaoBusiness();
         
         [HttpPost]
-        public ActionResult Inserir(Models.TbInscricao inscricao)
+        public ActionResult<Models.TbInscricao> Inserir(Models.TbInscricao inscricao)
         {
             try
             {
                 InscricaoBusiness.Inserir(inscricao);
-                return Ok();
+                return inscricao;
             }
             catch (System.Exception ex)
             {

@@ -106,6 +106,8 @@ namespace Vivencia19TardeAPI.Database
                                  .ToList();
         }
 
+        
+
         public List<Models.TbInscricao> ConsultarPorNomeEAno(string nome, int ano)
         {
             return db.TbInscricao.Where(x => x.IdAnoLetivoNavigation.NrAno == ano && 

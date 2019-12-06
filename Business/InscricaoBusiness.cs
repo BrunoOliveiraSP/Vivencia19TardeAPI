@@ -25,6 +25,11 @@ namespace Vivencia19TardeAPI.Business
             {
                 throw new ArgumentException("Esse candidato já foi cadastrado esse ano.");
             }
+            DateTime dt = new DateTime(2004, 01, 01, 0, 0, 0);
+            if(inscricao.DtNascimento > dt.Date)
+            {
+                throw new ArgumentException("Data de nascimento inválida.");
+            }
             if (string.IsNullOrWhiteSpace(inscricao.DsSexo))
             {
                 throw new ArgumentException("Você esqueceu de colocar o sexo do candidato!");
