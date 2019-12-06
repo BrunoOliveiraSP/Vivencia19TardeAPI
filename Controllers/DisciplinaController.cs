@@ -18,12 +18,12 @@ namespace Vivencia19TardeAPI.Controllers
         
 
         [HttpPost]
-        public ActionResult Inserir(Models.TbDisciplina disc)
+        public ActionResult<Models.TbDisciplina> Inserir(Models.TbDisciplina disc)
         {
             try
             {
               bu.Inserir(disc);
-              return Ok();
+              return disc;
             }
             catch(System.Exception ex)
             {

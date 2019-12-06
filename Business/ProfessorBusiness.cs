@@ -14,16 +14,16 @@ namespace Vivencia19TardeAPI.Business
             if (string.IsNullOrEmpty(prof.Professor.NmProfessor))
                 throw new Exception("O Campo 'NOME' esta Invalido!");
 
-            prof.Login.DsSenha = "1234";
+            prof.Login.IdRole = 1;
             prof.Login.BtTrocar = true;
+            prof.Login.DsSenha = "1234";
             prof.Login.DtInclusao = DateTime.Now;
             prof.Login.DtUltimoLogin = DateTime.Now;
-            prof.Login.IdRole = 1;
-
-            db.InserirLogin(prof.Login);
+            
+            db.Inserir(prof.Login);
 
             prof.Professor.IdLogin = prof.Login.IdLogin;
-            db.InserirProfessor(prof.Professor);
+            db.Inserir(prof.Professor);
         }
 
 

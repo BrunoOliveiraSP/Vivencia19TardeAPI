@@ -13,6 +13,7 @@ namespace Vivencia19TardeAPI.Controllers
     public class ProfessorController : ControllerBase
     {
         Business.ProfessorBusiness bs = new Business.ProfessorBusiness();
+        
         [HttpPost]
         public void Inserir(Models.ProfessorRequest professor)
         {
@@ -26,7 +27,7 @@ namespace Vivencia19TardeAPI.Controllers
 
         }
 
-         [HttpDelete("{idProfessor}/{idLogin}")]
+        [HttpDelete("{idProfessor}/{idLogin}")]
         public void Remover(int idProfessor, int idLogin)
         {
             bs.Remover(idProfessor, idLogin);
@@ -34,10 +35,10 @@ namespace Vivencia19TardeAPI.Controllers
 
 
         [HttpGet]
-        public List<Models.TbProfessor> ListarTodos ()
+        public List<Models.TbProfessor> ListarTodos()
         {
-            List<Models.TbProfessor> professor = bs.ListarTodos();
-            return professor;
+            List<Models.TbProfessor> professores = bs.ListarTodos();
+            return professores;
 
         }
  
