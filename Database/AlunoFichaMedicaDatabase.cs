@@ -13,6 +13,7 @@ namespace Vivencia19TardeAPI.Database
         public void Inserir(Models.TbAlunoFichaMedica ModelAlunoFichaMedica)
         {
             db.Add(ModelAlunoFichaMedica);
+            db.SaveChanges();
         }
 
         public List<Models.TbAlunoFichaMedica> Consultar()

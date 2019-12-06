@@ -13,6 +13,7 @@ namespace Vivencia19TardeAPI.Database
         public void Inserir(Models.TbAlunoMensalidade ModelAlunoMensalidade)
         {
             db.Add(ModelAlunoMensalidade);
+            db.SaveChanges();
         }
 
         public List<Models.TbAlunoMensalidade> ListarTodos()

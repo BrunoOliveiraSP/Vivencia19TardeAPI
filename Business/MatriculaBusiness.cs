@@ -132,20 +132,12 @@ namespace Vivencia19TardeAPI.Business
             Response.DsRg = Aluno.DsRg;
 
 
-            // Informações vindas da tabela Cursos
-            //Usando a tabela Turma para achar a sala
-            int IdTurma = Aluno.TbTurmaAluno.FirstOrDefault().IdTurma;
-            Turma = TurmaBusiness.ConsultarPorID(IdTurma);
-            int IdCurso = Turma.IdCurso;
-            Curso = CursoBusiness.ConsultarPorID(IdCurso);
-
-            Response.NmCurso = Curso.NmCurso;
-
+            Response.NmCurso = Aluno.TbCurso.NmCurso;
 
             //Informções vindas da tabela curso
             // os quais o modelo á foi achado no "bloco" acima
-            Response.NmTurma = Turma.NmTurma;
-            Response.TpPeriudo = Turma.TpPeriodo;
+            Response.NmTurma = Aluno.TbTurma.NmTurma;
+            Response.TpPeriudo = Aluno.TbTurma.TpPeriudo;
             
 
             //Informaçoes vindas da tabela TurmaAluno
