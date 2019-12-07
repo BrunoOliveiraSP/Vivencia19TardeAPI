@@ -15,11 +15,11 @@ namespace Vivencia19TardeAPI.Controllers
         Business.SalaVestibularBusiness business = new Business.SalaVestibularBusiness();
 
         [HttpPost]
-        public ActionResult Inserir(Models.TbSalaVestibular sala)
+        public ActionResult Inserir(Models.SalaVestibularRequest request)
         {
             try
             {
-                business.Inserir(sala);
+                business.Inserir(request);
                 return Ok();
             }
             catch(System.Exception ex)
