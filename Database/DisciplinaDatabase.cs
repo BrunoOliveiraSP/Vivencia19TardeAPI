@@ -53,7 +53,7 @@ namespace Vivencia19TardeAPI.Database
         }
         public List<Models.TbDisciplina> ListaTodos()
         {
-          List<Models.TbDisciplina> lista = db.TbDisciplina.ToList();
+          List<Models.TbDisciplina> lista = db.TbDisciplina.OrderBy(alf => alf.NmDisciplina).ToList();
           return lista;
         }
         public List<Models.TbDisciplina> ListarNomeSigla(string nome, string sigla)
