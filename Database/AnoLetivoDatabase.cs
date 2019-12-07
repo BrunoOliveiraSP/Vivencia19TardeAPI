@@ -8,7 +8,6 @@ namespace Vivencia19TardeAPI.Database
 {
     public class AnoLetivoDatabase
     {
-
         Vivencia19TardeAPI.Models.db_a5064d_freiContext db = new Models.db_a5064d_freiContext();  
 
         public void CadastrarAnoLetivo(Vivencia19TardeAPI.Models.TbAnoLetivo anoLetivo)
@@ -52,9 +51,8 @@ namespace Vivencia19TardeAPI.Database
         }
         public List<Models.TbModulo> ModuloConsultar()
         {
-         List<Models.TbModulo> lista = db.TbModulo.ToList();
-         return lista;
-
+            List<Models.TbModulo> lista = db.Orderby(TbModulo).ToList();
+            return lista;
         }
         public void ModuloRemover(int id)
         {
@@ -70,9 +68,6 @@ namespace Vivencia19TardeAPI.Database
             modulo.DtFinal = modulo.DtFinal;
             modulo.DtInicio = modulo.DtInicio;
             modulo.BtAberto = modulo.BtAberto;
-
         }
-        
-    
     }
-    }
+}
