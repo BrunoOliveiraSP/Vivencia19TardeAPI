@@ -76,7 +76,8 @@ namespace Vivencia19TardeAPI.Controllers
         {
             try
             {
-                return InscricaoBusiness.ConsultarPorNomeEAno(nome, ano);
+                var lista = InscricaoBusiness.ConsultarPorNomeEAno(nome, ano); 
+                return lista
             }
             catch (System.Exception ex)
             {

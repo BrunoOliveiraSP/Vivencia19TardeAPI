@@ -108,11 +108,11 @@ namespace Vivencia19TardeAPI.Database
 
         
 
-        public List<Models.TbInscricao> ConsultarPorNomeEAno(string nome, int ano)
+        public List<Models.TbInscricao> ConsultarPorNomeEAno(string nome, int idAnoLetivo)
         {
-            return db.TbInscricao.Where(x => x.IdAnoLetivoNavigation.NrAno == ano && 
+            return db.TbInscricao.Where(x => x.IdAnoLetivo == idAnoLetivo && 
                                              x.NmInscrito.Contains(nome.ToLower()) ||
-                                             x.IdAnoLetivoNavigation.NrAno == ano && 
+                                             x.IdAnoLetivo == idAnoLetivo && 
                                              x.NmInscrito.Contains(nome.ToUpper()))
                                  .ToList();
         }
