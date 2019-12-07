@@ -57,7 +57,7 @@ namespace Vivencia19TardeAPI.Controllers
             }
         }
 
-        [HttpGet("ConsultarTodos")]
+        [HttpGet]
         public ActionResult<List<Models.TbInscricao>> ConsultarTodos()
         {
             try
@@ -91,6 +91,20 @@ namespace Vivencia19TardeAPI.Controllers
             try
             {
                 return InscricaoBusiness.ConsultarAnoLetivo(id);
+            }
+            catch (System.Exception ex)
+            {
+                ErrorModel erro = new ErrorModel(500, ex.Message);
+                return StatusCode(500, erro);
+            }
+        }
+
+        [HttpGet("ConsultarAnoLetivoLista/{id}")]
+        public ActionResult<List<Models.TbInscricao>> ConsultarAnoLetivoLista(int id)
+        {
+            try
+            {
+                return InscricaoBusiness.ConsultarAnoLetivoLista(id);
             }
             catch (System.Exception ex)
             {

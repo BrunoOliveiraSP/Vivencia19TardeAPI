@@ -100,9 +100,9 @@ namespace Vivencia19TardeAPI.Database
                                  .ToList();
         }
 
-        public List<Models.TbInscricao> ConsultarPorAno(int ano)
+        public List<Models.TbInscricao> ConsultarPorAno(int id)
         {
-            return db.TbInscricao.Where(x => x.IdAnoLetivoNavigation.NrAno == ano)
+            return db.TbInscricao.Where(x => x.IdAnoLetivo == id)
                                  .ToList();
         }
 
@@ -123,19 +123,19 @@ namespace Vivencia19TardeAPI.Database
                                       x.IdAnoLetivo == idAno);
         }
 
-        public bool ExisteCodigoInscrição(int codigo)
+        public bool ExisteCodigoInscrição(int codigo, int idAnoLetivo)
         {
-            return  db.TbInscricao.Any(x => x.CdInscricao == codigo);
+            return  db.TbInscricao.Any(x => x.CdInscricao == codigo && x.IdAnoLetivo == idAnoLetivo) ;
         }
 
-        public bool ExisteRG(string rg)
+        public bool ExisteRG(string rg, int idAnoLetivo)
         {
-            return db.TbInscricao.Any(x => x.DsRg == rg);
+            return db.TbInscricao.Any(x => x.DsRg == rg && x.IdAnoLetivo == idAnoLetivo);
         }
 
-        public bool ExisteCpf(string cpf)
+        public bool ExisteCpf(string cpf, int idAnoLetivo)
         {
-            return db.TbInscricao.Any(x => x.DsCpf == cpf);
+            return db.TbInscricao.Any(x => x.DsCpf == cpf && x.IdAnoLetivo == idAnoLetivo);
         }
 
         public Models.TbAnoLetivo ConsultarAnoLetivo(int id)
