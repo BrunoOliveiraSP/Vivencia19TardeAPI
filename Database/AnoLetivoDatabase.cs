@@ -51,7 +51,7 @@ namespace Vivencia19TardeAPI.Database
         }
         public List<Models.TbModulo> ModuloConsultar()
         {
-            List<Models.TbModulo> lista = db.Orderby(TbModulo).ToList();
+            List<Models.TbModulo> lista = db.TbModulo.ToList();
             return lista;
         }
         public void ModuloRemover(int id)

@@ -37,7 +37,6 @@ namespace Vivencia19TardeAPI.Database
         
           alterar.NmDisciplina = disciplina.NmDisciplina;
           alterar.DsSigla = disciplina.DsSigla;
-          alterar.DtInclusao= disciplina.DtInclusao;
           alterar.BtAtivo= disciplina.BtAtivo;
           alterar.DtUltimaAlteracao = disciplina.DtUltimaAlteracao;
       
@@ -64,30 +63,25 @@ namespace Vivencia19TardeAPI.Database
 
              return  lista;
         }
-        public BindingList<Models.TbDisciplina> ListarDiciplinasDeCursos(int idcurso)
+        public List<Models.TbDisciplina> ListarDiciplinasDeCursos(int idcurso)
         {
-            List<Models.TbCursoDisciplina> ids = db.TbCursoDisciplina.Where( x =>
-                                                  x.IdCurso == idcurso).ToList();
+            List<Models.TbCursoDisciplina> ids = db.TbCursoDisciplina.Where( x => x.IdCurso == idcurso).ToList();
 
-            BindingList<Models.TbDisciplina> disciplinas = new BindingList<Models.TbDisciplina>();
-
-             foreach (var item in ids)
+            List<Models.TbDisciplina> Disciplinas = new List<Models.TbDisciplina>();
+            
+            foreach (Models.TbCursoDisciplina item in ids)
             {
-                Models.TbDisciplina disciplinalista = db.TbDisciplina.FirstOrDefault(x => x.IdDisciplina == item.IdDisciplina);
+                List<Models.TbDisciplina> Disciplina = db.TbDisciplina.Where(x => x.IdDisciplina == item.IdDisciplina).ToList();
 
-                disciplinas.Add(disciplinalista);
+                Disciplinas.AddRange(Disciplina);
+
             }                                 
             
-            return disciplinas;
+            return Disciplinas;
         }
-        public void InserirDisciplinasCurso(int idcurso, int iddisciplina)
+        public void InserirDisciplinasCurso(Models.TbCursoDisciplina mod)
         {
-           Models.TbCursoDisciplina mod = new Models.TbCursoDisciplina();
-
-           mod.IdDisciplina = iddisciplina;
-           mod.IdCursoDisciplina = idcurso;
-
-           db.TbCursoDisciplina.Add(mod);
+           db.Add(mod);
            db.SaveChanges();
         }
         public void RemoverCursoDisciplinaCurso(int idcurso)

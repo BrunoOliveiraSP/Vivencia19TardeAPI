@@ -109,13 +109,13 @@ namespace Vivencia19TardeAPI.Business
               
              return db.ListarNomeSigla(nome, sigla);
           }
-          public BindingList<Models.TbDisciplina> ListarCursoDisciplina(int id)
+          public List<Models.TbDisciplina> ListarCursoDisciplina(int id)
           {
               return db.ListarDiciplinasDeCursos(id);
           }
-          public void InserirDisciplinasCurso(int idcurso, int iddisciplina)
+          public void InserirDisciplinasCurso(Models.TbCursoDisciplina mod)
           {
-              db.InserirDisciplinasCurso(idcurso, iddisciplina);
+              db.InserirDisciplinasCurso(mod);
           }
           public void RemoverCursoDisciplina(int idcurso)
           {
