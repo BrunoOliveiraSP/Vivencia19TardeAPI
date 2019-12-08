@@ -20,7 +20,7 @@ namespace Vivencia19TardeAPI.Business
          if(ano.DtInicio == null || ano.DtFim == null)
          throw new ArgumentException("Data inválida!");
          
-         db.CadastrarAnoLetivo(ano);
+         db.Cadastrar(ano);
         }
 
         public List<Models.TbAnoLetivo> ListarTodos()
@@ -66,11 +66,11 @@ namespace Vivencia19TardeAPI.Business
              
                       
         }
-        public List<Models.TbModulo> ConsultarModulo()
-        {
-         List<Models.TbModulo> lista = db.ModuloConsultar();
-         return lista;
-        }
+       // public List<Models.TbModulo> ConsultarModulo()
+       // {
+        // List<Models.TbModulo> lista = db.ModuloConsultar();
+         //return lista;
+       // }
         public void AlterarModulo(Models.TbModulo modulo)
         {
            db.ModuloALterar(modulo);

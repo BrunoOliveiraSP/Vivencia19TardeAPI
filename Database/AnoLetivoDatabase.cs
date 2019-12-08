@@ -10,7 +10,7 @@ namespace Vivencia19TardeAPI.Database
     {
         Vivencia19TardeAPI.Models.db_a5064d_freiContext db = new Models.db_a5064d_freiContext();  
 
-        public void CadastrarAnoLetivo(Vivencia19TardeAPI.Models.TbAnoLetivo anoLetivo)
+        public void Cadastrar(Vivencia19TardeAPI.Models.TbAnoLetivo anoLetivo)
         {
             db.TbAnoLetivo.Add(anoLetivo);
             db.SaveChanges();
@@ -20,7 +20,7 @@ namespace Vivencia19TardeAPI.Database
 
         public List<Vivencia19TardeAPI.Models.TbAnoLetivo> ListarTodos()
         {
-            List<Models.TbAnoLetivo> ano = db.TbAnoLetivo.ToList();
+            List<Models.TbAnoLetivo> ano = db.TbAnoLetivo.OrderBy(t=> t.NrAno).ToList();
             return ano;
         }
 
