@@ -24,9 +24,6 @@ namespace Vivencia19TardeAPI.Business
             if(turma.NrCapacidadeMax == 0)
             throw new ArgumentException("Cpacidade máxima não pode ser zero.");
 
-            if(turma.IdAnoLetivo == 0)
-            throw new ArgumentException("Id inválido.");
-
            db.Cadastrar(turma);
         }
 
@@ -50,8 +47,6 @@ namespace Vivencia19TardeAPI.Business
             if(turma.NrCapacidadeMax == 0)
             throw new ArgumentException("Cpacidade máxima não pode ser zero.");
 
-            if(turma.IdAnoLetivo == 0)
-            throw new ArgumentException("Id inválido.");
             db.Alterar(turma);
         }
         public void Remover(int id)
