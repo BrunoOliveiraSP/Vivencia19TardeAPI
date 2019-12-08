@@ -66,11 +66,11 @@ namespace Vivencia19TardeAPI.Business
              
                       
         }
-        public List<Models.TbModulo> ConsultarModulo()
-        {
-         List<Models.TbModulo> lista = db.ModuloConsultar();
-         return lista;
-        }
+       // public List<Models.TbModulo> ConsultarModulo()
+       // {
+        // List<Models.TbModulo> lista = db.ModuloConsultar();
+         //return lista;
+       // }
         public void AlterarModulo(Models.TbModulo modulo)
         {
            db.ModuloALterar(modulo);

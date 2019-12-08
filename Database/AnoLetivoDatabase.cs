@@ -49,11 +49,11 @@ namespace Vivencia19TardeAPI.Database
             db.TbModulo.Add(modulo);
             db.SaveChanges();
         }
-        public List<Models.TbModulo> ModuloConsultar()
-        {
-            List<Models.TbModulo> lista = db.Orderby(TbModulo).ToList();
-            return lista;
-        }
+        //public List<Models.TbModulo> ModuloConsultar()
+        //{
+           // List<Models.TbModulo> lista = db.Orderby(TbModulo).ToList();
+           // return lista;
+        //}
         public void ModuloRemover(int id)
         {
          Models.TbModulo anos = db.TbModulo.FirstOrDefault(x => x.IdAnoLetivo == id);
