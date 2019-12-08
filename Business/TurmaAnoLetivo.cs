@@ -27,7 +27,7 @@ namespace Vivencia19TardeAPI.Business
             if(turma.IdAnoLetivo == 0)
             throw new ArgumentException("Id inválido.");
 
-           db.CadastrarTurma(turma);
+           db.Cadastrar(turma);
         }
 
         public List<Models.TbTurma> ListarTodos()

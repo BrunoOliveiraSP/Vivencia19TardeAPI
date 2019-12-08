@@ -10,7 +10,7 @@ namespace Vivencia19TardeAPI.Database
     {
         Vivencia19TardeAPI.Models.db_a5064d_freiContext db = new Models.db_a5064d_freiContext();
 
-        public void CadastrarTurma(Vivencia19TardeAPI.Models.TbTurma turma)
+        public void Cadastrar(Vivencia19TardeAPI.Models.TbTurma turma)
         {
             db.TbTurma.Add(turma);
             db.SaveChanges();
@@ -18,7 +18,7 @@ namespace Vivencia19TardeAPI.Database
 
         public List<Vivencia19TardeAPI.Models.TbTurma> ListarTodos()
         {
-            List<Models.TbTurma> ano = db.TbTurma.ToList();
+            List<Models.TbTurma> ano = db.TbTurma.OrderBy(t=> t.NmTurma).ToList();
             return ano;
         }
 
@@ -33,7 +33,8 @@ namespace Vivencia19TardeAPI.Database
         public void Alterar(Models.TbTurma  turma)
         {
             Models.TbTurma turmas = db.TbTurma.FirstOrDefault(x=>x.IdTurma == turma.IdTurma);
-
+            
+            turmas.IdCurso = turma.IdCurso;
             turmas.NmTurma = turma.NmTurma;
             turmas.TpPeriodo = turma.TpPeriodo;
             turmas.NrCapacidadeMax = turma.NrCapacidadeMax;

@@ -20,7 +20,7 @@ namespace Vivencia19TardeAPI.Business
          if(ano.DtInicio == null || ano.DtFim == null)
          throw new ArgumentException("Data inválida!");
          
-         db.CadastrarAnoLetivo(ano);
+         db.Cadastrar(ano);
         }
 
         public List<Models.TbAnoLetivo> ListarTodos()
