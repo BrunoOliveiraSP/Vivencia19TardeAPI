@@ -26,7 +26,6 @@ namespace Vivencia19TardeAPI.Business
             db.Inserir(prof.Professor);
         }
 
-
         public List<Models.TbProfessor> ListarTodos()
         {
             List<Models.TbProfessor> lista = db.ListarTodos();
@@ -38,12 +37,12 @@ namespace Vivencia19TardeAPI.Business
             List<Models.TbProfessor> lista = db.ConsultarPorNome(nome);
             return lista;
         }
+
         public void Remover(int idProfessor,int idLogin )
         {
             db.RemoverProfessor(idProfessor);
             db.RemoverLogin(idLogin);
         }
-
 
         public void Alterar(Models.ProfessorRequest prof)
         {
@@ -55,8 +54,6 @@ namespace Vivencia19TardeAPI.Business
             prof.Login.IdRole = 1;
 
             db.AlterarLogin(prof.Login);
-        }
-
-        
+        }  
     }
 }
