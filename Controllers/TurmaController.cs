@@ -17,7 +17,7 @@ namespace Vivencia19TardeAPI.Controllers
         Business.TurmaAnoLetivo business = new Business.TurmaAnoLetivo();
         
         [HttpPost]
-        public ActionResult Inserir(Models.TbTurma turma)
+        public ActionResult<Models.TurmaRequest> Inserir(Models.TurmaRequest turma)
         {
             try
             {
@@ -64,11 +64,11 @@ namespace Vivencia19TardeAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult <List<Models.TbTurma>> ListarTodos ()
+        public ActionResult <List<Models.TurmaResponse>> ListarTodos ()
         {
             try
             {
-            List<Models.TbTurma> lista = business.ListarTodos();
+            List<Models.TurmaResponse> lista = business.ListarTodos();
             return lista;
             }
             catch(System.Exception ex)
