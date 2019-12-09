@@ -27,10 +27,36 @@ namespace Vivencia19TardeAPI.Business
            db.Cadastrar(turma);
         }
 
-        public List<Models.TbTurma> ListarTodos()
+        public List<Models.TurmaResponse> ListarTodos()
         {
            List<Models.TbTurma> lista = db.ListarTodos();
-           return lista;
+
+           List<Models.TurmaResponse> response = new List<Models.TurmaResponse>();
+
+           foreach(Models.TbTurma turma in lista)
+           {
+               Models.TurmaResponse resp = CriarResponse(turma);
+               response.Add(resp);
+           }
+
+           return response;
+        }
+
+        private Models.TurmaResponse CriarResponse(Models.TbTurma turma)
+        {
+            Models.TurmaResponse response = new Models.TurmaResponse();
+            response.IdTurma = turma.IdTurma;                          
+            response.NmTurma = turma.NmTurma;
+            response.NrCapacidadeMax = turma.NrCapacidadeMax;
+            response.TpPeriodo = turma.TpPeriodo;
+
+            if(turma.TbCurso.Count > 0)
+            response.NmCurso = turma.TbCurso.FirstOrDefault().NmCurso;
+
+            return response;
+
+                
+           
         }
 
         public void Alterar(Models.TbTurma turma)
