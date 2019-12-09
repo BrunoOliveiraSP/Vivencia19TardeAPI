@@ -10,7 +10,23 @@ namespace Vivencia19TardeAPI.Business
     public class TurmaAnoLetivo
     {
         Database.TurmaAnoLetivoDatabase db = new Database.TurmaAnoLetivoDatabase();
-        public void Inserir (Models.TbTurma turma)
+        Database.CursoDatabase Curso = new Database.CursoDatabase();
+        public void Inserir (Models.TurmaRequest request)
+        {
+            this.ValidarCurso(request.Curso);
+            this.ValidarTurma(request.Turma);
+
+            db.Cadastrar(request.Turma);
+
+            request.Curso.IdCurso = request.Turma.IdCurso;
+            Curso.Inserir(request.Curso);
+        }
+        public void ValidarCurso(Models.TbCurso curso)
+        {
+            if(curso.NmCurso.Length <3)
+            throw new ArgumentException("Curso é obrigatorio.");
+        }
+         public void ValidarTurma(Models.TbTurma turma)
         {
             if(turma.NmTurma == string.Empty)
             throw new ArgumentException("Nome da Turma invalido.");
@@ -24,7 +40,6 @@ namespace Vivencia19TardeAPI.Business
             if(turma.NrCapacidadeMax == 0)
             throw new ArgumentException("Cpacidade máxima não pode ser zero.");
 
-           db.Cadastrar(turma);
         }
 
         public List<Models.TurmaResponse> ListarTodos()
