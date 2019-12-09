@@ -2,7 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
-using System.Linq.Expressions;
+using System.Linq.Expression;
+
 
 namespace Vivencia19TardeAPI.Database
 {
@@ -18,7 +19,8 @@ namespace Vivencia19TardeAPI.Database
 
         public List<Vivencia19TardeAPI.Models.TbTurma> ListarTodos()
         {
-            List<Models.TbTurma> ano = db.TbTurma.OrderBy(t=> t.NmTurma).ToList();
+            List<Models.TbTurma> ano = db.TbTurma.OrderBy(t=> t.NmTurma)
+                                                    
             return ano;
         }
 

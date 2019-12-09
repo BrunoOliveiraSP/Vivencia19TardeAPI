@@ -18,6 +18,8 @@ namespace Vivencia19TardeAPI.Models
             TbTurmaAlunoHist = new HashSet<TbTurmaAlunoHist>();
             TbTurmaInscricaoTransicao = new HashSet<TbTurmaInscricaoTransicao>();
             TbTurmaSemana = new HashSet<TbTurmaSemana>();
+            TbCurso = new HashSet<TbCurso>();
+            
         }
 
         [Key]
@@ -58,5 +60,7 @@ namespace Vivencia19TardeAPI.Models
         public virtual ICollection<TbTurmaInscricaoTransicao> TbTurmaInscricaoTransicao { get; set; }
         [InverseProperty("IdTurmaNavigation")]
         public virtual ICollection<TbTurmaSemana> TbTurmaSemana { get; set; }
+         [InverseProperty("IdTurmaNavigation")]
+        public virtual ICollection<TbDiarioAvaliacaoAluno> TbCurso { get; set; }
     }
 }
