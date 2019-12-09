@@ -25,8 +25,9 @@ namespace Vivencia19TardeAPI.Database
 
         public List<Models.TbProfessor> ListarTodos()
         {
-            List<Models.TbProfessor> professor = db.TbProfessor.ToList();
-            return professor;
+            List<Models.TbProfessor> professores = db.TbProfessor.OrderBy(c => c.NmProfessor)
+                                                                .ToList();
+            return professores;
         }
         public List<Models.TbProfessor> ConsultarPorNome(string nome)
         {

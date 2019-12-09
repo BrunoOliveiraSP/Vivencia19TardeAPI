@@ -65,9 +65,9 @@ namespace Vivencia19TardeAPI.Controllers
           [HttpGet("ListarNomeSigla/{Nome}/{Sigla}")]
           public ActionResult<List<Models.TbDisciplina>> ListarNomeSigla(string Nome, string Sigla)
           {
-               try
+            try
             {
-             return bu.ListarNomeSigla(Nome, Sigla);
+              return bu.ListarNomeSigla(Nome, Sigla);
             }
             catch(System.Exception ex)
             {
@@ -76,11 +76,11 @@ namespace Vivencia19TardeAPI.Controllers
             }
           }
            [HttpGet("ListarCursoDisciplina/{id}")]
-          public ActionResult<BindingList<Models.TbDisciplina>> ListarNomeSigla(int id)
+          public ActionResult<List<Models.TbDisciplina>> ListarNomeSigla(int id)
           {
-               try
+            try
             {
-             return bu.ListarCursoDisciplina(id);
+              return bu.ListarCursoDisciplina(id);
             }
             catch(System.Exception ex)
             {
@@ -92,17 +92,14 @@ namespace Vivencia19TardeAPI.Controllers
           [HttpPost("InserirCursoDisciplina")]
           public void InserirDisciplinasCurso(Models.TbCursoDisciplina cd)
           {
-              bu.InserirDisciplinasCurso(cd.IdCurso, cd.IdDisciplina);
+              bu.InserirDisciplinasCurso(cd);
           }
-
-
-          [HttpPost("AlterarCursoDisciplina")]
-          public void AlterarDisciplinasCurso(Models.TbCursoDisciplina cd)
+           [HttpDelete("RemoverDisciplinasCurso/{id}")]
+          public void DeletarDisciplinasCurso(int id)
           {
-             bu.RemoverCursoDisciplina(cd.IdCurso);
-             bu.InserirDisciplinasCurso(cd.IdCurso, cd.IdDisciplina);
+              bu.RemoverCursoDisciplina(id);
           }
-        
+
     }
 
 }

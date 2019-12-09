@@ -33,7 +33,6 @@ namespace Vivencia19TardeAPI.Controllers
             bs.Remover(idProfessor, idLogin);
         }
 
-
         [HttpGet]
         public List<Models.TbProfessor> ListarTodos()
         {
@@ -48,7 +47,5 @@ namespace Vivencia19TardeAPI.Controllers
             List<Models.TbProfessor> professor = bs.ConsultarPorNome(nome);
             return professor;
         }
-
-
     }
 }
