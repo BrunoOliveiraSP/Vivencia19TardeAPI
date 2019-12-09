@@ -655,7 +655,6 @@ namespace Vivencia19TardeAPI.Business
         }
     }
 }
-
     public static class StringExtension
 	{
 		public static bool IsValidEmail(this string email)

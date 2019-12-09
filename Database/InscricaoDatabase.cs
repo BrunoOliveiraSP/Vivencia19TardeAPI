@@ -19,6 +19,7 @@ namespace Vivencia19TardeAPI.Database
         public List<Models.TbInscricao> ConsultarTodos()
         {
             return db.TbInscricao.Include(x => x.IdSalaVestibularNavigation)
+                                 .Include(x => x.IdSalaVestibularNavigation.IdSalaNavigation)
                                  .Include(x => x.IdCursoNavigation)
                                  .OrderBy(x => x.NmInscrito)
                                  .ToList();
@@ -101,6 +102,7 @@ namespace Vivencia19TardeAPI.Database
         public List<Models.TbInscricao> ConsultarPorNome(string nome)
         {
             return db.TbInscricao.Include(x => x.IdSalaVestibularNavigation)
+                                 .Include(x => x.IdSalaVestibularNavigation.IdSalaNavigation)
                                  .Include(x => x.IdCursoNavigation)
                                  .Where(x => x.NmInscrito.ToUpper().Contains(nome.ToUpper())   || 
                                              x.NmInscrito.ToLower().Contains(nome.ToLower()))
@@ -111,6 +113,7 @@ namespace Vivencia19TardeAPI.Database
         public List<Models.TbInscricao> ConsultarPorAno(int id)
         {
             return db.TbInscricao.Include(x => x.IdSalaVestibularNavigation)
+                                 .Include(x => x.IdSalaVestibularNavigation.IdSalaNavigation)
                                  .Include(x => x.IdCursoNavigation)
                                  .Where(x => x.IdAnoLetivo == id)
                                  .OrderBy(x => x.NmInscrito)
