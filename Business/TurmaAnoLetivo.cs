@@ -45,7 +45,9 @@ namespace Vivencia19TardeAPI.Business
         private Models.TurmaResponse CriarResponse(Models.TbTurma turma)
         {
             Models.TurmaResponse response = new Models.TurmaResponse();
-            response.IdTurma = turma.IdTurma;                          
+            response.IdTurma = turma.IdTurma;   
+            response.IdAnoLetivo = turma.IdAnoLetivo; 
+            response.IdCurso = turma.IdCurso;                        
             response.NmTurma = turma.NmTurma;
             response.NrCapacidadeMax = turma.NrCapacidadeMax;
             response.TpPeriodo = turma.TpPeriodo;
