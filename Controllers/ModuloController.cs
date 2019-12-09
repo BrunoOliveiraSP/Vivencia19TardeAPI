@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Vivencia19TardeAPI.Models;
 
+
 namespace Vivencia19TardeAPI.Controllers
 {
     [ApiController]
@@ -20,6 +21,7 @@ namespace Vivencia19TardeAPI.Controllers
             try
             {
                 db.Inserir(modulo);
+                
                 return Ok();
             }
             catch (System.Exception ex)

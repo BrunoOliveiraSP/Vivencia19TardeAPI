@@ -15,12 +15,12 @@ namespace Vivencia19TardeAPI.Controllers
         Business.InscricaoBusiness InscricaoBusiness = new Business.InscricaoBusiness();
         
         [HttpPost]
-        public ActionResult Inserir(Models.TbInscricao inscricao)
+        public ActionResult<Models.TbInscricao> Inserir(Models.TbInscricao inscricao)
         {
             try
             {
                 InscricaoBusiness.Inserir(inscricao);
-                return Ok();
+                return inscricao;
             }
             catch (System.Exception ex)
             {
@@ -57,8 +57,8 @@ namespace Vivencia19TardeAPI.Controllers
             }
         }
 
-        [HttpGet("ConsultarTodos")]
-        public ActionResult<List<Models.TbInscricao>> ConsultarTodos()
+        [HttpGet]
+        public ActionResult<List<Models.InscricaoResponse>> ConsultarTodos()
         {
             try
             {
@@ -72,11 +72,12 @@ namespace Vivencia19TardeAPI.Controllers
         }
 
         [HttpGet("ConsultarPorNomeEAno/{nome}/{ano}")]
-        public ActionResult<List<Models.TbInscricao>> ConsultarPorNomeEAno(string nome, int ano)
+        public ActionResult<List<Models.InscricaoResponse>> ConsultarPorNomeEAno(string nome, int ano)
         {
             try
             {
-                return InscricaoBusiness.ConsultarPorNomeEAno(nome, ano);
+                var lista = InscricaoBusiness.ConsultarPorNomeEAno(nome, ano); 
+                return lista;
             }
             catch (System.Exception ex)
             {
@@ -91,6 +92,20 @@ namespace Vivencia19TardeAPI.Controllers
             try
             {
                 return InscricaoBusiness.ConsultarAnoLetivo(id);
+            }
+            catch (System.Exception ex)
+            {
+                ErrorModel erro = new ErrorModel(500, ex.Message);
+                return StatusCode(500, erro);
+            }
+        }
+
+        [HttpGet("ConsultarAnoLetivoLista/{id}")]
+        public ActionResult<List<Models.InscricaoResponse>> ConsultarAnoLetivoLista(int id)
+        {
+            try
+            {
+                return InscricaoBusiness.ConsultarAnoLetivoLista(id);
             }
             catch (System.Exception ex)
             {

@@ -12,6 +12,8 @@ namespace Vivencia19TardeAPI.Database
 
         public void Inserir(Models.TbModulo tb)
         {
+            Models.ModelIDAnoLetivo t = new Models.ModelIDAnoLetivo();
+            tb.IdAnoLetivo = t.IdAnoLetivo;
             db.TbModulo.Add(tb);
             db.SaveChanges();
         }

@@ -6,48 +6,91 @@ using System.Linq.Expressions;
 using Microsoft.AspNetCore.Mvc;
 
 
+
+
 namespace Vivencia19TardeAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
     public class ProfessorController : ControllerBase
     {
-        Business.ProfessorBusiness bs = new Business.ProfessorBusiness();
+        Business.ProfessorBusiness business = new Business.ProfessorBusiness();
+        
+        
         [HttpPost]
-        public void Inserir(Models.ProfessorRequest professor)
+        public ActionResult Inserir(Models.ProfessorRequest professor)
         {
-            bs.Inserir(professor);
+            try
+            {
+                business.Inserir(professor);
+                return Ok();
+            }
+            catch(System.Exception ex)
+            {
+                Models.ErrorModel erro = new Models.ErrorModel(500, ex.Message);
+                return StatusCode(500, erro);
+            }
         }
 
         [HttpPut]
-        public void Alterar(Models.ProfessorRequest professor)
+        public ActionResult Alterar(Models.ProfessorRequest professor)
         {
-            bs.Alterar(professor);
-
+            try
+            {
+                business.Alterar(professor);
+                return Ok();
+            }
+            catch(System.Exception ex)
+            {
+                Models.ErrorModel erro = new Models.ErrorModel(500, ex.Message);
+                return StatusCode(500, erro);
+            }
         }
 
-         [HttpDelete("{idProfessor}/{idLogin}")]
-        public void Remover(int idProfessor, int idLogin)
+        [HttpDelete("{idProfessor}/{idLogin}")]
+        public ActionResult Remover(int idProfessor, int idLogin)
         {
-            bs.Remover(idProfessor, idLogin);
+            try
+            {
+                business.Remover(idProfessor, idLogin);
+                return Ok();
+            }
+            catch(System.Exception ex)
+            {
+                Models.ErrorModel erro = new Models.ErrorModel(500, ex.Message);
+                return StatusCode(500, erro);
+            }
         }
-
 
         [HttpGet]
-        public List<Models.TbProfessor> ListarTodos ()
+        public ActionResult<List<Models.TbProfessor>> ListarTodos()
         {
-            List<Models.TbProfessor> professor = bs.ListarTodos();
-            return professor;
+            try
+            {
+                List<Models.TbProfessor> professores = business.ListarTodos();
+                return professores;
+            }
+            catch(System.Exception ex)
+            {
+                Models.ErrorModel erro= new Models.ErrorModel(500, ex.Message);
+                return StatusCode(500, erro);
+            }
 
         }
  
         [HttpGet("Nome/{nome}")]
-        public List<Models.TbProfessor> ConsultarNome (string nome)
+        public ActionResult<List<Models.TbProfessor>> ConsultarNome (string nome)
         {
-            List<Models.TbProfessor> professor = bs.ConsultarPorNome(nome);
-            return professor;
+            try
+            {
+                List<Models.TbProfessor> professor = business.ConsultarPorNome(nome);
+                return professor;
+            }
+            catch(System.Exception ex)
+            {
+                Models.ErrorModel erro = new Models.ErrorModel(500, ex.Message);
+                return StatusCode(500, erro);
+            }
         }
-
-
     }
 }

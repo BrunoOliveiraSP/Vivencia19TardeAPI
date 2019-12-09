@@ -8,18 +8,19 @@ namespace Vivencia19TardeAPI.Database
 {
     public class AnoLetivoDatabase
     {
-
         Vivencia19TardeAPI.Models.db_a5064d_freiContext db = new Models.db_a5064d_freiContext();  
 
-        public void CadastrarAnoLetivo(Vivencia19TardeAPI.Models.TbAnoLetivo anoLetivo)
+        public void Cadastrar(Vivencia19TardeAPI.Models.TbAnoLetivo anoLetivo)
         {
             db.TbAnoLetivo.Add(anoLetivo);
             db.SaveChanges();
+            Models.ModelIDAnoLetivo t = new Models.ModelIDAnoLetivo();
+            t.IdAnoLetivo = anoLetivo.IdAnoLetivo;
         }
 
         public List<Vivencia19TardeAPI.Models.TbAnoLetivo> ListarTodos()
         {
-            List<Models.TbAnoLetivo> ano = db.TbAnoLetivo.ToList();
+            List<Models.TbAnoLetivo> ano = db.TbAnoLetivo.OrderBy(t=> t.NrAno).ToList();
             return ano;
         }
 
@@ -50,9 +51,8 @@ namespace Vivencia19TardeAPI.Database
         }
         public List<Models.TbModulo> ModuloConsultar()
         {
-         List<Models.TbModulo> lista = db.TbModulo.ToList();
-         return lista;
-
+            List<Models.TbModulo> lista = db.TbModulo.ToList();
+            return lista;
         }
         public void ModuloRemover(int id)
         {
@@ -68,9 +68,6 @@ namespace Vivencia19TardeAPI.Database
             modulo.DtFinal = modulo.DtFinal;
             modulo.DtInicio = modulo.DtInicio;
             modulo.BtAberto = modulo.BtAberto;
-
         }
-        
-    
     }
-    }
+}

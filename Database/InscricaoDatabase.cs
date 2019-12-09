@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 
 namespace Vivencia19TardeAPI.Database
 {
@@ -17,7 +18,11 @@ namespace Vivencia19TardeAPI.Database
 
         public List<Models.TbInscricao> ConsultarTodos()
         {
-            return db.TbInscricao.ToList();
+            return db.TbInscricao.Include(x => x.IdSalaVestibularNavigation)
+                                 .Include(x => x.IdSalaVestibularNavigation.IdSalaNavigation)
+                                 .Include(x => x.IdCursoNavigation)
+                                 .OrderBy(x => x.NmInscrito)
+                                 .ToList();
         }
 
         public void Remover (int id)
@@ -96,22 +101,34 @@ namespace Vivencia19TardeAPI.Database
 
         public List<Models.TbInscricao> ConsultarPorNome(string nome)
         {
-            return db.TbInscricao.Where(x => x.NmInscrito.Contains(nome.ToUpper()) || x.NmInscrito.Contains(nome.ToLower()))
+            return db.TbInscricao.Include(x => x.IdSalaVestibularNavigation)
+                                 .Include(x => x.IdSalaVestibularNavigation.IdSalaNavigation)
+                                 .Include(x => x.IdCursoNavigation)
+                                 .Where(x => x.NmInscrito.ToUpper().Contains(nome.ToUpper())   || 
+                                             x.NmInscrito.ToLower().Contains(nome.ToLower()))
+                                 .OrderBy(x => x.NmInscrito)
                                  .ToList();
         }
 
-        public List<Models.TbInscricao> ConsultarPorAno(int ano)
+        public List<Models.TbInscricao> ConsultarPorAno(int id)
         {
-            return db.TbInscricao.Where(x => x.IdAnoLetivoNavigation.NrAno == ano)
+            return db.TbInscricao.Include(x => x.IdSalaVestibularNavigation)
+                                 .Include(x => x.IdSalaVestibularNavigation.IdSalaNavigation)
+                                 .Include(x => x.IdCursoNavigation)
+                                 .Where(x => x.IdAnoLetivo == id)
+                                 .OrderBy(x => x.NmInscrito)
                                  .ToList();
         }
 
-        public List<Models.TbInscricao> ConsultarPorNomeEAno(string nome, int ano)
+        
+
+        public List<Models.TbInscricao> ConsultarPorNomeEAno(string nome, int idAnoLetivo)
         {
-            return db.TbInscricao.Where(x => x.IdAnoLetivoNavigation.NrAno == ano && 
-                                             x.NmInscrito.Contains(nome.ToLower()) ||
-                                             x.IdAnoLetivoNavigation.NrAno == ano && 
-                                             x.NmInscrito.Contains(nome.ToUpper()))
+            return db.TbInscricao.Where(x => x.IdAnoLetivo == idAnoLetivo && 
+                                             x.NmInscrito.ToLower().Contains(nome.ToLower()) ||
+                                             x.IdAnoLetivo == idAnoLetivo && 
+                                             x.NmInscrito.ToUpper().Contains(nome.ToUpper()))                                 
+                                 .OrderBy(x => x.NmInscrito)
                                  .ToList();
         }
 
@@ -121,19 +138,19 @@ namespace Vivencia19TardeAPI.Database
                                       x.IdAnoLetivo == idAno);
         }
 
-        public bool ExisteCodigoInscrição(int codigo)
+        public bool ExisteCodigoInscrição(int codigo, int idAnoLetivo)
         {
-            return  db.TbInscricao.Any(x => x.CdInscricao == codigo);
+            return  db.TbInscricao.Any(x => x.CdInscricao == codigo && x.IdAnoLetivo == idAnoLetivo) ;
         }
 
-        public bool ExisteRG(string rg)
+        public bool ExisteRG(string rg, int idAnoLetivo)
         {
-            return db.TbInscricao.Any(x => x.DsRg == rg);
+            return db.TbInscricao.Any(x => x.DsRg == rg && x.IdAnoLetivo == idAnoLetivo);
         }
 
-        public bool ExisteCpf(string cpf)
+        public bool ExisteCpf(string cpf, int idAnoLetivo)
         {
-            return db.TbInscricao.Any(x => x.DsCpf == cpf);
+            return db.TbInscricao.Any(x => x.DsCpf == cpf && x.IdAnoLetivo == idAnoLetivo);
         }
 
         public Models.TbAnoLetivo ConsultarAnoLetivo(int id)

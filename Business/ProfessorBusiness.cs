@@ -14,18 +14,17 @@ namespace Vivencia19TardeAPI.Business
             if (string.IsNullOrEmpty(prof.Professor.NmProfessor))
                 throw new Exception("O Campo 'NOME' esta Invalido!");
 
-            prof.Login.DsSenha = "1234";
+            prof.Login.IdRole = 1;
             prof.Login.BtTrocar = true;
+            prof.Login.DsSenha = "1234";
             prof.Login.DtInclusao = DateTime.Now;
             prof.Login.DtUltimoLogin = DateTime.Now;
-            prof.Login.IdRole = 1;
-
-            db.InserirLogin(prof.Login);
+            
+            db.Inserir(prof.Login);
 
             prof.Professor.IdLogin = prof.Login.IdLogin;
-            db.InserirProfessor(prof.Professor);
+            db.Inserir(prof.Professor);
         }
-
 
         public List<Models.TbProfessor> ListarTodos()
         {
@@ -38,12 +37,12 @@ namespace Vivencia19TardeAPI.Business
             List<Models.TbProfessor> lista = db.ConsultarPorNome(nome);
             return lista;
         }
+
         public void Remover(int idProfessor,int idLogin )
         {
             db.RemoverProfessor(idProfessor);
             db.RemoverLogin(idLogin);
         }
-
 
         public void Alterar(Models.ProfessorRequest prof)
         {
@@ -55,8 +54,6 @@ namespace Vivencia19TardeAPI.Business
             prof.Login.IdRole = 1;
 
             db.AlterarLogin(prof.Login);
-        }
-
-        
+        }  
     }
 }

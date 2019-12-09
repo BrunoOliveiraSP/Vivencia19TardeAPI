@@ -22,10 +22,10 @@ namespace Vivencia19TardeAPI.Models
         [Key]
         [Column("id_disciplina", TypeName = "int(11)")]
         public int IdDisciplina { get; set; }
-        [Required]
+        //[Required]
         [Column("nm_disciplina", TypeName = "varchar(50)")]
         public string NmDisciplina { get; set; }
-        [Required]
+        //[Required]
         [Column("ds_sigla", TypeName = "varchar(50)")]
         public string DsSigla { get; set; }
         [Column("bt_ativo", TypeName = "bit(1)")]
