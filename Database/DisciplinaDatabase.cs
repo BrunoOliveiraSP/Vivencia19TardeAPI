@@ -69,14 +69,13 @@ namespace Vivencia19TardeAPI.Database
 
             List<Models.TbDisciplina> Disciplinas = new List<Models.TbDisciplina>();
             
-            foreach (Models.TbCursoDisciplina item in ids)
+            foreach(Models.TbCursoDisciplina item in ids)
             {
                 List<Models.TbDisciplina> Disciplina = db.TbDisciplina.Where(x => x.IdDisciplina == item.IdDisciplina).ToList();
 
                 Disciplinas.AddRange(Disciplina);
 
-            }                                 
-            
+            } 
             return Disciplinas;
         }
         public void InserirDisciplinasCurso(Models.TbCursoDisciplina mod)
@@ -86,15 +85,13 @@ namespace Vivencia19TardeAPI.Database
         }
         public void RemoverCursoDisciplinaCurso(int idcurso)
         {
-          List<Models.TbCursoDisciplina> cd = db.TbCursoDisciplina.Where(x => x.IdCurso == idcurso).ToList();
+            List<Models.TbCursoDisciplina> cd = db.TbCursoDisciplina.Where(x => x.IdCurso == idcurso).ToList();
              
-              foreach (var item in cd)
+            foreach (var item in cd)
             {
-             db.TbCursoDisciplina.Remove(item);
-            }     
-
-               
-
+              db.TbCursoDisciplina.Remove(item);
+              db.SaveChanges();
+            }   
         }
     }
 }

@@ -94,15 +94,12 @@ namespace Vivencia19TardeAPI.Controllers
           {
               bu.InserirDisciplinasCurso(cd);
           }
-
-
-          [HttpPost("AlterarCursoDisciplina")]
-          public void AlterarDisciplinasCurso(Models.TbCursoDisciplina cd)
+           [HttpDelete("RemoverDisciplinasCurso/{id}")]
+          public void DeletarDisciplinasCurso(int id)
           {
-             bu.RemoverCursoDisciplina(cd.IdCurso);
-             bu.InserirDisciplinasCurso(cd);
+              bu.RemoverCursoDisciplina(id);
           }
-        
+
     }
 
 }

@@ -58,7 +58,7 @@ namespace Vivencia19TardeAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<Models.TbInscricao>> ConsultarTodos()
+        public ActionResult<List<Models.InscricaoResponse>> ConsultarTodos()
         {
             try
             {
@@ -72,7 +72,7 @@ namespace Vivencia19TardeAPI.Controllers
         }
 
         [HttpGet("ConsultarPorNomeEAno/{nome}/{ano}")]
-        public ActionResult<List<Models.TbInscricao>> ConsultarPorNomeEAno(string nome, int ano)
+        public ActionResult<List<Models.InscricaoResponse>> ConsultarPorNomeEAno(string nome, int ano)
         {
             try
             {
@@ -101,7 +101,7 @@ namespace Vivencia19TardeAPI.Controllers
         }
 
         [HttpGet("ConsultarAnoLetivoLista/{id}")]
-        public ActionResult<List<Models.TbInscricao>> ConsultarAnoLetivoLista(int id)
+        public ActionResult<List<Models.InscricaoResponse>> ConsultarAnoLetivoLista(int id)
         {
             try
             {

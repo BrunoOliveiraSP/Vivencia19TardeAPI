@@ -62,7 +62,6 @@ namespace Vivencia19TardeAPI.Controllers
             }
         }
 
-
         [HttpGet]
         public ActionResult<List<Models.TbProfessor>> ListarTodos()
         {
@@ -93,7 +92,5 @@ namespace Vivencia19TardeAPI.Controllers
                 return StatusCode(500, erro);
             }
         }
-
-
     }
 }
