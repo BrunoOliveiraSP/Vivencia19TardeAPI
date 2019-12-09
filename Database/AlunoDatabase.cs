@@ -27,8 +27,8 @@ namespace Vivencia19TardeAPI.Database
                                             .Include(x=> x.TbTurmaAluno)
                                                 .ThenInclude(x=> x.IdTurmaNavigation)
                                                 .ThenInclude(x=> x.IdCursoNavigation)
-                                            .Where(x=> x.NmAluno.Contains(Nome)
-                                            && x.TbTurmaAluno.Contains(ra)
+                                            .Where(x=> x.NmAluno.Contains(nome)
+                                            && x.TbTurmaAluno.Any(ta => ta.CdRa.Contains(ra))
                                             && x.TbTurmaAluno.Any(ta => ta.IdTurmaNavigation.IdCursoNavigation.NmCurso.Contains(curso))
                                             && x.TbTurmaAluno.Any(ta => ta.IdTurmaNavigation.NmTurma.Contains(turma)))
                                             .ToList();

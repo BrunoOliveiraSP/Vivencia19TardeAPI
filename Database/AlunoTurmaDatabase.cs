@@ -34,6 +34,12 @@ namespace Vivencia19TardeAPI.Database
             return lista;
         }
 
+        public Models.TbTurmaAluno Consultar(Models.TbTurmaAluno turmaAluno)
+        {
+            Models.TbTurmaAluno Model = DB.TbTurmaAluno.FirstOrDefault(x=> x.IdAluno == turmaAluno.IdAluno);
+            return Model;
+        }
+
         public void Deletar (int id)
         {
             Models.TbTurmaAluno Deletar = DB.TbTurmaAluno.FirstOrDefault(x=> x.IdAluno == id);

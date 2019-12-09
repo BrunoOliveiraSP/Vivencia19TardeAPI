@@ -28,9 +28,16 @@ namespace Vivencia19TardeAPI.Business
             return lista;
         }
 
+        public Models.TbTurmaAluno Consultar(Models.TbTurmaAluno turmaAluno)
+        {
+            Models.TbTurmaAluno Model = DB.Consultar(turmaAluno);
+            return Model;
+        }
         public void Deletar (int id)
         {
             DB.Deletar(id);
         }
+
+       
     }
 }

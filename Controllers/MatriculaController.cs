@@ -34,10 +34,10 @@ namespace Vivencia19TardeAPI.Controllers
             Bus.Deletar(request);
         }
 
-        [HttpGet("{nome}")]
-        public List<Models.MatriculaResponse> Listar(string nome)
+        [HttpGet("{nome}/{ra}/{curso}/{turma}")]
+        public List<Models.MatriculaResponse> Listar(string nome, string ra, string curso, string turma)
         {
-            return Bus.Lista(nome, string.Empty, string.Empty, string.Empty);
+            return Bus.Lista(nome, ra, curso, turma);
         }
 
 

@@ -9,15 +9,6 @@ namespace Vivencia19TardeAPI.Business
         Database.AlunoDocumentosDatabase db = new Database.AlunoDocumentosDatabase();
         public void Inserir(Models.TbAlunoDocumentos documentos)
         {
-            if(documentos.NmDocumento == string.Empty)
-            {
-                throw new ArgumentException("Nome é'obrigatorio ");
-            }
-            if(documentos.DtInclusao > DateTime.Now)
-            {
-                throw new ArgumentException("A data de inclusão não pode ser mais q a data de hoje");
-            }
-            
             db.Inserir(documentos);
         }
         public List<Models.TbAlunoDocumentos> Consultar(int id)
@@ -34,5 +25,7 @@ namespace Vivencia19TardeAPI.Business
         {
             db.Deletar(id);
         }
+
+        
     }
 }

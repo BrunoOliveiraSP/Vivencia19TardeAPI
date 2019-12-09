@@ -30,5 +30,7 @@ namespace Vivencia19TardeAPI.Business
             DB.deletar(id);
         }
         
+
+        
     }
 }
