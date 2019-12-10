@@ -28,12 +28,35 @@ namespace Vivencia19TardeAPI.Business
             throw new ArgumentException("Instituição obrigatório.");                      
         } 
 
-        public List<Models.TbSalaVestibular> ListarTudo()
+        
+  public List<Models.SalaVestibularResponse> ListarTudo()
         {
-            List<Models.TbSalaVestibular> sala = db.Listar();
-            return sala;
-
+            List<Models.TbSalaVestibular> Vestibular = db.Listar();
+           
+            List<Models.SalaVestibularResponse> Response = new List<Models.SalaVestibularResponse>();
+            
+            foreach(Models.TbSalaVestibular salavestibular in Vestibular)
+            {
+                Models.SalaVestibularResponse resp = CriarResponse(salavestibular);
+                Response.Add(resp);
+            }
+            
+            return Response;
         }
+
+        public Models.SalaVestibularResponse CriarResponse(Models.TbSalaVestibular vestibular)
+        {
+            Models.SalaVestibularResponse response = new Models.SalaVestibularResponse();
+
+            response.IdSalaVestibular = vestibular.IdSalaVestibular;
+            response.DsPeriodo = vestibular.DsPeriodo;
+            response.NmLocal = vestibular.IdSalaNavigation.NmLocal;
+            response.NmSala = vestibular.IdSalaNavigation.NmSala;
+            
+            return response;
+        }
+
+
         public void Remover(int id)
         {
             db.Remover(id);

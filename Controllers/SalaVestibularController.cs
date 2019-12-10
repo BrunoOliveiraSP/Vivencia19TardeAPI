@@ -17,16 +17,14 @@ namespace Vivencia19TardeAPI.Controllers
         [HttpPost]
         public void Inserir(Models.TbSalaVestibular request)
         {
-               business.Inserir(request);
-              
+               business.Inserir(request);              
         }
 
         [HttpDelete("Remover/{id}")]
         public void Remover(int id)
         {
             
-                business.Remover(id);          
-          
+                business.Remover(id);                   
         }
 
         [HttpPut]
@@ -37,12 +35,18 @@ namespace Vivencia19TardeAPI.Controllers
         }
 
         [HttpGet]
-        public List<Models.TbSalaVestibular> ListarTudo()
+        public ActionResult<List<Models.SalaVestibularResponse>> ListarTudo()
         {
-           
-                List<Models.TbSalaVestibular> consulta = business.ListarTudo();
+            try
+            {
+                List<Models.SalaVestibularResponse> consulta = business.ListarTudo();
                 return consulta;
-             
+            }
+            catch(System.Exception ex)
+            {
+                 Models.ErrorModel error = new Models.ErrorModel(500, ex.Message);
+                return StatusCode(500, error);
+            }           
         }
     }
 }

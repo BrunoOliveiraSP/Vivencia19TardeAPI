@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 
 namespace Vivencia19TardeAPI.Database
 {
@@ -16,14 +17,13 @@ namespace Vivencia19TardeAPI.Database
         }
         public List<Models.TbSalaVestibular> Listar()
         {
-            List<Models.TbSalaVestibular> sala = md.TbSalaVestibular.ToList();
-            
-            return sala;
+            return md.TbSalaVestibular.Include(x => x.IdSalaNavigation)
+                                      .ToList();                   
         }
        
          public void Remover(int id)
         {
-            Models.TbSalaVestibular remove = md.TbSalaVestibular.FirstOrDefault(x => x.IdSalaVestibular == id);
+            Models.TbSalaVestibular remove = md.TbSalaVestibular.First(x => x.IdSalaVestibular == id);
             md.TbSalaVestibular.Remove(remove);
             md.SaveChanges();
         }
@@ -31,9 +31,9 @@ namespace Vivencia19TardeAPI.Database
         {
             Models.TbSalaVestibular alterar = md.TbSalaVestibular.FirstOrDefault(x=> x.IdSala == tabela.IdSala);
             alterar.DsPeriodo = tabela.DsPeriodo;
-            alterar.IdSala = tabela.IdSala;
-            alterar.NrOrdem = tabela.NrOrdem;
-            alterar.QtInscritos = tabela.QtInscritos;
+            alterar.IdSalaNavigation.NmLocal = tabela.IdSalaNavigation.NmLocal;
+            alterar.IdSalaNavigation.NmSala = tabela.IdSalaNavigation.NmSala;
+
             md.SaveChanges();
         }
     }
