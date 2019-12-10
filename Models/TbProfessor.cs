@@ -19,55 +19,55 @@ namespace Vivencia19TardeAPI.Models
         public int IdProfessor { get; set; }
         [Column("id_login", TypeName = "int(11)")]
         public int IdLogin { get; set; }
-        [Required]
+        //[Required]
         [Column("nm_professor", TypeName = "varchar(100)")]
         public string NmProfessor { get; set; }
-        [Required]
+        //[Required]
         [Column("ds_celular", TypeName = "varchar(100)")]
         public string DsCelular { get; set; }
-        [Required]
+        //[Required]
         [Column("ds_telefone", TypeName = "varchar(50)")]
         public string DsTelefone { get; set; }
         [Column("dt_nascimento", TypeName = "date")]
         public DateTime DtNascimento { get; set; }
-        [Required]
+        //[Required]
         [Column("ds_estado", TypeName = "varchar(50)")]
         public string DsEstado { get; set; }
-        [Required]
+        //[Required]
         [Column("ds_email", TypeName = "varchar(100)")]
         public string DsEmail { get; set; }
-        [Required]
+        //[Required]
         [Column("ds_cv_lattes", TypeName = "varchar(200)")]
         public string DsCvLattes { get; set; }
         [Column("nr_ano_primeiro_emprego", TypeName = "int(11)")]
         public int NrAnoPrimeiroEmprego { get; set; }
-        [Required]
+        //[Required]
         [Column("ds_cpf", TypeName = "varchar(50)")]
         public string DsCpf { get; set; }
-        [Required]
+        //[Required]
         [Column("ds_rg", TypeName = "varchar(50)")]
         public string DsRg { get; set; }
-        [Required]
+        //[Required]
         [Column("ds_rg_orgao", TypeName = "varchar(50)")]
         public string DsRgOrgao { get; set; }
-        [Required]
+        //[Required]
         [Column("ds_rg_emissor", TypeName = "varchar(50)")]
         public string DsRgEmissor { get; set; }
-        [Required]
+        //[Required]
         [Column("nm_mae", TypeName = "varchar(50)")]
         public string NmMae { get; set; }
-        [Required]
+        //[Required]
         [Column("nm_pai", TypeName = "varchar(50)")]
         public string NmPai { get; set; }
-        [Required]
+        //[Required]
         [Column("tp_contratacao", TypeName = "varchar(50)")]
         public string TpContratacao { get; set; }
         [Column("bt_ativo", TypeName = "bit(1)")]
         public bool BtAtivo { get; set; }
-        [Required]
+        //[Required]
         [Column("ds_faculdade", TypeName = "varchar(50)")]
         public string DsFaculdade { get; set; }
-        [Required]
+        //[Required]
         [Column("ds_curso", TypeName = "varchar(50)")]
         public string DsCurso { get; set; }
         [Column("dt_faculdade_inicio", TypeName = "date")]

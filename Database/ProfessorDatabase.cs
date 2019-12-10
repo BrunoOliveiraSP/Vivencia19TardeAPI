@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace Vivencia19TardeAPI.Database
@@ -25,13 +26,18 @@ namespace Vivencia19TardeAPI.Database
 
         public List<Models.TbProfessor> ListarTodos()
         {
-            List<Models.TbProfessor> professores = db.TbProfessor.OrderBy(c => c.NmProfessor)
-                                                                .ToList();
+            List<Models.TbProfessor> professores = db.TbProfessor
+                                                     .Include(x => x.IdLoginNavigation)
+                                                     .OrderBy(c => c.NmProfessor)
+                                                     .ToList();
             return professores;
         }
         public List<Models.TbProfessor> ConsultarPorNome(string nome)
         {
-            List<Models.TbProfessor> professor = db.TbProfessor.Where(t => t.NmProfessor.Contains(nome)).ToList();
+            List<Models.TbProfessor> professor = db.TbProfessor
+                                                   .Include(x => x.IdLoginNavigation)
+                                                   .Where(t => t.NmProfessor.Contains(nome))
+                                                   .ToList();
             return professor;
         }
 
@@ -80,10 +86,6 @@ namespace Vivencia19TardeAPI.Database
         public void AlterarLogin(Models.TbLogin login)
         {
             Models.TbLogin alterado = db.TbLogin.FirstOrDefault(t => t.IdLogin == login.IdLogin);
-            
-            alterado.DsSenha = login.DsSenha;
-            alterado.DsLogin = login.DsLogin;
-            alterado.BtAtivo = login.BtAtivo;
             alterado.DsLogin = login.DsLogin;
 
             db.SaveChanges();

@@ -71,7 +71,7 @@ namespace Vivencia19TardeAPI.Controllers
             }
         }
 
-        [HttpGet("ConsultarPorNomeEAno/{nome}/{ano}")]
+        [HttpGet("Consultar")]
         public ActionResult<List<Models.InscricaoResponse>> ConsultarPorNomeEAno(string nome, int ano)
         {
             try
