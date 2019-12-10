@@ -13,6 +13,7 @@ namespace Vivencia19TardeAPI.Business
         Database.CursoDatabase Curso = new Database.CursoDatabase();
         public void Inserir (Models.TurmaRequest request)
         {
+           
             this.ValidarCurso(request.Curso);
             this.ValidarTurma(request.Turma);
 
@@ -28,11 +29,19 @@ namespace Vivencia19TardeAPI.Business
         }
          public void ValidarTurma(Models.TbTurma turma)
         {
+            bool existe = db.ConsultarTurma(turma);
+
+            if(existe)
+            throw new ArgumentException("Essa turma já existe.");
+
+            if(turma.TpPeriodo == "Selecione")
+            throw new ArgumentException("Período inválido.");
+
             if(turma.NmTurma == string.Empty)
             throw new ArgumentException("Nome da Turma invalido.");
 
             if(turma.TpPeriodo == string.Empty)
-            throw new ArgumentException("unidade de tempo invalido.");
+            throw new ArgumentException("Período invalido.");
 
             if(turma.IdAnoLetivo == 0)
             throw new ArgumentException("Id inválido.");
@@ -78,18 +87,7 @@ namespace Vivencia19TardeAPI.Business
 
         public void Alterar(Models.TbTurma turma)
         {
-             if(turma.NmTurma == string.Empty)
-            throw new ArgumentException("Nome da Turma invalido.");
-
-            if(turma.TpPeriodo == string.Empty)
-            throw new ArgumentException("Unidade de tempo invalido.");
-
-            if(turma.IdAnoLetivo == 0)
-            throw new ArgumentException("Id inválido.");
-
-            if(turma.NrCapacidadeMax == 0)
-            throw new ArgumentException("Cpacidade máxima não pode ser zero.");
-
+           this.ValidarTurma(turma);
             db.Alterar(turma);
         }
         public void Remover(int id)

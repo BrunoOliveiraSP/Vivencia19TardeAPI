@@ -10,7 +10,12 @@ namespace Vivencia19TardeAPI.Business
     {
         Database.AnoLetivoDatabase db = new Database.AnoLetivoDatabase();
         public void Inserir(Models.TbAnoLetivo ano)
-        {  
+        {
+         bool existe = db.ConsultarAno(ano);
+
+         if(existe)
+         throw new ArgumentException("Esse ano letivo já existe!");
+           
          if(ano.NrAno == 0)
          throw new ArgumentException ("O ano não pode ser zero!");
 
@@ -32,6 +37,12 @@ namespace Vivencia19TardeAPI.Business
          
         public void Alterar(Models.TbAnoLetivo anoLetivo)
         {
+
+        bool existe = db.ConsultarAno(anoLetivo);
+
+            if(existe)
+            throw new ArgumentException("Esse ano letivo já existe!");
+
             if(anoLetivo.IdAnoLetivo == 0)
             throw new ArgumentException("ID Inválido");
 
@@ -56,7 +67,7 @@ namespace Vivencia19TardeAPI.Business
         public void InserirModulo(Models.TbModulo modulo)
         {
             if(modulo.NmModulo == null)
-            throw new ArgumentException("Modulo Invalido");
+            throw new ArgumentException("Modulo Invalido.");
 
             if(modulo.NrModulo >= 0)
             throw new ArgumentException("Numero Invalido");

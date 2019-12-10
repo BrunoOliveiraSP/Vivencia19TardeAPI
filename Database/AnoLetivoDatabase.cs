@@ -24,6 +24,12 @@ namespace Vivencia19TardeAPI.Database
             return ano;
         }
 
+         public bool ConsultarAno(Models.TbAnoLetivo model)
+        {
+           bool existe =  db.TbAnoLetivo.Any(t=> t.NrAno == model.NrAno);
+            return existe;
+        }
+
         public void Remover(int id)
         {
             Models.TbAnoLetivo anos = db.TbAnoLetivo.FirstOrDefault(x => x.IdAnoLetivo == id);

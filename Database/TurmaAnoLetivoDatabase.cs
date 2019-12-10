@@ -24,7 +24,12 @@ namespace Vivencia19TardeAPI.Database
                                                     
             return ano;
         }
-
+         
+          public bool ConsultarTurma(Models.TbTurma model)
+        {
+           bool existe =  db.TbTurma.Any(t=> t.NmTurma == model.NmTurma);
+            return existe;
+        }
         public void Remover(int id)
         {
             Models.TbTurma ano = db.TbTurma.FirstOrDefault(x=>x.IdTurma ==id);
