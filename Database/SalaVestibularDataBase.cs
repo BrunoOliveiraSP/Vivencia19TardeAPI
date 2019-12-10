@@ -23,13 +23,13 @@ namespace Vivencia19TardeAPI.Database
        
          public void Remover(int id)
         {
-            Models.TbSalaVestibular remove = md.TbSalaVestibular.First(x=> x.IdSala == id);
+            Models.TbSalaVestibular remove = md.TbSalaVestibular.FirstOrDefault(x => x.IdSalaVestibular == id);
             md.TbSalaVestibular.Remove(remove);
             md.SaveChanges();
         }
         public void Alterar (Models.TbSalaVestibular tabela)
         {
-            Models.TbSalaVestibular alterar = md.TbSalaVestibular.First(x=> x.IdSala == tabela.IdSala);
+            Models.TbSalaVestibular alterar = md.TbSalaVestibular.FirstOrDefault(x=> x.IdSala == tabela.IdSala);
             alterar.DsPeriodo = tabela.DsPeriodo;
             alterar.IdSala = tabela.IdSala;
             alterar.NrOrdem = tabela.NrOrdem;
