@@ -76,8 +76,8 @@ namespace Vivencia19TardeAPI.Business
             response.NrCapacidadeMax = turma.NrCapacidadeMax;
             response.TpPeriodo = turma.TpPeriodo;
 
-            if(turma.TbCurso.Count > 0)
-            response.NmCurso = turma.TbCurso.FirstOrDefault().NmCurso;
+            if(turma.IdCursoNavigation.IdCurso > 0)
+            response.NmCurso = turma.IdCursoNavigation.NmCurso;
 
             return response;
 

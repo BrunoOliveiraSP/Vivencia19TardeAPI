@@ -20,7 +20,7 @@ namespace Vivencia19TardeAPI.Database
 
         public List<Vivencia19TardeAPI.Models.TbTurma> ListarTodos()
         {
-            List<Models.TbTurma> ano = db.TbTurma.Include(x => x.TbCurso).OrderBy(t=> t.NmTurma).ToList();
+            List<Models.TbTurma> ano = db.TbTurma.Include(x => x.IdCursoNavigation).OrderBy(t=> t.NmTurma).ToList();
                                                     
             return ano;
         }
