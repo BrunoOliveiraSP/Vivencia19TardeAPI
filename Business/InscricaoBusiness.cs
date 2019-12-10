@@ -15,16 +15,16 @@ namespace Vivencia19TardeAPI.Business
 
         public void Inserir(Models.TbInscricao inscricao )
         {
-            bool candidato = db.ExisteCandidato(inscricao.NmInscrito, inscricao.IdAnoLetivo);
+           
             bool rg = db.ExisteRG(inscricao.DsRg, inscricao.IdAnoLetivo);
             bool cpf = db.ExisteCpf(inscricao.DsCpf, inscricao.IdAnoLetivo);
+            //boo l cpfValido = StringExtension.IsValidCep(inscricao.DsCpf);
+            bool candidato = db.ExisteCandidato(inscricao.NmInscrito, inscricao.IdAnoLetivo);
             bool codigo = db.ExisteCodigoInscrição(inscricao.CdInscricao, inscricao.IdAnoLetivo);
-            //bool cpfValido = StringExtension.IsValidCep(inscricao.DsCpf);
-            //bool tel1Valido = StringExtension.IsValidPhone(inscricao.DsTelefone.Replace("(", "").Replace(")", "").Replace("-", ""));
-            //bool tel2Valido = StringExtension.IsValidPhone(inscricao.DsTelefone2.Replace("(", "").Replace(")", "").Replace("-", ""));
             //bool tel1ResponsavelValido = StringExtension.IsValidPhone(inscricao.DsResponsavelTelefone);
             //bool tel2ResponsavelValido = StringExtension.IsValidPhone(inscricao.DsResponsavelTelefone2);
-
+            //bool tel1Valido = StringExtension.IsValidPhone(inscricao.DsTelefone.Replace("(", "").Replace(")", "").Replace("-", ""));
+            //bool tel2Valido = StringExtension.IsValidPhone(inscricao.DsTelefone2.Replace("(", "").Replace(")", "").Replace("-", ""));
             if (string.IsNullOrWhiteSpace(inscricao.NmInscrito))
             {
                 throw new ArgumentException("Informe o nome do candidato!"); 

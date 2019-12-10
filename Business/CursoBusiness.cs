@@ -53,13 +53,7 @@ namespace Vivencia19TardeAPI.Business
 
             if(curso.DsSigla == string.Empty)
             throw new ArgumentException("Campo não pode estar vazio.");
-
-            if(contemCurso == true)
-            throw new ArgumentException("Curso já cadastrado.");           
-
-            if(contemSigla == true)
-            throw new ArgumentException("Sigla já cadastrado.");
-
+            
             if(curso.NrCapacidadeMaxima == 0)
             throw new ArgumentException("Valor inválido.");
 
