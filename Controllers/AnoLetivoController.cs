@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Vivencia19TardeAPI.Models;
 
 
-namespace Vivencia19TardeAPI_1.Controllers
+namespace Vivencia19TardeAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -17,13 +17,13 @@ namespace Vivencia19TardeAPI_1.Controllers
         Vivencia19TardeAPI.Business.AnoLetivoBusiness db = new  Vivencia19TardeAPI.Business.AnoLetivoBusiness();
 
        [HttpPost]
-        public ActionResult Inserir(Vivencia19TardeAPI.Models.TbAnoLetivo ano)
+        public ActionResult<TbAnoLetivo> Inserir(TbAnoLetivo ano)
         {
             try
             {
 
             db.Inserir(ano);
-            return Ok();
+            return ano;
 
             }
             catch(System.Exception ex)
