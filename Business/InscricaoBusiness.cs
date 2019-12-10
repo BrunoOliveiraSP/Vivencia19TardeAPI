@@ -12,7 +12,6 @@ namespace Vivencia19TardeAPI.Business
     public class InscricaoBusiness
     {
         Database.InscricaoDatabase db = new Database.InscricaoDatabase();
-
         public void Inserir(Models.TbInscricao inscricao )
         {
            
@@ -281,7 +280,6 @@ namespace Vivencia19TardeAPI.Business
 
             db.Inserir(inscricao);
         }
-
         public void Remover(int id)
         {
             if(id == 0)
@@ -290,7 +288,6 @@ namespace Vivencia19TardeAPI.Business
             }
             db.Remover(id);
         }
-
         public void Alterar(Models.TbInscricao inscricao)
         {
             if (string.IsNullOrWhiteSpace(inscricao.NmInscrito))
@@ -507,7 +504,6 @@ namespace Vivencia19TardeAPI.Business
 
            db.Alterar(inscricao);
         }
-
         public List<Models.InscricaoResponse> ConsultarTodos()
         {
             List<Models.TbInscricao> listaInscricao = db.ConsultarTodos();
@@ -521,12 +517,11 @@ namespace Vivencia19TardeAPI.Business
             }
             return response;
         }
-
         public List<Models.InscricaoResponse> ConsultarPorNomeEAno(string nome, int ano)
         {
-            if(string.IsNullOrWhiteSpace(nome.Replace("-", "").Replace(".", "").Replace("(", "").Replace(")", "").Trim()))
+            if(nome == null)
             {
-                throw new ArgumentException("Informe um nome para ser pesquisado.");
+                nome = string.Empty;
             }
             if(ano == 0)
             {
@@ -543,8 +538,6 @@ namespace Vivencia19TardeAPI.Business
             }
             return response;
         }
-
-        
         private Models.InscricaoResponse CriarResponse(Models.TbInscricao inscrito)
         {
             Models.InscricaoResponse response = new Models.InscricaoResponse();
@@ -620,7 +613,6 @@ namespace Vivencia19TardeAPI.Business
 
             return response;
         }
-        
         public List<Models.InscricaoResponse> ConsultarAnoLetivoLista(int id)
         {
             if (id == 0)

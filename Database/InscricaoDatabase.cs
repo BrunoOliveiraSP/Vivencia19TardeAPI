@@ -100,8 +100,7 @@ namespace Vivencia19TardeAPI.Database
             return db.TbInscricao.Include(x => x.IdSalaVestibularNavigation)
                                  .Include(x => x.IdSalaVestibularNavigation.IdSalaNavigation)
                                  .Include(x => x.IdCursoNavigation)
-                                 .Where(x => x.NmInscrito.ToUpper().Contains(nome.ToUpper())   || 
-                                             x.NmInscrito.ToLower().Contains(nome.ToLower()))
+                                 .Where(x => x.NmInscrito.ToUpper().Contains(nome.ToUpper()))
                                  .OrderBy(x => x.NmInscrito)
                                  .ToList();
         }
@@ -116,14 +115,16 @@ namespace Vivencia19TardeAPI.Database
         }
         public List<Models.TbInscricao> ConsultarPorNomeEAno(string nome, int idAnoLetivo)
         {
-            var lista = db.TbInscricao.Include(x => x.IdSalaVestibularNavigation)
-                                      .Include(x => x.IdSalaVestibularNavigation.IdSalaNavigation)
-                                      .Include(x => x.IdCursoNavigation)
-                                      .Where(x => x.IdAnoLetivo == idAnoLetivo 
-                                               && x.NmInscrito.ToLower().Contains(nome.ToLower()))                                 
-                                      .OrderBy(x => x.CdInscricao)
-                                      .ToList();
-            return lista;
+            var lista =  db.TbInscricao.Include(x => x.IdSalaVestibularNavigation)
+                                 .Include(x => x.IdSalaVestibularNavigation.IdSalaNavigation)
+                                 .Include(x => x.IdCursoNavigation)
+                                 .Where(x => x.IdAnoLetivo == idAnoLetivo 
+                                          && x.NmInscrito
+                                          .ToLower()
+                                          .Contains(nome.ToLower()))                                 
+                                 .OrderBy(x => x.CdInscricao)
+                                 .ToList();
+                                 return lista;
         }
         public bool ExisteCandidato(string candidato, int idAno)
         {
