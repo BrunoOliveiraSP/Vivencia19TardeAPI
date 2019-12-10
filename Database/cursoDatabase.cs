@@ -18,12 +18,12 @@ namespace Vivencia19TardeAPI.Database
         public void Alterar(Models.TbCurso curso)
         {
             Models.TbCurso alt = db.TbCurso.FirstOrDefault(x => x.IdCurso == curso.IdCurso);
-            
+
+            alt.NrCapacidadeMaxima = curso.NrCapacidadeMaxima;
+            alt.DtUltimaAlteracao = curso.DtUltimaAlteracao;
+            alt.DtCriacao = curso.DtCriacao;            
             alt.NmCurso = curso.NmCurso;
             alt.DsSigla = curso.DsSigla;
-            alt.NrCapacidadeMaxima = curso.NrCapacidadeMaxima;
-            alt.DtCriacao = curso.DtCriacao;
-            alt.DtUltimaAlteracao = curso.DtUltimaAlteracao;
             alt.BtAtivo = curso.BtAtivo;
 
             db.SaveChanges();
