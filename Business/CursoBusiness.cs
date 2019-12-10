@@ -95,5 +95,13 @@ namespace Vivencia19TardeAPI.Business
         {
             return db.ConsultarPorID(id);
         }
+
+        public Models.TbCurso ConsultarCurso(int id)
+        {
+            if(id == 0)
+               throw new ArgumentException("Informe o curso.");
+
+            return db.ConsultarCurso(id);   
+        }
     }
 }

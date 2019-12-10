@@ -544,44 +544,11 @@ namespace Vivencia19TardeAPI.Business
             return response;
         }
 
-        public Models.TbAnoLetivo ConsultarAnoLetivo(int id)
-        {
-            if(id == 0)
-               throw new ArgumentException("Informe o ano letivo.");
-
-            return db.ConsultarAnoLetivo(id);
-        }
-
-        public List<Models.InscricaoResponse> ConsultarAnoLetivoLista(int id)
-        {
-            if (id == 0)
-            {
-                throw new ArgumentException("Informe o ano letivo.");
-            }
-            List<Models.TbInscricao> listaInscricao = db.ConsultarPorAno(id);
-
-            List<Models.InscricaoResponse> response = new List<Models.InscricaoResponse>();
-
-            foreach(Models.TbInscricao inscricao in listaInscricao)
-            {
-                Models.InscricaoResponse r = CriarResponse(inscricao);
-                response.Add(r);
-            }
-            
-            return response;
-        }
-
-        public Models.TbCurso ConsultarCurso(int id)
-        {
-            if(id == 0)
-               throw new ArgumentException("Informe o curso.");
-
-            return db.ConsultarCurso(id);   
-        }
-
+        
         private Models.InscricaoResponse CriarResponse(Models.TbInscricao inscrito)
         {
             Models.InscricaoResponse response = new Models.InscricaoResponse();
+            response.IdInscricao = inscrito.IdInscricao;
             response.IdSalaVestibular = inscrito.IdSalaVestibular;
             response.NmContato = inscrito.NmContato;
             response.NmEscola = inscrito.NmEscola;
@@ -651,6 +618,25 @@ namespace Vivencia19TardeAPI.Business
                 response.DsPeriodo = inscrito.IdSalaVestibularNavigation.DsPeriodo;
             }
 
+            return response;
+        }
+        
+        public List<Models.InscricaoResponse> ConsultarAnoLetivoLista(int id)
+        {
+            if (id == 0)
+            {
+                throw new ArgumentException("Informe o ano letivo.");
+            }
+            List<Models.TbInscricao> listaInscricao = db.ConsultarPorAno(id);
+
+            List<Models.InscricaoResponse> response = new List<Models.InscricaoResponse>();
+
+            foreach(Models.TbInscricao inscricao in listaInscricao)
+            {
+                Models.InscricaoResponse r = CriarResponse(inscricao);
+                response.Add(r);
+            }
+            
             return response;
         }
     }

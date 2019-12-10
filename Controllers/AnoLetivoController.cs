@@ -81,7 +81,18 @@ namespace Vivencia19TardeAPI_1.Controllers
 
         }
  
-        
-
+        [HttpGet("ConsultarAnoLetivo/{id}")]
+        public ActionResult<Vivencia19TardeAPI.Models.TbAnoLetivo> ConsultarAnoLetivo(int id)
+        {
+            try
+            {
+                return db.ConsultarAnoLetivo(id);
+            }
+            catch (System.Exception ex)
+            {
+                ErrorModel erro = new ErrorModel(500, ex.Message);
+                return StatusCode(500, erro);
+            }
+        }
     }
 }

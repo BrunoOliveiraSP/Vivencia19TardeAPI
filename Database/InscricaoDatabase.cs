@@ -116,7 +116,7 @@ namespace Vivencia19TardeAPI.Database
                                  .Include(x => x.IdSalaVestibularNavigation.IdSalaNavigation)
                                  .Include(x => x.IdCursoNavigation)
                                  .Where(x => x.IdAnoLetivo == id)
-                                 .OrderBy(x => x.NmInscrito)
+                                 .OrderBy(x => x.CdInscricao)
                                  .ToList();
         }
 
@@ -124,12 +124,14 @@ namespace Vivencia19TardeAPI.Database
 
         public List<Models.TbInscricao> ConsultarPorNomeEAno(string nome, int idAnoLetivo)
         {
-            return db.TbInscricao.Where(x => x.IdAnoLetivo == idAnoLetivo && 
-                                             x.NmInscrito.ToLower().Contains(nome.ToLower()) ||
-                                             x.IdAnoLetivo == idAnoLetivo && 
-                                             x.NmInscrito.ToUpper().Contains(nome.ToUpper()))                                 
-                                 .OrderBy(x => x.NmInscrito)
-                                 .ToList();
+            var lista = db.TbInscricao.Include(x => x.IdSalaVestibularNavigation)
+                                      .Include(x => x.IdSalaVestibularNavigation.IdSalaNavigation)
+                                      .Include(x => x.IdCursoNavigation)
+                                      .Where(x => x.IdAnoLetivo == idAnoLetivo 
+                                               && x.NmInscrito.ToLower().Contains(nome.ToLower()))                                 
+                                      .OrderBy(x => x.CdInscricao)
+                                      .ToList();
+            return lista;
         }
 
         public bool ExisteCandidato(string candidato, int idAno)
@@ -151,16 +153,6 @@ namespace Vivencia19TardeAPI.Database
         public bool ExisteCpf(string cpf, int idAnoLetivo)
         {
             return db.TbInscricao.Any(x => x.DsCpf == cpf && x.IdAnoLetivo == idAnoLetivo);
-        }
-
-        public Models.TbAnoLetivo ConsultarAnoLetivo(int id)
-        {
-            return db.TbAnoLetivo.First(x => x.IdAnoLetivo == id);
-        }
-
-        public Models.TbCurso ConsultarCurso(int id)
-        {
-            return db.TbCurso.First(x => x.IdCurso == id);
         }
     }
 }
