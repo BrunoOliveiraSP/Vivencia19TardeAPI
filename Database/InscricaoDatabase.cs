@@ -15,7 +15,6 @@ namespace Vivencia19TardeAPI.Database
             db.TbInscricao.Add(inscricao);
             db.SaveChanges();
         }
-
         public List<Models.TbInscricao> ConsultarTodos()
         {
             return db.TbInscricao.Include(x => x.IdSalaVestibularNavigation)
@@ -24,14 +23,12 @@ namespace Vivencia19TardeAPI.Database
                                  .OrderBy(x => x.NmInscrito)
                                  .ToList();
         }
-
         public void Remover (int id)
         {
             Models.TbInscricao remover = db.TbInscricao.First(x => x.IdInscricao == id);
             db.Remove(remover);
             db.SaveChanges();
         }
-
         public void Alterar(Models.TbInscricao inscrito)
         {
             Models.TbInscricao alterar = db.TbInscricao.First(x => x.IdInscricao == inscrito.IdInscricao);
@@ -98,7 +95,6 @@ namespace Vivencia19TardeAPI.Database
             
             db.SaveChanges();
         }
-
         public List<Models.TbInscricao> ConsultarPorNome(string nome)
         {
             return db.TbInscricao.Include(x => x.IdSalaVestibularNavigation)
@@ -109,7 +105,6 @@ namespace Vivencia19TardeAPI.Database
                                  .OrderBy(x => x.NmInscrito)
                                  .ToList();
         }
-
         public List<Models.TbInscricao> ConsultarPorAno(int id)
         {
             return db.TbInscricao.Include(x => x.IdSalaVestibularNavigation)
@@ -119,9 +114,6 @@ namespace Vivencia19TardeAPI.Database
                                  .OrderBy(x => x.CdInscricao)
                                  .ToList();
         }
-
-        
-
         public List<Models.TbInscricao> ConsultarPorNomeEAno(string nome, int idAnoLetivo)
         {
             var lista = db.TbInscricao.Include(x => x.IdSalaVestibularNavigation)
@@ -133,23 +125,19 @@ namespace Vivencia19TardeAPI.Database
                                       .ToList();
             return lista;
         }
-
         public bool ExisteCandidato(string candidato, int idAno)
         {
             return db.TbInscricao.Any(x => x.NmInscrito == candidato &&
                                       x.IdAnoLetivo == idAno);
         }
-
         public bool ExisteCodigoInscrição(int codigo, int idAnoLetivo)
         {
             return  db.TbInscricao.Any(x => x.CdInscricao == codigo && x.IdAnoLetivo == idAnoLetivo) ;
         }
-
         public bool ExisteRG(string rg, int idAnoLetivo)
         {
             return db.TbInscricao.Any(x => x.DsRg == rg && x.IdAnoLetivo == idAnoLetivo);
         }
-
         public bool ExisteCpf(string cpf, int idAnoLetivo)
         {
             return db.TbInscricao.Any(x => x.DsCpf == cpf && x.IdAnoLetivo == idAnoLetivo);
