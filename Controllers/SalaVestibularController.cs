@@ -15,57 +15,31 @@ namespace Vivencia19TardeAPI.Controllers
         Business.SalaVestibularBusiness business = new Business.SalaVestibularBusiness();
 
         [HttpPost]
-        public ActionResult Inserir(Models.SalaVestibularRequest request)
+        public void Inserir(Models.TbSalaVestibular request)
         {
-            try
-            {
-                business.Inserir(request);
-                return Ok();
-            }
-            catch(System.Exception ex)
-            {
-                Models.ErrorModel error = new Models.ErrorModel(500, ex.Message);
-                return StatusCode(500, error);
-            }
+               business.Inserir(request);              
         }
 
         [HttpDelete("Remover/{id}")]
-        public ActionResult Remover(int id)
+        public void Remover(int id)
         {
-            try
-            {
-                business.Remover(id);
-                return Ok();
-            }
-            catch(System.Exception ex)
-            {
-                Models.ErrorModel error = new Models.ErrorModel(500, ex.Message);
-                return StatusCode(500, error);
-            }
             
+                business.Remover(id);                   
         }
 
         [HttpPut]
-        public ActionResult ALterar(Models.TbSalaVestibular sala)
+        public void ALterar(Models.TbSalaVestibular salaaa)
         { 
-            try
-            {
-                business.Alterar(sala);
-                return Ok();
-            }
-            catch(System.Exception ex)
-            {
-                Models.ErrorModel error = new Models.ErrorModel(500, ex.Message);
-                return StatusCode(500, error);
-            }
+            
+                business.Alterar(salaaa);            
         }
 
         [HttpGet]
-        public ActionResult<List<Models.TbSalaVestibular>> ListarTudo()
+        public ActionResult<List<Models.SalaVestibularResponse>> ListarTudo()
         {
             try
             {
-                List<Models.TbSalaVestibular> consulta = business.ListarTudo();
+                List<Models.SalaVestibularResponse> consulta = business.ListarTudo();
                 return consulta;
             }
             catch(System.Exception ex)

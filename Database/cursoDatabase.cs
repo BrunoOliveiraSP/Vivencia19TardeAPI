@@ -77,6 +77,9 @@ namespace Vivencia19TardeAPI.Database
             Models.TbCurso Curso = db.TbCurso.FirstOrDefault(x=> x.IdCurso == id);
             return Curso;
         }
-
+        public Models.TbCurso ConsultarCurso(int id)
+        {
+            return db.TbCurso.First(x => x.IdCurso == id);
+        }
     }
 }

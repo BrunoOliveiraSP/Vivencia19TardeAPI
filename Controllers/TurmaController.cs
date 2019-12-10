@@ -17,7 +17,7 @@ namespace Vivencia19TardeAPI.Controllers
         Business.TurmaAnoLetivo business = new Business.TurmaAnoLetivo();
         
         [HttpPost]
-        public ActionResult<Models.TurmaRequest> Inserir(Models.TurmaRequest turma)
+        public ActionResult Inserir(Models.TbTurma turma)
         {
             try
             {

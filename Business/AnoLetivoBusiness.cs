@@ -90,5 +90,15 @@ namespace Vivencia19TardeAPI.Business
         {
            db.ModuloRemover(id);
         }
+
+        public Models.TbAnoLetivo ConsultarAnoLetivo(int id)
+        {
+            if(id == 0)
+               throw new ArgumentException("Informe o ano letivo.");
+
+            return db.ConsultarAnoLetivo(id);
+        }
+
+        
     }
 }

@@ -48,9 +48,7 @@ namespace Vivencia19TardeAPI.Controllers
             }
          } 
          
-        [HttpGet("ListarTodos")]
-        
-        
+          [HttpGet("ListarTodos")]
           public List<Models.TbDisciplina> ListarTodos()
           {
              return bu.ListarTodos();
