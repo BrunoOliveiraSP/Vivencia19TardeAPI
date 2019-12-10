@@ -10,14 +10,13 @@ namespace Vivencia19TardeAPI.Business
     {
         Database.SalaDataBase sala = new Database.SalaDataBase();
         Database.SalaVestibularDataBase db = new Database.SalaVestibularDataBase();
-        public void Inserir(Models.SalaVestibularRequest request)
+        public void Inserir(Models.TbSalaVestibular request)
         {
-            this.ValidarSala(request.Sala);
+            
 
-            db.Inserir(request.Vestibular);
+            db.Inserir(request);
 
-            request.Vestibular.IdSala = request.Sala.IdSala;
-            sala.inserir(request.Sala);
+            
         }
 
         public void ValidarSala(Models.TbSala sala)
