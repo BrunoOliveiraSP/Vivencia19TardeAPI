@@ -99,6 +99,19 @@ namespace Vivencia19TardeAPI.Business
                 throw new ArgumentException("O Campo de Email é Obrigatório");
          }
 
+         // Validar RG
+         public void ValidacaoRG(string cpf)
+         {
+             Models.db_a5064d_freiContext db = new Models.db_a5064d_freiContext();
+
+             Models.TbProfessor user = db.TbProfessor.FirstOrDefault(x => x.DsCpf == cpf);
+             if (user != null)
+             {
+	            throw new ArgumentException("Usuario já cadastrado, " + user.NmProfessor);
+             }
+         }
+
+
       
          
 
