@@ -24,9 +24,21 @@ namespace Vivencia19TardeAPI.Database
 
            return existe ;
        }
+        public bool ConsultarExistenciaNomeAlterando(Models.TbDisciplina disciplina)
+       {
+           bool existe = db.TbDisciplina.Any(x => x.NmDisciplina == disciplina.NmDisciplina && x.IdDisciplina != disciplina.IdDisciplina);
+
+           return existe ;
+       }
        public bool ConsultarExistenciaDS(Models.TbDisciplina disciplina)
        {
            bool existe = db.TbDisciplina.Any(x => x.DsSigla == disciplina.DsSigla);
+
+           return existe ;
+       }
+       public bool ConsultarExistenciaSigla(Models.TbDisciplina disciplina)
+       {
+           bool existe = db.TbDisciplina.Any(x => x.DsSigla == disciplina.DsSigla && x.IdDisciplina != disciplina.IdDisciplina);
 
            return existe ;
        }
@@ -58,8 +70,8 @@ namespace Vivencia19TardeAPI.Database
         public List<Models.TbDisciplina> ListarNomeSigla(string nome, string sigla)
         {
             List<Models.TbDisciplina> lista = db.TbDisciplina.Where(x => 
-                      x.NmDisciplina.Contains(nome) || 
-                      x.DsSigla.Contains(sigla)).ToList();
+                      x.NmDisciplina.ToLower().Contains(nome.ToLower()) &&
+                      x.DsSigla.ToLower().Contains(sigla)).ToList();
 
              return  lista;
         }
@@ -93,5 +105,6 @@ namespace Vivencia19TardeAPI.Database
               db.SaveChanges();
             }   
         }
+        
     }
 }

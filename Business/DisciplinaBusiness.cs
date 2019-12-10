@@ -50,11 +50,11 @@ namespace Vivencia19TardeAPI.Business
              
         }
 
-          public  void Alterar (Models.TbDisciplina disciplina)
+          public void Alterar(Models.TbDisciplina disciplina)
           {
               
-           bool existe = db.ConsultarExistenciaNome(disciplina);
-           bool existeDS = db.ConsultarExistenciaDS(disciplina);
+           bool existe = db.ConsultarExistenciaNomeAlterando(disciplina);
+           bool existeDS = db.ConsultarExistenciaSigla(disciplina);
            string disci = disciplina.NmDisciplina;
 
          
@@ -105,8 +105,6 @@ namespace Vivencia19TardeAPI.Business
           }
           public List<Models.TbDisciplina> ListarNomeSigla(string nome, string sigla)
           {
-
-              
              return db.ListarNomeSigla(nome, sigla);
           }
           public List<Models.TbDisciplina> ListarCursoDisciplina(int id)
