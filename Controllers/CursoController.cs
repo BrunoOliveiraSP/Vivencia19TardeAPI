@@ -115,5 +115,19 @@ namespace Vivencia19TardeAPI.Controllers
             } 
             
         }
+
+        [HttpGet("ConsultarCurso/{id}")]
+        public ActionResult<Models.TbCurso> ConsultarCurso(int id)
+        {
+            try
+            {
+                return db.ConsultarCurso(id);
+            }
+            catch (System.Exception ex)
+            {
+                Models.ErrorModel erro = new Models.ErrorModel(500, ex.Message);
+                return StatusCode(500, erro);
+            }
+        }
     }
 }

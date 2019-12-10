@@ -75,5 +75,10 @@ namespace Vivencia19TardeAPI.Database
             modulo.DtInicio = modulo.DtInicio;
             modulo.BtAberto = modulo.BtAberto;
         }
+
+        public Models.TbAnoLetivo ConsultarAnoLetivo(int id)
+        {
+            return db.TbAnoLetivo.First(x => x.IdAnoLetivo == id);
+        }
     }
 }
