@@ -42,8 +42,13 @@ namespace Vivencia19TardeAPI.Database
         public void Deletar(int id)
         {
             Models.TbAlunoFichaMedica remover = db.TbAlunoFichaMedica.FirstOrDefault(a => a.IdAluno == id);
+            
+            if(remover != null)
+            {
+                db.Remove(remover);
+                db.SaveChanges();
+            }
 
-            db.Remove(remover);
         }
     }
 }

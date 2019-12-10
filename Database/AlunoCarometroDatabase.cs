@@ -7,35 +7,38 @@ namespace Vivencia19TardeAPI.Database
 {
     public class AlunoCarometroDatabase
     {
-        Models.db_a5064d_freiContext DB = new Models.db_a5064d_freiContext();
+        Models.db_a5064d_freiContext db = new Models.db_a5064d_freiContext();
 
         public void inserir (Models.TbAlunoCarometro carometro)
         {
-            DB.TbAlunoCarometro.Add(carometro);
-            DB.SaveChanges();
+            db.TbAlunoCarometro.Add(carometro);
+            db.SaveChanges();
         }
 
         public List<Models.TbAlunoCarometro> ListarTodos()
         {
-            List<Models.TbAlunoCarometro> lista = DB.TbAlunoCarometro.ToList();
+            List<Models.TbAlunoCarometro> lista = db.TbAlunoCarometro.ToList();
             return lista;
         }
 
         public void alterar (Models.TbAlunoCarometro carometro)
         {
-            Models.TbAlunoCarometro novo = DB.TbAlunoCarometro.FirstOrDefault(x=> x.IdAluno == carometro.IdAluno);
+            Models.TbAlunoCarometro novo = db.TbAlunoCarometro.FirstOrDefault(x=> x.IdAluno == carometro.IdAluno);
 
             novo.DsImagem = carometro.DsImagem;
 
-            DB.SaveChanges();
+            db.SaveChanges();
         }
 
         public void deletar (int id)
         {
-            Models.TbAlunoCarometro remover = DB.TbAlunoCarometro.FirstOrDefault(x=> x.IdAluno == id);
+            Models.TbAlunoCarometro remover = db.TbAlunoCarometro.FirstOrDefault(x=> x.IdAluno == id);
 
-            DB.Remove(id);
-            DB.SaveChanges();
+            if(remover != null)
+            {
+                db.Remove(remover);
+                db.SaveChanges();
+            }
         }
     }
 }

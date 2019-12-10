@@ -6,27 +6,27 @@ namespace Vivencia19TardeAPI.Business
 {
     public class AlunoLocalizacaoBusiness
     {
-        Database.AlunoLocalizacaoDatabase dt = new Database.AlunoLocalizacaoDatabase();
+        Database.AlunoLocalizacaoDatabase db = new Database.AlunoLocalizacaoDatabase();
 
         public void Inserir(Models.TbAlunoLocalizacao ModelAlunoLocalizacao)
         {
 
-           dt.Inserir(ModelAlunoLocalizacao);
+           db.Inserir(ModelAlunoLocalizacao);
         }
         public List<Models.TbAlunoLocalizacao> Consultar()
         {
-           List<Models.TbAlunoLocalizacao> lista = dt.Consultar();
+           List<Models.TbAlunoLocalizacao> lista = db.Consultar();
            return lista;
         }
         public void Alterar(TbAlunoLocalizacao ModelAlunoLocalizacao)
         {
          
 
-           dt.Alterar(ModelAlunoLocalizacao);
+           db.Alterar(ModelAlunoLocalizacao);
         }
         public void Deletar(int id)
         {
-           dt.Deletar(id);
+           db.Deletar(id);
         }
 
        

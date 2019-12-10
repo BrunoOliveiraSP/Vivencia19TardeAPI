@@ -9,21 +9,24 @@ namespace Vivencia19TardeAPI.Database
 {
     public class AlunoDatabase
     {
-        Models.db_a5064d_freiContext DB = new Models.db_a5064d_freiContext();
+        Models.db_a5064d_freiContext db = new Models.db_a5064d_freiContext();
         public void inserir(Models.TbAluno aluno)
         {
-            DB.Add(aluno);
-            DB.SaveChanges();
+            db.Add(aluno);
+            db.SaveChanges();
         }
 
         public List<Models.TbAluno> ListarTodos ()
         {
-            List<Models.TbAluno> Lista = DB.TbAluno.ToList();
+            List<Models.TbAluno> Lista = db.TbAluno.Include(x=> x.TbTurmaAluno)
+                                                .ThenInclude(x=> x.IdTurmaNavigation)
+                                                .ThenInclude(x=> x.IdCursoNavigation)
+                                                .ToList();
             return Lista;
         }
         public List<Models.TbAluno> ConsultarPorNome(string nome, string ra, string curso, string turma)
         {
-            List<Models.TbAluno> alunos = DB.TbAluno
+            List<Models.TbAluno> alunos = db.TbAluno
                                             .Include(x=> x.TbTurmaAluno)
                                                 .ThenInclude(x=> x.IdTurmaNavigation)
                                                 .ThenInclude(x=> x.IdCursoNavigation)
@@ -34,15 +37,25 @@ namespace Vivencia19TardeAPI.Database
                                             .ToList();
             return alunos;
         }
+
+        public List<Models.TbAluno> ListarTodos(string nome, string ra, string curso, string turma)
+        {
+            List<Models.TbAluno> alunos = db.TbAluno
+                                            .Include(x=> x.TbTurmaAluno)
+                                                .ThenInclude(x=> x.IdTurmaNavigation)
+                                                .ThenInclude(x=> x.IdCursoNavigation)
+                                                 .ToList();
+            return alunos;
+        }
         public Models.TbAluno Carregar(Models.TbAluno aluno)
         {
-            Models.TbAluno carregamento =  DB.TbAluno.FirstOrDefault(t=>t.IdAluno == aluno.IdAluno);
+            Models.TbAluno carregamento =  db.TbAluno.FirstOrDefault(t=>t.IdAluno == aluno.IdAluno);
             return carregamento;
         }
 
         public void Alterar(Models.TbAluno nova)
         {
-            Models.TbAluno alunos = DB.TbAluno.FirstOrDefault(t=> t.IdAluno == nova.IdAluno);
+            Models.TbAluno alunos = db.TbAluno.FirstOrDefault(t=> t.IdAluno == nova.IdAluno);
             alunos.NmAluno = nova.NmAluno;
             alunos.DsCelular = nova.DsCelular;
             alunos.DsComoConheceu = nova.DsComoConheceu;
@@ -63,20 +76,23 @@ namespace Vivencia19TardeAPI.Database
             alunos.QtTrabalhamCasa = nova.QtTrabalhamCasa;
             alunos.VlRenda = nova.VlRenda;      
             alunos.TpEscola = nova.TpEscola;
-            DB.SaveChanges();
+            db.SaveChanges();
         }
 
         public void Deletar(int id)
         {
-            Models.TbAluno Deletado = DB.TbAluno.FirstOrDefault(t=> t.IdAluno == id);
+            Models.TbAluno remover = db.TbAluno.FirstOrDefault(t=> t.IdAluno == id);
 
-            DB.Remove(Deletado);
-            DB.SaveChanges();
+             if(remover != null)
+            {
+                db.Remove(remover);
+                db.SaveChanges();
+            }
         }
     
         public Models.TbAluno consultar (Models.TbAluno aluno)
         {
-            Models.TbAluno consulta = DB.TbAluno.FirstOrDefault(x=> x.NmAluno == aluno.NmAluno);
+            Models.TbAluno consulta = db.TbAluno.FirstOrDefault(x=> x.NmAluno == aluno.NmAluno);
 
 
             return consulta;

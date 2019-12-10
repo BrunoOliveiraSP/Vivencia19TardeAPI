@@ -6,25 +6,25 @@ namespace Vivencia19TardeAPI.Business
 {
     public class AlunoMensalidadeBusiness
     {
-        Database.AlunoMensalidadeDatabase dt = new Database.AlunoMensalidadeDatabase();
+        Database.AlunoMensalidadeDatabase db = new Database.AlunoMensalidadeDatabase();
        public void Inserir(Models.TbAlunoMensalidade Mensalidade)
        {
-           dt.Inserir(Mensalidade);
+           db.Inserir(Mensalidade);
        }
 
        public List<Models.TbAlunoMensalidade> ListarTodos ()
        {
-           return dt.ListarTodos();
+           return db.ListarTodos();
        }
 
        public void alterar (Models.TbAlunoMensalidade mensalidade)
        {
         
-           dt.alterar(mensalidade);
+           db.alterar(mensalidade);
        }
         public void Deletar(int id)
         {
-            dt.Deletar(id);
+            db.Deletar(id);
         }
 
         

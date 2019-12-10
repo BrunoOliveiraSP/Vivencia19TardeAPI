@@ -47,7 +47,11 @@ namespace Vivencia19TardeAPI.Database
         {
             Models.TbAlunoLocalizacao remover = db.TbAlunoLocalizacao.FirstOrDefault(a => a.IdAluno == id);
 
-            db.Remove(remover);
+             if(remover != null)
+            {
+                db.Remove(remover);
+                db.SaveChanges();
+            }
         }
     }
 }

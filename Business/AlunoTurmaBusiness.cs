@@ -9,33 +9,33 @@ namespace Vivencia19TardeAPI.Business
 {
     public class AlunoTurmaBusiness
     {
-        Database.AlunoTurmaDatabase DB = new Database.AlunoTurmaDatabase();
+        Database.AlunoTurmaDatabase db = new Database.AlunoTurmaDatabase();
 
         public void Inserir(Models.TbTurmaAluno turmaAluno)
         {
 
-            DB.Inserir(turmaAluno);
+            db.Inserir(turmaAluno);
         }
 
         public void Alterar (Models.TbTurmaAluno turmaAluno)
         {
-            DB.Alterar(turmaAluno);
+            db.Alterar(turmaAluno);
         }
 
         public List<Models.TbTurmaAluno> ListarTodos()
         {
-            List<Models.TbTurmaAluno> lista = DB.Listar();
+            List<Models.TbTurmaAluno> lista = db.Listar();
             return lista;
         }
 
         public Models.TbTurmaAluno Consultar(Models.TbTurmaAluno turmaAluno)
         {
-            Models.TbTurmaAluno Model = DB.Consultar(turmaAluno);
+            Models.TbTurmaAluno Model = db.Consultar(turmaAluno);
             return Model;
         }
         public void Deletar (int id)
         {
-            DB.Deletar(id);
+            db.Deletar(id);
         }
 
        
