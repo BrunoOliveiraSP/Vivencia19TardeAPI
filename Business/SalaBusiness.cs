@@ -11,7 +11,7 @@ namespace Vivencia19TardeAPI.Business
         Database.SalaDataBase db = new Database.SalaDataBase();
         public void Inserir(Models.TbSala sala)
         {
-            this.Validacao(sala);
+            
             
             db.inserir(sala);           
         }
@@ -31,14 +31,7 @@ namespace Vivencia19TardeAPI.Business
         }
         public void Verificacao(Models.TbSala sala)
         {
-            if(sala.IdSala == 0)
-            {
-                this.Inserir(sala);
-            }
-            else if(sala.IdSala >= 1)
-            {
-                this.Alterar(sala);
-            }
+           
         }
 
         public void Remover(int id)
