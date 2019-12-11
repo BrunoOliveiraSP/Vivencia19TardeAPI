@@ -20,7 +20,7 @@ namespace Vivencia19TardeAPI.Database
             return db.TbInscricao.Include(x => x.IdSalaVestibularNavigation)
                                  .Include(x => x.IdSalaVestibularNavigation.IdSalaNavigation)
                                  .Include(x => x.IdCursoNavigation)
-                                 .OrderBy(x => x.NmInscrito)
+                                 .OrderBy(x => x.CdInscricao)
                                  .ToList();
         }
         public void Remover (int id)
@@ -32,47 +32,18 @@ namespace Vivencia19TardeAPI.Database
         public void Alterar(Models.TbInscricao inscrito)
         {
             Models.TbInscricao alterar = db.TbInscricao.First(x => x.IdInscricao == inscrito.IdInscricao);
-            alterar.DsRg = inscrito.DsRg;
-            alterar.DsCpf = inscrito.DsCpf;
-            alterar.DsSexo = inscrito.DsSexo;
-            alterar.VlNota = inscrito.VlNota;
-            alterar.DsEmail = inscrito.DsEmail;
-            alterar.DsOrgao = inscrito.DsOrgao;
-            alterar.IdCurso = inscrito.IdCurso;
-            alterar.VlRenda = inscrito.VlRenda;
-            alterar.IdCurso2 = inscrito.IdCurso2;
-            alterar.NmEscola = inscrito.NmEscola;
-            alterar.TpEscola = inscrito.TpEscola;
-            alterar.NmContato = inscrito.NmContato;
-            alterar.DsCorPele = inscrito.DsCorPele;
-            alterar.DtEmissao = inscrito.DtEmissao;
-            alterar.DtInclusao = inscrito.DtInclusao;
-            alterar.DsSituacao = inscrito.DsSituacao;
-            alterar.DsTelefone = inscrito.DsTelefone;
-            alterar.NmInscrito = inscrito.NmInscrito;
-            alterar.IdAnoLetivo = inscrito.IdAnoLetivo;
-            alterar.DsTelefone2 = inscrito.DsTelefone2;
-            alterar.QtMoramCasa = inscrito.QtMoramCasa;
-            alterar.CdInscricao = inscrito.CdInscricao;
-            alterar.BtPendenteRg = inscrito.BtPendenteRg;
-            alterar.DsObservacao = inscrito.DsObservacao;
-            alterar.DtNascimento = inscrito.DtNascimento;
-            alterar.BtMatriculado = inscrito.BtMatriculado;
-            alterar.BtPendenteCpf = inscrito.BtPendenteCpf;
-            alterar.DsCursoPeriodo = inscrito.DsCursoPeriodo;
-            alterar.DsComoConheceu = inscrito.DsComoConheceu;
-            alterar.DsEscolaridade = inscrito.DsEscolaridade;
-            alterar.DsCurso2Periodo = inscrito.DsCurso2Periodo;
-            alterar.DsResidenciaCep = inscrito.DsResidenciaCep;
-            alterar.DsEmailInscrito = inscrito.DsEmailInscrito;
-            alterar.DsResponsavelRg = inscrito.DsResponsavelRg;
-            alterar.QtTrabalhamCasa = inscrito.QtTrabalhamCasa;
-            alterar.IdSalaVestibular = inscrito.IdSalaVestibular;
-            alterar.DsResponsavelCpf = inscrito.DsResponsavelCpf;
-            alterar.DsNascimentoPais = inscrito.DsNascimentoPais;
-            alterar.DsResponsavelNome = inscrito.DsResponsavelNome;
-            alterar.DtUltimaAlteracao = inscrito.DtUltimaAlteracao;
-            alterar.IdCursoNavigation = inscrito.IdCursoNavigation;
+            alterar.IdSalaVestibularNavigation = inscrito.IdSalaVestibularNavigation;
+            alterar.DsResidenciaComplelemento = inscrito.DsResidenciaComplelemento;
+            alterar.DsResponsavelParentesco = inscrito.DsResponsavelParentesco;
+            alterar.BtPendenteComprovresid = inscrito.BtPendenteComprovresid;
+            alterar.BtPendenteEscolaridade = inscrito.BtPendenteEscolaridade;
+            alterar.DsResponsavelTelefone2 = inscrito.DsResponsavelTelefone2;
+            alterar.IdFuncionarioAlteracao = inscrito.IdFuncionarioAlteracao;
+            alterar.IdAnoLetivoNavigation = inscrito.IdAnoLetivoNavigation;
+            alterar.DsResponsavelTelefone = inscrito.DsResponsavelTelefone;
+            alterar.NrResidenciaEndereco = inscrito.NrResidenciaEndereco;
+            alterar.DsResidenciaEndereco = inscrito.DsResidenciaEndereco;
+            alterar.BtPendentePagamento = inscrito.BtPendentePagamento;
             alterar.IdCurso2Navigation = inscrito.IdCurso2Navigation;
             alterar.DsNascimentoCidade = inscrito.DsNascimentoCidade;
             alterar.DsNascimentoEstado = inscrito.DsNascimentoEstado;
@@ -80,18 +51,47 @@ namespace Vivencia19TardeAPI.Database
             alterar.DsResidenciaCidade = inscrito.DsResidenciaCidade;
             alterar.DsResponsavelEmail = inscrito.DsResponsavelEmail;
             alterar.DsResidenciaEstado = inscrito.DsResidenciaEstado;
-            alterar.BtPendentePagamento = inscrito.BtPendentePagamento;
-            alterar.NrResidenciaEndereco = inscrito.NrResidenciaEndereco;
-            alterar.DsResidenciaEndereco = inscrito.DsResidenciaEndereco;
-            alterar.IdAnoLetivoNavigation = inscrito.IdAnoLetivoNavigation;
-            alterar.DsResponsavelTelefone = inscrito.DsResponsavelTelefone;
-            alterar.BtPendenteComprovresid = inscrito.BtPendenteComprovresid;
-            alterar.BtPendenteEscolaridade = inscrito.BtPendenteEscolaridade;
-            alterar.DsResponsavelTelefone2 = inscrito.DsResponsavelTelefone2;
-            alterar.IdFuncionarioAlteracao = inscrito.IdFuncionarioAlteracao;
-            alterar.DsResponsavelParentesco = inscrito.DsResponsavelParentesco;
-            alterar.DsResidenciaComplelemento = inscrito.DsResidenciaComplelemento;
-            alterar.IdSalaVestibularNavigation = inscrito.IdSalaVestibularNavigation;
+            alterar.DsResponsavelNome = inscrito.DsResponsavelNome;
+            alterar.DtUltimaAlteracao = inscrito.DtUltimaAlteracao;
+            alterar.IdCursoNavigation = inscrito.IdCursoNavigation;
+            alterar.IdSalaVestibular = inscrito.IdSalaVestibular;
+            alterar.DsResponsavelCpf = inscrito.DsResponsavelCpf;
+            alterar.DsNascimentoPais = inscrito.DsNascimentoPais;
+            alterar.DsCurso2Periodo = inscrito.DsCurso2Periodo;
+            alterar.DsResidenciaCep = inscrito.DsResidenciaCep;
+            alterar.DsEmailInscrito = inscrito.DsEmailInscrito;
+            alterar.DsResponsavelRg = inscrito.DsResponsavelRg;
+            alterar.QtTrabalhamCasa = inscrito.QtTrabalhamCasa;
+            alterar.DsCursoPeriodo = inscrito.DsCursoPeriodo;
+            alterar.DsComoConheceu = inscrito.DsComoConheceu;
+            alterar.DsEscolaridade = inscrito.DsEscolaridade;
+            alterar.BtMatriculado = inscrito.BtMatriculado;
+            alterar.BtPendenteCpf = inscrito.BtPendenteCpf;
+            alterar.BtPendenteRg = inscrito.BtPendenteRg;
+            alterar.DsObservacao = inscrito.DsObservacao;
+            alterar.DtNascimento = inscrito.DtNascimento;
+            alterar.IdAnoLetivo = inscrito.IdAnoLetivo;
+            alterar.DsTelefone2 = inscrito.DsTelefone2;
+            alterar.QtMoramCasa = inscrito.QtMoramCasa;
+            alterar.CdInscricao = inscrito.CdInscricao;
+            alterar.DtInclusao = inscrito.DtInclusao;
+            alterar.DsSituacao = inscrito.DsSituacao;
+            alterar.DsTelefone = inscrito.DsTelefone;
+            alterar.NmInscrito = inscrito.NmInscrito;
+            alterar.NmContato = inscrito.NmContato;
+            alterar.DsCorPele = inscrito.DsCorPele;
+            alterar.DtEmissao = inscrito.DtEmissao;
+            alterar.IdCurso2 = inscrito.IdCurso2;
+            alterar.NmEscola = inscrito.NmEscola;
+            alterar.TpEscola = inscrito.TpEscola;
+            alterar.DsEmail = inscrito.DsEmail;
+            alterar.DsOrgao = inscrito.DsOrgao;
+            alterar.IdCurso = inscrito.IdCurso;
+            alterar.VlRenda = inscrito.VlRenda;
+            alterar.DsSexo = inscrito.DsSexo;
+            alterar.VlNota = inscrito.VlNota;
+            alterar.DsCpf = inscrito.DsCpf;
+            alterar.DsRg = inscrito.DsRg;
             
             db.SaveChanges();
         }
@@ -133,15 +133,18 @@ namespace Vivencia19TardeAPI.Database
         }
         public bool ExisteCodigoInscrição(int codigo, int idAnoLetivo)
         {
-            return  db.TbInscricao.Any(x => x.CdInscricao == codigo && x.IdAnoLetivo == idAnoLetivo) ;
+            return  db.TbInscricao.Any(x => x.CdInscricao == codigo && 
+                                            x.IdAnoLetivo == idAnoLetivo) ;
         }
         public bool ExisteRG(string rg, int idAnoLetivo)
         {
-            return db.TbInscricao.Any(x => x.DsRg == rg && x.IdAnoLetivo == idAnoLetivo);
+            return db.TbInscricao.Any(x => x.DsRg == rg && 
+                                           x.IdAnoLetivo == idAnoLetivo);
         }
         public bool ExisteCpf(string cpf, int idAnoLetivo)
         {
-            return db.TbInscricao.Any(x => x.DsCpf == cpf && x.IdAnoLetivo == idAnoLetivo);
+            return db.TbInscricao.Any(x => x.DsCpf == cpf && 
+                                           x.IdAnoLetivo == idAnoLetivo);
         }
     }
 }

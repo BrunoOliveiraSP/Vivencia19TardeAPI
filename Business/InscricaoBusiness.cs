@@ -11,19 +11,141 @@ namespace Vivencia19TardeAPI.Business
 {
     public class InscricaoBusiness
     {
+        public List<Models.InscricaoResponse> ConsultarPorNomeEAno(string nome, int ano)
+        {
+            if(nome == null)
+            {
+                nome = string.Empty;
+            }
+            if(ano == 0)
+            {
+                throw new ArgumentException("Informe o ano letivo.");
+            }
+            List<Models.TbInscricao> listaInscricao = db.ConsultarPorNomeEAno(nome, ano);
+
+            List<Models.InscricaoResponse> response = new List<Models.InscricaoResponse>();
+
+            foreach(Models.TbInscricao inscricao in listaInscricao)
+            {
+                Models.InscricaoResponse r = CriarResponse(inscricao);
+                response.Add(r);
+            }
+            return response;
+        }
+        private Models.InscricaoResponse CriarResponse(Models.TbInscricao inscrito)
+        {
+            Models.InscricaoResponse response = new Models.InscricaoResponse();
+            response.IdInscricao = inscrito.IdInscricao;
+            response.IdSalaVestibular = inscrito.IdSalaVestibular;
+            response.NmContato = inscrito.NmContato;
+            response.NmEscola = inscrito.NmEscola;
+            response.NmInscrito = inscrito.NmInscrito;
+            response.NrResidenciaEndereco = inscrito.NrResidenciaEndereco;
+            response.QtMoramCasa = inscrito.QtMoramCasa;
+            response.QtTrabalhamCasa = inscrito.QtTrabalhamCasa;
+            response.TpEscola = inscrito.TpEscola;
+            response.VlNota = inscrito.VlNota;
+            response.VlRenda = inscrito.VlRenda;
+            response.BtMatriculado = inscrito.BtMatriculado;
+            response.BtPendenteComprovresid = inscrito.BtPendenteComprovresid;
+            response.BtPendenteCpf = inscrito.BtPendenteCpf;
+            response.BtPendenteEscolaridade = inscrito.BtPendenteEscolaridade;
+            response.BtPendentePagamento = inscrito.BtPendentePagamento;
+            response.BtPendenteRg = inscrito.BtPendenteRg;
+            response.CdInscricao = inscrito.CdInscricao;
+            response.DsComoConheceu = inscrito.DsComoConheceu;
+            response.DsCorPele = inscrito.DsCorPele;
+            response.DsCpf = inscrito.DsCpf;
+            response.DsCurso2Periodo = inscrito.DsCurso2Periodo;
+            response.DsCursoPeriodo = inscrito.DsCursoPeriodo;
+            response.DsEmail = inscrito.DsEmail;
+            response.DsEmailInscrito = inscrito.DsEmailInscrito;
+            response.DsEscolaridade = inscrito.DsEscolaridade;
+            response.DsNascimentoCidade = inscrito.DsNascimentoCidade;
+            response.DsNascimentoEstado = inscrito.DsNascimentoEstado;
+            response.DsNascimentoPais = inscrito.DsNascimentoPais;
+            response.DsObservacao = inscrito.DsObservacao;
+            response.DsOrgao = inscrito.DsOrgao;
+            response.DsResidenciaBairro = inscrito.DsResidenciaBairro;
+            response.DsResidenciaCep = inscrito.DsResidenciaCep;
+            response.DsResidenciaCidade = inscrito.DsResidenciaCidade;
+            response.DsResidenciaComplelemento = inscrito.DsResidenciaComplelemento;
+            response.DsResidenciaEndereco = inscrito.DsResidenciaEndereco;
+            response.DsResidenciaEstado = inscrito.DsResidenciaEstado;
+            response.DsResponsavelCpf = inscrito.DsResponsavelCpf;
+            response.DsResponsavelEmail = inscrito.DsResponsavelEmail;
+            response.DsResponsavelNome = inscrito.DsResponsavelNome;
+            response.DsResponsavelParentesco = inscrito.DsResponsavelParentesco;
+            response.DsResponsavelRg = inscrito.DsResponsavelRg;
+            response.DsResponsavelTelefone = inscrito.DsResponsavelTelefone;
+            response.DsResponsavelTelefone2 = inscrito.DsResponsavelTelefone2;
+            response.DsRg = inscrito.DsRg;
+            response.DsSexo = inscrito.DsSexo;
+            response.DsSituacao = inscrito.DsSituacao;
+            response.DsTelefone = inscrito.DsTelefone;
+            response.DsTelefone2 = inscrito.DsTelefone2;
+            response.DtEmissao = inscrito.DtEmissao;
+            response.DtInclusao = inscrito.DtInclusao;
+            response.DtNascimento = inscrito.DtNascimento;
+            response.DtUltimaAlteracao = inscrito.DtUltimaAlteracao;
+            response.IdAnoLetivo = inscrito.IdAnoLetivo;
+            response.IdCurso = inscrito.IdCurso;
+            response.IdCurso2 = inscrito.IdCurso2;
+            response.IdFuncionarioAlteracao = inscrito.IdFuncionarioAlteracao;
+
+            if(inscrito.IdCursoNavigation.IdCurso > 0)
+            {
+                response.NmCurso = inscrito.IdCursoNavigation.NmCurso;
+            }
+
+            if(inscrito.IdSalaVestibularNavigation.IdSalaVestibular > 0)
+            {
+                response.NmSala = inscrito.IdSalaVestibularNavigation.IdSalaNavigation.NmSala;
+                response.NmLocal = inscrito.IdSalaVestibularNavigation.IdSalaNavigation.NmLocal;
+                response.DsPeriodo = inscrito.IdSalaVestibularNavigation.DsPeriodo;
+            }
+
+            return response;
+        }
+         public List<Models.InscricaoResponse> ConsultarAnoLetivoLista(int id)
+        {
+            if (id == 0)
+            {
+                throw new ArgumentException("Informe o ano letivo.");
+            }
+            List<Models.TbInscricao> listaInscricao = db.ConsultarPorAno(id);
+
+            List<Models.InscricaoResponse> response = new List<Models.InscricaoResponse>();
+
+            foreach(Models.TbInscricao inscricao in listaInscricao)
+            {
+                Models.InscricaoResponse r = CriarResponse(inscricao);
+                response.Add(r);
+            }
+            
+            return response;
+        }
         Database.InscricaoDatabase db = new Database.InscricaoDatabase();
+        public List<Models.InscricaoResponse> ConsultarTodos()
+        {
+            List<Models.TbInscricao> listaInscricao = db.ConsultarTodos();
+
+            List<Models.InscricaoResponse> response = new List<Models.InscricaoResponse>();
+
+            foreach(Models.TbInscricao inscricao in listaInscricao)
+            {
+                Models.InscricaoResponse r = CriarResponse(inscricao);
+                response.Add(r);
+            }
+            return response;
+        }
         public void Inserir(Models.TbInscricao inscricao )
         {
            
             bool rg = db.ExisteRG(inscricao.DsRg, inscricao.IdAnoLetivo);
             bool cpf = db.ExisteCpf(inscricao.DsCpf, inscricao.IdAnoLetivo);
-            //boo l cpfValido = StringExtension.IsValidCep(inscricao.DsCpf);
             bool candidato = db.ExisteCandidato(inscricao.NmInscrito, inscricao.IdAnoLetivo);
             bool codigo = db.ExisteCodigoInscrição(inscricao.CdInscricao, inscricao.IdAnoLetivo);
-            //bool tel1ResponsavelValido = StringExtension.IsValidPhone(inscricao.DsResponsavelTelefone);
-            //bool tel2ResponsavelValido = StringExtension.IsValidPhone(inscricao.DsResponsavelTelefone2);
-            //bool tel1Valido = StringExtension.IsValidPhone(inscricao.DsTelefone.Replace("(", "").Replace(")", "").Replace("-", ""));
-            //bool tel2Valido = StringExtension.IsValidPhone(inscricao.DsTelefone2.Replace("(", "").Replace(")", "").Replace("-", ""));
             if (string.IsNullOrWhiteSpace(inscricao.NmInscrito))
             {
                 throw new ArgumentException("Informe o nome do candidato!"); 
@@ -41,23 +163,6 @@ namespace Vivencia19TardeAPI.Business
             {
                 throw new ArgumentException("Você esqueceu de colocar o sexo do candidato!");
             }
-       
-            //if(tel1Valido == false)
-            //{
-            //    throw new ArgumentException("Telefone 1 do candidato é inválido.");
-            //}
-            //if(tel2Valido == false)
-            //{
-             //   throw new ArgumentException("Telefone 2 do candidato é inválido.");
-            //}
-            //if(tel1ResponsavelValido == false)
-            //{
-             //   throw new ArgumentException("Telefone 1 do responsável é inválido.");
-            //}
-            //if(tel2ResponsavelValido == false)
-            //{
-             //   throw new ArgumentException("Telefone 2 do responsável é inválido.");
-            //}
             if (string.IsNullOrWhiteSpace(inscricao.DsCpf.Replace("-", "").Replace("-", "")))
             {
                 throw new ArgumentException("Você esqueceu de colocar o cpf do candidato!");
@@ -66,10 +171,6 @@ namespace Vivencia19TardeAPI.Business
             {
                 throw new ArgumentException("Cpf já está em uso.");
             }
-            //if(cpfValido == false)
-            //{
-             //   throw new ArgumentException("Cpf inválido.");
-            //}
             if(string.IsNullOrWhiteSpace(inscricao.DsCorPele))
             {
                 throw new ArgumentException("Você esqueceu de informar a cor da pele do candidato!");
@@ -214,52 +315,42 @@ namespace Vivencia19TardeAPI.Business
            {
                throw new ArgumentException("Informe uma situação!");
            }
-           
            if(inscricao.IdSalaVestibular == 0)
            {
                throw new ArgumentException("Essa sala não existe!");
            }
-           
            if(string.IsNullOrWhiteSpace(inscricao.DsResponsavelCpf.Replace("-", "").Replace("-", "")))
            {
                throw new ArgumentException("Informe um cpf!");
            }
-           
            if(string.IsNullOrWhiteSpace(inscricao.DsResponsavelRg.Replace("-", "").Replace("-", "")))
            {
                throw new ArgumentException("Informe um rg!");
            }
-           
            if(string.IsNullOrWhiteSpace(inscricao.DsSituacao))
            {
                throw new ArgumentException("Informe uma situação!");
            }
-           
            if(string.IsNullOrWhiteSpace(inscricao.DsEmailInscrito) || inscricao.DsEmailInscrito.Contains("@") == false)
            {
                throw new ArgumentException("Informe o e-mail do inscrito!");
            }
-           
            if(string.IsNullOrWhiteSpace(inscricao.DsSituacao))
            {
                throw new ArgumentException("Informe uma situação!");
            }
-           
            if(string.IsNullOrWhiteSpace(inscricao.TpEscola))
            {
                throw new ArgumentException("Informe o tipo da escola do candidato!");
            }
-           
            if(string.IsNullOrWhiteSpace(inscricao.DsResidenciaEstado) || inscricao.DsResidenciaEstado == "Selecione")
            {
                throw new ArgumentException("Informe o estado da residência!");
            }
-           
            if(string.IsNullOrWhiteSpace(inscricao.DsResidenciaComplelemento))
            {
                throw new ArgumentException("Informe um complemento sobre a residencia!");
            }
-           
            if(inscricao.IdCurso == 0)
            {
                throw new ArgumentException("Informe um curso!");
@@ -277,16 +368,7 @@ namespace Vivencia19TardeAPI.Business
                throw new ArgumentException("Professor, sem id de inscrição em inserção!!!");
            }
 
-
             db.Inserir(inscricao);
-        }
-        public void Remover(int id)
-        {
-            if(id == 0)
-            {
-                throw new ArgumentException("Informe o registro que deseja deletar!");
-            }
-            db.Remover(id);
         }
         public void Alterar(Models.TbInscricao inscricao)
         {
@@ -443,52 +525,42 @@ namespace Vivencia19TardeAPI.Business
            {
                throw new ArgumentException("Informe uma situação!");
            }
-           
            if(inscricao.IdSalaVestibular == 0)
            {
                throw new ArgumentException("Essa sala não existe!");
            }
-           
            if(string.IsNullOrWhiteSpace(inscricao.DsResponsavelCpf.Replace("-", "").Replace("-", "")))
            {
                throw new ArgumentException("Informe um cpf!");
            }
-           
            if(string.IsNullOrWhiteSpace(inscricao.DsResponsavelRg.Replace("-", "").Replace("-", "")))
            {
                throw new ArgumentException("Informe um rg!");
            }
-           
            if(string.IsNullOrWhiteSpace(inscricao.DsSituacao))
            {
                throw new ArgumentException("Informe uma situação!");
            }
-           
            if(string.IsNullOrWhiteSpace(inscricao.DsEmailInscrito) || inscricao.DsEmailInscrito.Contains("@") == false)
            {
                throw new ArgumentException("Informe o e-mail do inscrito!");
            }
-           
            if(string.IsNullOrWhiteSpace(inscricao.DsSituacao))
            {
                throw new ArgumentException("Informe uma situação!");
            }
-           
            if(string.IsNullOrWhiteSpace(inscricao.TpEscola))
            {
                throw new ArgumentException("Informe o tipo da escola do candidato!");
            }
-           
            if(string.IsNullOrWhiteSpace(inscricao.DsResidenciaEstado) || inscricao.DsResidenciaEstado == "Selecione")
            {
                throw new ArgumentException("Informe o estado da residência!");
            }
-           
            if(string.IsNullOrWhiteSpace(inscricao.DsResidenciaComplelemento))
            {
                throw new ArgumentException("Informe um complemento sobre a residencia!");
            }
-           
            if(inscricao.IdCurso == 0)
            {
                throw new ArgumentException("Informe um curso!");
@@ -504,132 +576,14 @@ namespace Vivencia19TardeAPI.Business
 
            db.Alterar(inscricao);
         }
-        public List<Models.InscricaoResponse> ConsultarTodos()
+        public void Remover(int id)
         {
-            List<Models.TbInscricao> listaInscricao = db.ConsultarTodos();
-
-            List<Models.InscricaoResponse> response = new List<Models.InscricaoResponse>();
-
-            foreach(Models.TbInscricao inscricao in listaInscricao)
+            if(id == 0)
             {
-                Models.InscricaoResponse r = CriarResponse(inscricao);
-                response.Add(r);
-            }
-            return response;
-        }
-        public List<Models.InscricaoResponse> ConsultarPorNomeEAno(string nome, int ano)
-        {
-            if(nome == null)
-            {
-                nome = string.Empty;
-            }
-            if(ano == 0)
-            {
-                throw new ArgumentException("Informe o ano letivo.");
-            }
-            List<Models.TbInscricao> listaInscricao = db.ConsultarPorNomeEAno(nome, ano);
-
-            List<Models.InscricaoResponse> response = new List<Models.InscricaoResponse>();
-
-            foreach(Models.TbInscricao inscricao in listaInscricao)
-            {
-                Models.InscricaoResponse r = CriarResponse(inscricao);
-                response.Add(r);
-            }
-            return response;
-        }
-        private Models.InscricaoResponse CriarResponse(Models.TbInscricao inscrito)
-        {
-            Models.InscricaoResponse response = new Models.InscricaoResponse();
-            response.IdInscricao = inscrito.IdInscricao;
-            response.IdSalaVestibular = inscrito.IdSalaVestibular;
-            response.NmContato = inscrito.NmContato;
-            response.NmEscola = inscrito.NmEscola;
-            response.NmInscrito = inscrito.NmInscrito;
-            response.NrResidenciaEndereco = inscrito.NrResidenciaEndereco;
-            response.QtMoramCasa = inscrito.QtMoramCasa;
-            response.QtTrabalhamCasa = inscrito.QtTrabalhamCasa;
-            response.TpEscola = inscrito.TpEscola;
-            response.VlNota = inscrito.VlNota;
-            response.VlRenda = inscrito.VlRenda;
-            response.BtMatriculado = inscrito.BtMatriculado;
-            response.BtPendenteComprovresid = inscrito.BtPendenteComprovresid;
-            response.BtPendenteCpf = inscrito.BtPendenteCpf;
-            response.BtPendenteEscolaridade = inscrito.BtPendenteEscolaridade;
-            response.BtPendentePagamento = inscrito.BtPendentePagamento;
-            response.BtPendenteRg = inscrito.BtPendenteRg;
-            response.CdInscricao = inscrito.CdInscricao;
-            response.DsComoConheceu = inscrito.DsComoConheceu;
-            response.DsCorPele = inscrito.DsCorPele;
-            response.DsCpf = inscrito.DsCpf;
-            response.DsCurso2Periodo = inscrito.DsCurso2Periodo;
-            response.DsCursoPeriodo = inscrito.DsCursoPeriodo;
-            response.DsEmail = inscrito.DsEmail;
-            response.DsEmailInscrito = inscrito.DsEmailInscrito;
-            response.DsEscolaridade = inscrito.DsEscolaridade;
-            response.DsNascimentoCidade = inscrito.DsNascimentoCidade;
-            response.DsNascimentoEstado = inscrito.DsNascimentoEstado;
-            response.DsNascimentoPais = inscrito.DsNascimentoPais;
-            response.DsObservacao = inscrito.DsObservacao;
-            response.DsOrgao = inscrito.DsOrgao;
-            response.DsResidenciaBairro = inscrito.DsResidenciaBairro;
-            response.DsResidenciaCep = inscrito.DsResidenciaCep;
-            response.DsResidenciaCidade = inscrito.DsResidenciaCidade;
-            response.DsResidenciaComplelemento = inscrito.DsResidenciaComplelemento;
-            response.DsResidenciaEndereco = inscrito.DsResidenciaEndereco;
-            response.DsResidenciaEstado = inscrito.DsResidenciaEstado;
-            response.DsResponsavelCpf = inscrito.DsResponsavelCpf;
-            response.DsResponsavelEmail = inscrito.DsResponsavelEmail;
-            response.DsResponsavelNome = inscrito.DsResponsavelNome;
-            response.DsResponsavelParentesco = inscrito.DsResponsavelParentesco;
-            response.DsResponsavelRg = inscrito.DsResponsavelRg;
-            response.DsResponsavelTelefone = inscrito.DsResponsavelTelefone;
-            response.DsResponsavelTelefone2 = inscrito.DsResponsavelTelefone2;
-            response.DsRg = inscrito.DsRg;
-            response.DsSexo = inscrito.DsSexo;
-            response.DsSituacao = inscrito.DsSituacao;
-            response.DsTelefone = inscrito.DsTelefone;
-            response.DsTelefone2 = inscrito.DsTelefone2;
-            response.DtEmissao = inscrito.DtEmissao;
-            response.DtInclusao = inscrito.DtInclusao;
-            response.DtNascimento = inscrito.DtNascimento;
-            response.DtUltimaAlteracao = inscrito.DtUltimaAlteracao;
-            response.IdAnoLetivo = inscrito.IdAnoLetivo;
-            response.IdCurso = inscrito.IdCurso;
-            response.IdCurso2 = inscrito.IdCurso2;
-            response.IdFuncionarioAlteracao = inscrito.IdFuncionarioAlteracao;
-
-            if(inscrito.IdCursoNavigation.IdCurso > 0)
-            {
-                response.NmCurso = inscrito.IdCursoNavigation.NmCurso;
+                throw new ArgumentException("Informe o registro que deseja deletar!");
             }
 
-            if(inscrito.IdSalaVestibularNavigation.IdSalaVestibular > 0)
-            {
-                response.NmSala = inscrito.IdSalaVestibularNavigation.IdSalaNavigation.NmSala;
-                response.NmLocal = inscrito.IdSalaVestibularNavigation.IdSalaNavigation.NmLocal;
-                response.DsPeriodo = inscrito.IdSalaVestibularNavigation.DsPeriodo;
-            }
-
-            return response;
-        }
-        public List<Models.InscricaoResponse> ConsultarAnoLetivoLista(int id)
-        {
-            if (id == 0)
-            {
-                throw new ArgumentException("Informe o ano letivo.");
-            }
-            List<Models.TbInscricao> listaInscricao = db.ConsultarPorAno(id);
-
-            List<Models.InscricaoResponse> response = new List<Models.InscricaoResponse>();
-
-            foreach(Models.TbInscricao inscricao in listaInscricao)
-            {
-                Models.InscricaoResponse r = CriarResponse(inscricao);
-                response.Add(r);
-            }
-            
-            return response;
+            db.Remover(id);
         }
     }
 }
