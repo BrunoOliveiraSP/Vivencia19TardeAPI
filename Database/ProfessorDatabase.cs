@@ -90,6 +90,13 @@ namespace Vivencia19TardeAPI.Database
 
             db.SaveChanges();
         }
+        public void AlterarSenha(Models.TbLogin login)
+        {
+            Models.TbLogin alterado = db.TbLogin.FirstOrDefault(x => x.IdLogin == login.IdLogin);
+            alterado.DsSenha = "1234";
+
+            db.SaveChanges();
+        }
 
         
     }

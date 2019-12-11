@@ -108,7 +108,11 @@ namespace Vivencia19TardeAPI.Business
             //prof.Login.IdRole = 1;
 
             db.AlterarLogin(prof.Login);
-        }  
+        }
+        public void AlterarSenha(Models.TbLogin login)
+        {
+             db.AlterarSenha(login);
+        }   
         
 
 

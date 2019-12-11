@@ -92,5 +92,19 @@ namespace Vivencia19TardeAPI.Controllers
                 return StatusCode(500, erro);
             }
         }
+        [HttpPut("Senha")]
+        public ActionResult AlterarSenha(Models.TbLogin login)
+        {
+            try
+            {
+                business.AlterarSenha(login);
+                return Ok();
+            }
+            catch(System.Exception ex)
+            {
+                Models.ErrorModel erro = new Models.ErrorModel(500, ex.Message);
+                return StatusCode(500, erro);
+            }
+        }
     }
 }
