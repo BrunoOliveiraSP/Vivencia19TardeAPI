@@ -71,7 +71,7 @@ namespace Vivencia19TardeAPI.Controllers
             }
         }
 
-        [HttpGet("ConsultarPorNomeEAno/{nome}/{ano}")]
+        [HttpGet("Consultar")]
         public ActionResult<List<Models.InscricaoResponse>> ConsultarPorNomeEAno(string nome, int ano)
         {
             try
@@ -86,40 +86,12 @@ namespace Vivencia19TardeAPI.Controllers
             }
         }
 
-        [HttpGet("ConsultarAnoLetivo/{id}")]
-        public ActionResult<Models.TbAnoLetivo> ConsultarAnoLetivo(int id)
-        {
-            try
-            {
-                return InscricaoBusiness.ConsultarAnoLetivo(id);
-            }
-            catch (System.Exception ex)
-            {
-                ErrorModel erro = new ErrorModel(500, ex.Message);
-                return StatusCode(500, erro);
-            }
-        }
-
         [HttpGet("ConsultarAnoLetivoLista/{id}")]
-        public ActionResult<List<Models.InscricaoResponse>> ConsultarAnoLetivoLista(int id)
+        public ActionResult<List<Vivencia19TardeAPI.Models.InscricaoResponse>> ConsultarAnoLetivoLista(int id)
         {
             try
             {
                 return InscricaoBusiness.ConsultarAnoLetivoLista(id);
-            }
-            catch (System.Exception ex)
-            {
-                ErrorModel erro = new ErrorModel(500, ex.Message);
-                return StatusCode(500, erro);
-            }
-        }
-
-        [HttpGet("ConsultarCurso/{id}")]
-        public ActionResult<Models.TbCurso> ConsultarCurso(int id)
-        {
-            try
-            {
-                return InscricaoBusiness.ConsultarCurso(id);
             }
             catch (System.Exception ex)
             {

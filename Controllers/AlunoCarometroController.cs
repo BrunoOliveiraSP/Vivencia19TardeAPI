@@ -11,30 +11,30 @@ namespace Vivencia19TardeAPI.Controllers
     [Route("[controller]")]
     public class AlunoCarometroController
     {
-        Business.AlunoCarometroBusiness Bus = new Business.AlunoCarometroBusiness();
+        Business.AlunoCarometroBusiness bus = new Business.AlunoCarometroBusiness();
 
         [HttpPost]
         public void Inserir (Models.TbAlunoCarometro carometro)
         {
-            Bus.Inserir(carometro);
+            bus.Inserir(carometro);
         }
 
         [HttpGet]
         public List<Models.TbAlunoCarometro> ListarTodos()
         {
-            return Bus.ListarTodos();
+            return bus.ListarTodos();
         }
 
         [HttpPut]
         public void Alterar (Models.TbAlunoCarometro carometro)
         {
-            Bus.Alterar(carometro);
+            bus.Alterar(carometro);
         }
 
         [HttpDelete]
         public void Deletar (int id)
         {
-            Bus.Deletar(id);
+            bus.Deletar(id);
         }
     }
 }

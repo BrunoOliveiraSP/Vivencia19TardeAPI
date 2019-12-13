@@ -46,7 +46,11 @@ namespace Vivencia19TardeAPI.Database
         {
             Models.TbAlunoMensalidade remover = db.TbAlunoMensalidade.FirstOrDefault(a => a.IdAluno == id);
 
-            db.Remove(remover);
+             if(remover != null)
+            {
+                db.Remove(remover);
+                db.SaveChanges();
+            }
         }
     }
 }

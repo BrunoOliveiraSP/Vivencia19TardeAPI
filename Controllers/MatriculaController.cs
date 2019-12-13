@@ -12,34 +12,41 @@ namespace Vivencia19TardeAPI.Controllers
     [Route("[controller]")]
     public class MatriculaController
     {
-        Business.MatriculaBusiness Bus = new Business.MatriculaBusiness();
+        Business.MatriculaBusiness bus = new Business.MatriculaBusiness();
 
         [HttpPost]
 
         public void Inserir (Models.MatriculaRequest request)
         {
-             Bus.Inserir(request);
+             bus.Inserir(request);
         } 
 
         [HttpPut]
 
         public void Alterar (Models.MatriculaRequest request)
         {
-            Bus.alterar(request);
+            bus.alterar(request);
         }
 
-        [HttpDelete]
-        public void Deletar (Models.MatriculaRequest request)
+        [HttpDelete("{id}")]
+        public void Deletar (int id)
         {
-            Bus.Deletar(request);
+            bus.Deletar(id);
         }
+
 
         [HttpGet("{nome}/{ra}/{curso}/{turma}/{idanoletivo}")]
         public List<Models.MatriculaResponse> Listar(string nome, string ra, string curso, string turma, int idanoletivo)
         {
-            return Bus.Lista(nome, ra, curso, turma, idanoletivo);
+            return bus.Lista(nome, ra, curso, turma, idanoletivo);
         }
+        
+        [HttpGet("ListarTodos")]
+        public List<Models.MatriculaResponse> ListarTodos()
+        {
+            return bus.ListarTodos();
 
+        }
 
         
     }

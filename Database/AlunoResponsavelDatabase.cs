@@ -9,22 +9,22 @@ namespace Vivencia19TardeAPI.Database
     
     public class AlunoResponsavelDatabase
     {
-        Models.db_a5064d_freiContext DB = new Models.db_a5064d_freiContext();
+        Models.db_a5064d_freiContext db = new Models.db_a5064d_freiContext();
 
         public void Inserir(Models.TbAlunoResponsavel responsavel)
         {
-            DB.TbAlunoResponsavel.Add(responsavel);
-            DB.SaveChanges();
+            db.TbAlunoResponsavel.Add(responsavel);
+            db.SaveChanges();
         }
         public List<Models.TbAlunoResponsavel> Consultar(int idAluno)
         {
-            List<Models.TbAlunoResponsavel> lista =DB.TbAlunoResponsavel.Where(e=> e.IdAluno == idAluno).ToList();
+            List<Models.TbAlunoResponsavel> lista =db.TbAlunoResponsavel.Where(e=> e.IdAluno == idAluno).ToList();
 
             return lista;
         }
         public void Alterar(Models.TbAlunoResponsavel responsavel)
         {
-            Models.TbAlunoResponsavel alterar = DB.TbAlunoResponsavel.FirstOrDefault(r => r.IdAluno ==responsavel.IdAluno);
+            Models.TbAlunoResponsavel alterar = db.TbAlunoResponsavel.FirstOrDefault(r => r.IdAluno ==responsavel.IdAluno);
 
             alterar.IdFuncionarioAlteracao = responsavel.IdFuncionarioAlteracao;
             alterar.NmResponsavel = responsavel.NmResponsavel;
@@ -36,13 +36,17 @@ namespace Vivencia19TardeAPI.Database
             alterar.DtInclusao= responsavel.DtInclusao;
             alterar.DtUltimaAlteracao = responsavel.DtUltimaAlteracao;
 
-            DB.SaveChanges();
+            db.SaveChanges();
         }
         public void Remove(int id)
         {
-            Models.TbAlunoResponsavel remover =DB.TbAlunoResponsavel.FirstOrDefault(r => r.IdAluno == id);
-            DB.Remove(remover);
-            DB.SaveChanges();
+            Models.TbAlunoResponsavel remover =db.TbAlunoResponsavel.FirstOrDefault(r => r.IdAluno == id);
+
+             if(remover != null)
+            {
+                db.Remove(remover);
+                db.SaveChanges();
+            }
         }
     }
 }

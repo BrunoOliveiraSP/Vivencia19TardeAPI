@@ -54,7 +54,7 @@ namespace Vivencia19TardeAPI.Business
             AlunoCarometroBusiness.Inserir(request.Carometro);
         }
 
-        public void alterar (MatriculaRequest request)
+         public void alterar (MatriculaRequest request)
         {
             this.ValidacaoAluno(request.Aluno);
             this.ValidacaoCarometro(request.Carometro);
@@ -87,30 +87,23 @@ namespace Vivencia19TardeAPI.Business
             AlunoCarometroBusiness.Alterar(request.Carometro);
         }
 
-        public void Deletar (MatriculaRequest request)
+        public void Deletar (int id)
         {
-             AlunoBusiness.Deletar(request.Aluno.IdAluno);
+            AlunoDocumentosBusiness.Deletar(id);
+            
+            AlunoFichaMedicaBusiness.Deletar(id);
+            
+            AlunoLocalizacaoBusiness.Deletar(id);
+            
+            AlunoMensalidadeBusiness.Deletar(id);
 
-            request.Documentos.IdAluno = request.Aluno.IdAluno;
-            AlunoDocumentosBusiness.Deletar(request.Documentos.IdAluno);
+            AlunoResponsavelBusiness.Deletar(id);
 
-            request.FichaMedica.IdAluno = request.Aluno.IdAluno;
-            AlunoFichaMedicaBusiness.Deletar(request.FichaMedica.IdAluno);
+            AlunoCarometroBusiness.Deletar(id);
+            
+            AlunoTurmaBusiness.Deletar(id);
 
-            request.Localizacao.IdAluno = request.Aluno.IdAluno;
-            AlunoLocalizacaoBusiness.Deletar(request.Localizacao.IdAluno);
-
-            request.Mensalidade.IdAluno = request.Aluno.IdAluno;
-            AlunoMensalidadeBusiness.Deletar(request.Mensalidade.IdAluno);
-
-            request.Responsavel.IdAluno = request.Aluno.IdAluno;
-            AlunoResponsavelBusiness.Deletar(Convert.ToInt32(request.Responsavel.IdAluno));
-
-            request.TurmaAluno.IdAluno = request.Aluno.IdAluno;
-            AlunoTurmaBusiness.Deletar(request.TurmaAluno.IdAluno);
-
-            request.Carometro.IdAluno = request.Aluno.IdAluno;
-            AlunoCarometroBusiness.Deletar(request.Carometro.IdAluno);
+            AlunoBusiness.Deletar(id);
         }
 
         public List<Models.MatriculaResponse> Lista (string nome, string ra, string curso, string turma, int idanoletivo)
@@ -128,28 +121,40 @@ namespace Vivencia19TardeAPI.Business
 
         }
 
+        public List<MatriculaResponse> ListarTodos()
+        {
+                List<Models.TbAluno> Alunos = AlunoBusiness.ListarTodos();
+
+            List<Models.MatriculaResponse> Response = new List<MatriculaResponse>();
+            foreach (Models.TbAluno Aluno in Alunos)
+            {
+                Models.MatriculaResponse r = CriarResponse(Aluno);
+                Response.Add(r);
+            }            
+             return Response;
+        }
+
+
+
         public Models.MatriculaResponse CriarResponse(Models.TbAluno Aluno)
         {
-
-            Business.CursoBusiness CursoBusiness = new CursoBusiness();
-            Business.TurmaAnoLetivo TurmaBusiness = new TurmaAnoLetivo(); 
-           
-
-            Models.TbCurso Curso = new TbCurso();
-            Models.TbTurma Turma = new TbTurma();
             Models.MatriculaResponse Response = new MatriculaResponse();
            
-           
+            Response.IdAluno = Aluno.IdAluno;
             Response.DsRg = Aluno.DsRg;
             Response.NmAluno = Aluno.NmAluno;
-            Response.CdRa = Aluno.TbTurmaAluno.FirstOrDefault().CdRa;
-            Response.DsStatus = Aluno.TbTurmaAluno.FirstOrDefault().TpStatus;
-            Response.NmTurma = Aluno.TbTurmaAluno.FirstOrDefault().IdTurmaNavigation.NmTurma;
-            Response.TpPeriudo = Aluno.TbTurmaAluno.FirstOrDefault().IdTurmaNavigation.TpPeriodo;
-            Response.NmCurso = Aluno.TbTurmaAluno.FirstOrDefault().IdTurmaNavigation.IdCursoNavigation.NmCurso;
 
+            if (Aluno.TbTurmaAluno.Count > 0)
+            {
+                Response.CdRa = Aluno.TbTurmaAluno.FirstOrDefault().CdRa;
+                Response.DsStatus = Aluno.TbTurmaAluno.FirstOrDefault().TpStatus;
+                Response.NmTurma = Aluno.TbTurmaAluno.FirstOrDefault().IdTurmaNavigation.NmTurma;
+                Response.TpPeriudo = Aluno.TbTurmaAluno.FirstOrDefault().IdTurmaNavigation.TpPeriodo;
+                Response.NmCurso = Aluno.TbTurmaAluno.FirstOrDefault().IdTurmaNavigation.IdCursoNavigation.NmCurso;
+                Response.TurmaAluno = Aluno.TbTurmaAluno.FirstOrDefault();
+            }
+            
             Response.Aluno = Aluno;
-            Response.TurmaAluno = Aluno.TbTurmaAluno.FirstOrDefault();
             Response.Documentos = Aluno.TbAlunoDocumentos.ToList();
             Response.Localizacao = Aluno.TbAlunoLocalizacao.ToList();
             Response.FichaMedica = Aluno.TbAlunoFichaMedica.ToList();
@@ -341,10 +346,7 @@ private void ValidacaoAluno (Models.TbAluno aluno)
         {
             Models.TbTurmaAluno Model = TurmaAlunoDB.Consultar(turmaAluno);
 
-            if (turmaAluno.NrChamada == Model.NrChamada)
-            throw new ArgumentException("Este número já esta oculpado");
-
-            else if (turmaAluno.NrChamada <= 0)
+            if (turmaAluno.NrChamada <= 0)
             throw new ArgumentException("Este número não é valido");
 
             else if (turmaAluno.CdRa == string.Empty)

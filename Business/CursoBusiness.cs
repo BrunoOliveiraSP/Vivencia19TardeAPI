@@ -53,13 +53,7 @@ namespace Vivencia19TardeAPI.Business
 
             if(curso.DsSigla == string.Empty)
             throw new ArgumentException("Campo não pode estar vazio.");
-
-            if(contemCurso == true)
-            throw new ArgumentException("Curso já cadastrado.");           
-
-            if(contemSigla == true)
-            throw new ArgumentException("Sigla já cadastrado.");
-
+            
             if(curso.NrCapacidadeMaxima == 0)
             throw new ArgumentException("Valor inválido.");
 
@@ -94,6 +88,14 @@ namespace Vivencia19TardeAPI.Business
         public Models.TbCurso ConsultarPorID(int id)
         {
             return db.ConsultarPorID(id);
+        }
+
+        public Models.TbCurso ConsultarCurso(int id)
+        {
+            if(id == 0)
+               throw new ArgumentException("Informe o curso.");
+
+            return db.ConsultarCurso(id);   
         }
     }
 }

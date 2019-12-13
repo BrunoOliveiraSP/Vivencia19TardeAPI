@@ -12,33 +12,33 @@ namespace Vivencia19TardeAPI.Controllers
     [Route("[controller]")]
     public class AlunoMensalidadeController:ControllerBase
     {
-        Business.AlunoMensalidadeBusiness Bus = new Business.AlunoMensalidadeBusiness();
+        Business.AlunoMensalidadeBusiness bus = new Business.AlunoMensalidadeBusiness();
         
         [HttpPost]
         public void Inserir(TbAlunoMensalidade mensalidade)
         {
-            Bus.Inserir(mensalidade);
+            bus.Inserir(mensalidade);
         }
 
         [HttpGet]
 
         public List<Models.TbAlunoMensalidade> ListarTodos()
         {
-            List<Models.TbAlunoMensalidade> lista = Bus.ListarTodos();
+            List<Models.TbAlunoMensalidade> lista = bus.ListarTodos();
             return lista;
         }
 
         [HttpPut]
         public void alterar (TbAlunoMensalidade mensalidade)
         {
-            Bus.alterar(mensalidade);
+            bus.alterar(mensalidade);
         } 
          
          
          [HttpDelete]
          public void Deletar(int id)
          {
-             Bus.Deletar(id);
+             bus.Deletar(id);
              
          }
 

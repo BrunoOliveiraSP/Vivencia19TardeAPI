@@ -9,23 +9,23 @@ namespace Vivencia19TardeAPI.Business
 {
     public class AlunoFichaMedicaBusiness
     {
-        Database.AlunoFichaMedicaDatabase dt = new Database.AlunoFichaMedicaDatabase();
+        Database.AlunoFichaMedicaDatabase db = new Database.AlunoFichaMedicaDatabase();
         public void Inserir(Models.TbAlunoFichaMedica ModelAlunoFichaMedica)
         {
-            dt.Inserir(ModelAlunoFichaMedica);
+            db.Inserir(ModelAlunoFichaMedica);
         }
         public List<TbAlunoFichaMedica> Consultar()
         {
-            List<TbAlunoFichaMedica> lista =dt.Consultar();
+            List<TbAlunoFichaMedica> lista =db.Consultar();
             return lista;
         }
         public void Alterar(TbAlunoFichaMedica ficha)
         {
-            dt.Alterar(ficha);
+            db.Alterar(ficha);
         }
         public void Deletar(int id)
         {
-            dt.Deletar(id);
+            db.Deletar(id);
         }
 
 

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using System.Linq.Expressions;
+using System.ComponentModel;
+
 
 namespace Vivencia19TardeAPI.Database
 {
@@ -40,7 +42,7 @@ namespace Vivencia19TardeAPI.Database
 
         public List<Models.TbCurso> ListarTodos()
         {
-            List<Models.TbCurso> cursos = db.TbCurso.ToList();
+            List<Models.TbCurso> cursos = db.TbCurso.OrderBy(x => x.NmCurso).ToList();
 
             return cursos;
         }
@@ -75,6 +77,9 @@ namespace Vivencia19TardeAPI.Database
             Models.TbCurso Curso = db.TbCurso.FirstOrDefault(x=> x.IdCurso == id);
             return Curso;
         }
-
+        public Models.TbCurso ConsultarCurso(int id)
+        {
+            return db.TbCurso.First(x => x.IdCurso == id);
+        }
     }
 }

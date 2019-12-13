@@ -11,31 +11,31 @@ namespace Vivencia19TardeAPI.Controllers
     [Route("[controller]")]
     public class AlunoController
     {
-         Business.AlunoBusiness Bus = new Business.AlunoBusiness();
+         Business.AlunoBusiness bus = new Business.AlunoBusiness();
         
         [HttpPost]
         public void Inserir(Models.TbAluno aluno)
         {
            
-            Bus.inserir(aluno);
+            bus.inserir(aluno);
         }
 
          [HttpGet]
          public List<Models.TbAluno> ListarTodos()
          {
-             List<Models.TbAluno> lista= Bus.ListarTodos();
+             List<Models.TbAluno> lista= bus.ListarTodos();
              return lista;
          }
          [HttpDelete]
          public void Deletar(Models.TbAluno aluno)
          {
-             Models.TbAluno consulta = Bus.consular(aluno);
-             Bus.Deletar(consulta.IdAluno); 
+             Models.TbAluno consulta = bus.consular(aluno);
+             bus.Deletar(consulta.IdAluno); 
          }
          [HttpPut]
          public void Alterar(Models.TbAluno aluno)
          {
-             Bus.Alterar(aluno);
+             bus.Alterar(aluno);
          }
       
     }

@@ -63,11 +63,11 @@ namespace Vivencia19TardeAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<Models.TbProfessor>> ListarTodos()
+        public ActionResult<List<Models.ProfessorResponse>> ListarTodos()
         {
             try
             {
-                List<Models.TbProfessor> professores = business.ListarTodos();
+                List<Models.ProfessorResponse> professores = business.ListarTodos();
                 return professores;
             }
             catch(System.Exception ex)
@@ -79,12 +79,26 @@ namespace Vivencia19TardeAPI.Controllers
         }
  
         [HttpGet("Nome/{nome}")]
-        public ActionResult<List<Models.TbProfessor>> ConsultarNome (string nome)
+        public ActionResult<List<Models.ProfessorResponse>> ConsultarNome (string nome)
         {
             try
             {
-                List<Models.TbProfessor> professor = business.ConsultarPorNome(nome);
+                List<Models.ProfessorResponse> professor = business.ConsultarPorNome(nome);
                 return professor;
+            }
+            catch(System.Exception ex)
+            {
+                Models.ErrorModel erro = new Models.ErrorModel(500, ex.Message);
+                return StatusCode(500, erro);
+            }
+        }
+        [HttpPut("Senha")]
+        public ActionResult AlterarSenha(Models.TbLogin login)
+        {
+            try
+            {
+                business.AlterarSenha(login);
+                return Ok();
             }
             catch(System.Exception ex)
             {

@@ -12,32 +12,32 @@ namespace Vivencia19TardeAPI.Controllers
     [Route("[controller]")]
     public class AlunoLocalizacaoController:ControllerBase
     {
-        Business.AlunoLocalizacaoBusiness Bus = new Business.AlunoLocalizacaoBusiness();
+        Business.AlunoLocalizacaoBusiness bus = new Business.AlunoLocalizacaoBusiness();
         
         [HttpPost]
         public void Inserir(Models.TbAlunoLocalizacao localizacao)
         {
-            Bus.Inserir(localizacao);
+            bus.Inserir(localizacao);
         }
 
          [HttpGet]
          public List<Models.TbAlunoLocalizacao> Consultar()
          {
-             List<Models.TbAlunoLocalizacao> lista = Bus.Consultar();
+             List<Models.TbAlunoLocalizacao> lista = bus.Consultar();
              return lista;
          }
 
          [HttpDelete]
          public void Deletar(int id)
          {
-             Bus.Deletar(id);
+             bus.Deletar(id);
              
          }
 
          [HttpPut]
          public void Alterar(int id,Models.TbAlunoLocalizacao localizacao)
          {
-             Bus.Alterar(localizacao);
+             bus.Alterar(localizacao);
          }
     }
 }

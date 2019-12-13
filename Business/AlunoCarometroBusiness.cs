@@ -7,27 +7,27 @@ namespace Vivencia19TardeAPI.Business
 {
     public class AlunoCarometroBusiness
     {
-        Database.AlunoCarometroDatabase DB = new Database.AlunoCarometroDatabase();
+        Database.AlunoCarometroDatabase db = new Database.AlunoCarometroDatabase();
 
         public void Inserir (Models.TbAlunoCarometro carometro)
         {
-            DB.inserir(carometro);
+            db.inserir(carometro);
         }
 
         public List<Models.TbAlunoCarometro> ListarTodos()
         {
-            List<Models.TbAlunoCarometro> Lista = DB.ListarTodos();
+            List<Models.TbAlunoCarometro> Lista = db.ListarTodos();
             return Lista;
         }
 
         public void Alterar (Models.TbAlunoCarometro carometro)
         {
-            DB.alterar(carometro);
+            db.alterar(carometro);
         }
 
         public void Deletar (int id)
         {
-            DB.deletar(id);
+            db.deletar(id);
         }
         
 
