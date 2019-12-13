@@ -30,8 +30,6 @@ namespace Vivencia19TardeAPI.Business
             this.ValidacaoResponsavel(request.Responsavel);
             this.ValidarTurmaAluno(request.TurmaAluno);
             
-
-
             AlunoBusiness.inserir(request.Aluno);
 
             request.Documentos.IdAluno = request.Aluno.IdAluno;
@@ -115,9 +113,9 @@ namespace Vivencia19TardeAPI.Business
             AlunoCarometroBusiness.Deletar(request.Carometro.IdAluno);
         }
 
-        public List<Models.MatriculaResponse> Lista (string nome, string ra, string curso, string turma)
+        public List<Models.MatriculaResponse> Lista (string nome, string ra, string curso, string turma, int idanoletivo)
         {
-            List<Models.TbAluno> Alunos = AlunoBusiness.ConsultarPorNome(nome, ra, curso, turma);
+            List<Models.TbAluno> Alunos = AlunoBusiness.ConsultarPorNome(nome, ra, curso, turma, idanoletivo);
 
             List<Models.MatriculaResponse> Response = new List<MatriculaResponse>();
             foreach (Models.TbAluno Aluno in Alunos)

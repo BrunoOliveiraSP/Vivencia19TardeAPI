@@ -19,9 +19,9 @@ namespace Vivencia19TardeAPI.Business
             List<Models.TbAluno> Lista = DB.ListarTodos();
             return Lista;
         }
-        public List<Models.TbAluno> ConsultarPorNome(string nome, string ra, string curso, string turma)
+        public List<Models.TbAluno> ConsultarPorNome(string nome, string ra, string curso, string turma, int idanoletivo)
         {
-           List<Models.TbAluno> lista = DB.ConsultarPorNome(nome, ra, curso, turma);
+           List<Models.TbAluno> lista = DB.ConsultarPorNome(nome, ra, curso, turma, idanoletivo);
 
            return lista;
         }
