@@ -63,12 +63,12 @@ namespace Vivencia19TardeAPI.Controllers
             }
         }
 
-        [HttpGet]
-        public ActionResult <List<Models.TurmaResponse>> ListarTodos ()
+        [HttpGet("idAnoLetivo")]
+        public ActionResult <List<Models.TurmaResponse>> ListarPorAnoLetivo(int idAno)
         {
             try
             {
-            List<Models.TurmaResponse> lista = business.ListarTodos();
+            List<Models.TurmaResponse> lista = business.ListarPorAnoLetivo(idAno);
             return lista;
             }
             catch(System.Exception ex)

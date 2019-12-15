@@ -60,9 +60,9 @@ namespace Vivencia19TardeAPI.Business
 
         }
 
-        public List<Models.TurmaResponse> ListarTodos()
+        public List<Models.TurmaResponse> ListarPorAnoLetivo(int idAno)
         {
-           List<Models.TbTurma> lista = db.ListarTodos();
+           List<Models.TbTurma> lista = db.ListarPorAnoLetivo(idAno);
 
            List<Models.TurmaResponse> response = new List<Models.TurmaResponse>();
 
