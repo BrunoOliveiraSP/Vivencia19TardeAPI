@@ -1,3 +1,11 @@
+using Vivencia19TardeAPI.Models;
+using System;
+using System.Collections;
+using System.Linq;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using Microsoft.Extensions.Logging;
+
 namespace Vivencia19TardeAPI.Models
 {
     public class MatriculaRequest
@@ -11,6 +19,6 @@ namespace Vivencia19TardeAPI.Models
         public TbAlunoResponsavel Responsavel {get;set;}
         public TbTurmaAluno TurmaAluno {get;set;}
 
-
+        public List<Models.TbAlunoResponsavel> Responsaveis { get ; set ;}
     }
 }

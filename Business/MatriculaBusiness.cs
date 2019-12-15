@@ -43,10 +43,13 @@ namespace Vivencia19TardeAPI.Business
 
             request.Mensalidade.IdAluno = request.Aluno.IdAluno;
             AlunoMensalidadeBusiness.Inserir(request.Mensalidade);
-
-            request.Responsavel.IdAluno = request.Aluno.IdAluno;
-            AlunoResponsavelBusiness.Inserir(request.Responsavel);
-
+            
+            foreach (Models.TbAlunoResponsavel responsavel in request.Responsaveis)
+            {
+                request.Responsavel.IdAluno = request.Aluno.IdAluno;
+                AlunoResponsavelBusiness.Inserir(request.Responsavel);
+            }
+            
             request.TurmaAluno.IdAluno = request.Aluno.IdAluno;
             AlunoTurmaBusiness.Inserir(request.TurmaAluno);
 
