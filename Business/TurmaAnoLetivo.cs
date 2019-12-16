@@ -60,15 +60,15 @@ namespace Vivencia19TardeAPI.Business
 
         }
 
-        public List<Models.TurmaResponse> ListarPorAnoLetivo(int idAno)
+        public List<Models.TurmaResponse> ListarTodos()
         {
-           List<Models.TbTurma> lista = db.ListarPorAnoLetivo(idAno);
+           List<Models.TbTurma> lista = db.ListarTodos();
 
            List<Models.TurmaResponse> response = new List<Models.TurmaResponse>();
 
            foreach(Models.TbTurma turma in lista)
            {
-               Models.TurmaResponse resp = CriarResponse(turma);
+               Models.TurmaResponse resp = this.CriarResponse(turma);
                response.Add(resp);
            }
 
@@ -78,15 +78,12 @@ namespace Vivencia19TardeAPI.Business
         private Models.TurmaResponse CriarResponse(Models.TbTurma turma)
         {
             Models.TurmaResponse response = new Models.TurmaResponse();
-            response.IdTurma = turma.IdTurma;   
-            response.IdAnoLetivo = turma.IdAnoLetivo; 
-            response.IdCurso = turma.IdCurso;                        
-            response.NmTurma = turma.NmTurma;
+            
+            response.NmCurso = turma.IdCursoNavigation.NmCurso;
             response.NrCapacidadeMax = turma.NrCapacidadeMax;
             response.TpPeriodo = turma.TpPeriodo;
-
-            if(turma.IdCursoNavigation.IdCurso > 0)
-            response.NmCurso = turma.IdCursoNavigation.NmCurso;
+            response.IdTurma = turma.IdTurma;
+            response.NmTurma = turma.NmTurma;
 
             return response;
 

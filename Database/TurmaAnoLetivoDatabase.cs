@@ -18,12 +18,11 @@ namespace Vivencia19TardeAPI.Database
             db.SaveChanges();
         }
 
-        public List<Vivencia19TardeAPI.Models.TbTurma> ListarPorAnoLetivo(int idAno)
+        public List<Vivencia19TardeAPI.Models.TbTurma> ListarTodos()
         {
-            List<Models.TbTurma> turmas = db.TbTurma.Where(t=> t.IdAnoLetivo == idAno)
-                                                 .Include(x => x.IdCursoNavigation)
-                                                 .OrderBy(t=> t.NmTurma)
-                                                 .ToList();
+            List<Models.TbTurma> turmas = db.TbTurma.Include(x => x.IdCursoNavigation)
+                                                    .OrderBy(t=> t.NmTurma)
+                                                    .ToList();
                                                     
             return turmas;
         }
